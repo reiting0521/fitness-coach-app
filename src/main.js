@@ -2,7 +2,7 @@ import './style.css'
 import seedPlan from './plan.json'
 import seedLog from './seed-log-2026-09-16.json'
 import { diagramFor, formatRest, icon } from './diagrams.js'
-import { demoAssetUrl, getDemoForExercise, hasRealDemo, normalizeCues } from './demos.js'
+import { demoAssetUrl, getDemoForExercise, hasRealDemo, normalizeCues, slugifyExerciseName } from './demos.js'
 import {
   getZurichDateString,
   getZurichDisplayDate,
@@ -110,8 +110,11 @@ function buildSessionFromPlan(day, dateStr) {
       rest: !!existingLog.rest || (!existingLog.exercises?.length && !!day.rest),
       exercises: (existingLog.exercises || []).map((ex) => {
         const planEx = findPlanExercise(day, ex.originalName || ex.name)
+        const swapped = !!(ex.originalName && ex.originalName !== ex.name)
         return {
-          id: planEx?.id || ex.id || null,
+          id: ex.id || planEx?.id || null,
+          originalId: ex.originalId || planEx?.id || ex.id || null,
+          demoId: ex.demoId || (swapped ? ex.id : planEx?.id) || planEx?.id || null,
           name: ex.name,
           originalName: ex.originalName || ex.name,
           planned: {
@@ -131,7 +134,7 @@ function buildSessionFromPlan(day, dateStr) {
           exerciseNote: ex.exerciseNote || '',
           done: !!ex.done,
           optional: !!ex.planned?.optional || !!ex.optional,
-          swapped: !!(ex.originalName && ex.originalName !== ex.name),
+          swapped,
         }
       }),
     }
@@ -152,6 +155,8 @@ function buildSessionFromPlan(day, dateStr) {
         return {
           ...ex,
           id: ex.id || planEx?.id || null,
+          originalId: ex.originalId || planEx?.id || ex.id || null,
+          demoId: ex.demoId || ex.id || planEx?.id || null,
           equipment: ex.equipment || planEx?.equipment || null,
           cues: ex.cues || planEx?.cues || [],
           alternatives: ex.alternatives || planEx?.alternatives || [],
@@ -172,6 +177,8 @@ function buildSessionFromPlan(day, dateStr) {
     rest: !!day.rest,
     exercises: (day.exercises || []).map((ex) => ({
       id: ex.id || null,
+      originalId: ex.id || null,
+      demoId: ex.demoId || ex.id || null,
       name: ex.name,
       originalName: ex.name,
       equipment: ex.equipment || null,
@@ -622,37 +629,47 @@ function bindWorkout(main) {
 
 function renderHowtoDemo(ex) {
   const demo = getDemoForExercise(ex)
+  const matchNote = demo?.matchNote
+    ? `<p class="howto-match-note">${escapeHtml(demo.matchNote)}</p>`
+    : ''
 
-  // Priority (Design Director): 1) real/{id}.gif  2) legacy loop gif  3) NEVER VA sequence/frames as hero
+  // Priority: 1) local real/{id}.gif  2) any non-VA loop/gif  3) CDN gifUrl  4) placeholder (never prior exercise)
   const realPath =
     (demo?.real && String(demo.real).includes('real/') && !String(demo.real).endsWith('.svg') && demo.real) ||
     (demo?.gif && String(demo.gif).includes('real/') && demo.gif) ||
     (demo?.realGif && demo.realGif) ||
     null
 
+  const attr = `<p class="howto-attr">Form demo: <a href="https://exercisedb.dev" target="_blank" rel="noopener noreferrer">ExerciseDB / AscendAPI</a></p>`
+
   if (realPath) {
     const src = demoAssetUrl(realPath)
-    return `<div class="howto-demo howto-demo-real"><img src="${escapeHtml(src)}" alt="${escapeHtml(ex.name)} form demo" loading="lazy" /></div>
-    <p class="howto-attr">Form demo: <a href="https://exercisedb.dev" target="_blank" rel="noopener noreferrer">ExerciseDB / AscendAPI</a></p>`
+    return `<div class="howto-demo howto-demo-real"><img src="${escapeHtml(src)}" alt="${escapeHtml(ex.name)} form demo" loading="lazy" /></div>${attr}${matchNote}`
   }
 
   if (demo?.loop && !String(demo.loop).endsWith('.svg') && !String(demo.loop).includes('/va/')) {
     const src = demoAssetUrl(demo.loop)
-    const attr = String(demo.loop).includes('real/') || demo?.source === 'exercisedb'
-      ? `<p class="howto-attr">Form demo: <a href="https://exercisedb.dev" target="_blank" rel="noopener noreferrer">ExerciseDB / AscendAPI</a></p>`
-      : ''
-    return `<div class="howto-demo howto-demo-real"><img src="${escapeHtml(src)}" alt="${escapeHtml(ex.name)} form demo" loading="lazy" /></div>${attr}`
+    const showAttr = String(demo.loop).includes('real/') || demo?.source === 'exercisedb' || /^https?:/i.test(demo.loop)
+    return `<div class="howto-demo howto-demo-real"><img src="${escapeHtml(src)}" alt="${escapeHtml(ex.name)} form demo" loading="lazy" /></div>${showAttr ? attr : ''}${matchNote}`
   }
 
-  // Do NOT render demo.sequence / demo.frames (white anatomical SVGs) as teaching hero
+  if (demo?.gifUrl || demo?.cdnUrl) {
+    const src = demo.gifUrl || demo.cdnUrl
+    return `<div class="howto-demo howto-demo-real"><img src="${escapeHtml(src)}" alt="${escapeHtml(ex.name)} form demo" loading="lazy" /></div>${attr}${matchNote}`
+  }
+
+  // Swapped (or unmatched) with no media — never show previous exercise GIF
   const cues = normalizeCues(ex.cues)
   const steps = [
     ...(cues.setup.slice(0, 1).map((s) => `1. Setup — ${s}`)),
     ...(cues.move.slice(0, 2).map((s, i) => `${i + 2}. Move — ${s}`)),
     ...(cues.avoid.slice(0, 1).map((s) => `Avoid — ${s}`)),
   ]
+  const title = ex.swapped
+    ? 'No demo for this alternative yet'
+    : 'Demo media coming soon'
   return `<div class="howto-demo"><div class="howto-demo-placeholder">
-    <strong>Demo media coming soon</strong>
+    <strong>${escapeHtml(title)}</strong>
     <span>Follow Setup → Move → Avoid below${steps.length ? ':' : '.'}</span>
     ${steps.map((s) => `<span>${escapeHtml(s)}</span>`).join('')}
   </div></div>`
@@ -809,13 +826,20 @@ function applySwap(index, alt) {
   if (!alt) return
   const ex = session.exercises[index]
   const original = ex.originalName || ex.name
-  ex.originalName = original
+  if (!ex.originalId) ex.originalId = ex.id
+  if (!ex.originalName) ex.originalName = original
+  // Current id/demoId become the alternative — never keep original id for media resolution
+  const altId = alt.id || alt.demoId || slugifyExerciseName(alt.name)
+  ex.id = altId
+  ex.demoId = alt.demoId || alt.id || altId
   ex.name = alt.name
   ex.swapped = true
+  if (alt.cues) {
+    ex.cues = alt.cues
+  }
   if (alt.note) {
     ex.planned = { ...ex.planned, note: [ex.planned.note, alt.note].filter(Boolean).join(' · ') }
   }
-  // Keep cues from original plan exercise; try to attach alt-specific if same plan has it
   persistDraft()
 }
 
@@ -823,7 +847,10 @@ function restoreOriginal(index) {
   const ex = session.exercises[index]
   const day = planDayFor(session.date)
   const planEx = findPlanExercise(day, ex.originalName)
+  const restoreId = ex.originalId || planEx?.id || null
   ex.name = ex.originalName
+  ex.id = restoreId
+  ex.demoId = planEx?.demoId || restoreId
   ex.swapped = false
   if (planEx) {
     ex.planned = {
@@ -835,6 +862,7 @@ function restoreOriginal(index) {
     }
     ex.cues = planEx.cues || []
     ex.alternatives = planEx.alternatives || []
+    ex.equipment = planEx.equipment || ex.equipment
   }
   persistDraft()
 }

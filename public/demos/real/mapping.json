@@ -1,119 +1,604 @@
 {
   "version": 2,
-  "source": "ExerciseDB / AscendAPI",
-  "attribution": "Exercise media from AscendAPI / ExerciseDB (https://exercisedb.dev). Free tier requires attribution.",
+  "source": "ExerciseDB",
+  "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB \u2014 used with required attribution",
+  "attributionUrl": "https://exercisedb.dev",
+  "attributionMuted": "Media \u00a9 AscendAPI / ExerciseDB \u00b7 exercisedb.dev",
+  "licenseNote": "Free V1 OSS tier: non-commercial / personal / educational use; AscendAPI attribution required. See NOTICE.md.",
+  "cdnBase": "https://static.exercisedb.dev/media",
+  "letterboxDefaults": {
+    "bg": "#0B0C0E",
+    "innerBg": "#16181F",
+    "objectFit": "contain"
+  },
+  "preferOver": "svg-sequence",
   "exercises": {
     "back-squat": {
       "id": "back-squat",
-      "name": "barbell full squat",
-      "exerciseId": "qXTaZnJ",
+      "name": "Barbell back squat",
+      "day": "wednesday",
+      "exercisedbId": "qXTaZnJ",
+      "exercisedbName": "barbell full squat",
       "gifUrl": "https://static.exercisedb.dev/media/qXTaZnJ.gif",
+      "gif": "real/back-squat.gif",
       "file": "real/back-squat.gif",
-      "equipments": [
-        "barbell"
-      ],
-      "source": "exercisedb"
-    },
-    "hip-thrust": {
-      "id": "hip-thrust",
-      "name": "barbell glute bridge",
-      "exerciseId": "qKBpF7I",
-      "gifUrl": "https://static.exercisedb.dev/media/qKBpF7I.gif",
-      "file": "real/hip-thrust.gif",
-      "equipments": [
-        "barbell"
-      ],
-      "source": "exercisedb",
-      "note": "Closest ExerciseDB match to barbell hip thrust (glute bridge pattern)"
+      "letterbox": {
+        "bg": "#0B0C0E",
+        "innerBg": "#16181F",
+        "objectFit": "contain"
+      },
+      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attributionUrl": "https://exercisedb.dev"
     },
     "hip-abductor": {
       "id": "hip-abductor",
-      "name": "lever seated hip abduction",
-      "exerciseId": "CHpahtl",
+      "name": "Hip abductor machine (out)",
+      "day": "wednesday",
+      "exercisedbId": "CHpahtl",
+      "exercisedbName": "lever seated hip abduction",
       "gifUrl": "https://static.exercisedb.dev/media/CHpahtl.gif",
+      "gif": "real/hip-abductor.gif",
       "file": "real/hip-abductor.gif",
-      "equipments": [
-        "leverage machine"
-      ],
-      "source": "exercisedb"
+      "letterbox": {
+        "bg": "#0B0C0E",
+        "innerBg": "#16181F",
+        "objectFit": "contain"
+      },
+      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attributionUrl": "https://exercisedb.dev"
     },
     "hip-adductor": {
       "id": "hip-adductor",
-      "name": "lever seated hip adduction",
-      "exerciseId": "oHsrypV",
+      "name": "Hip adductor machine (in)",
+      "day": "wednesday",
+      "exercisedbId": "oHsrypV",
+      "exercisedbName": "lever seated hip adduction",
       "gifUrl": "https://static.exercisedb.dev/media/oHsrypV.gif",
+      "gif": "real/hip-adductor.gif",
       "file": "real/hip-adductor.gif",
-      "equipments": [
-        "leverage machine"
-      ],
-      "source": "exercisedb"
+      "letterbox": {
+        "bg": "#0B0C0E",
+        "innerBg": "#16181F",
+        "objectFit": "contain"
+      },
+      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attributionUrl": "https://exercisedb.dev"
     },
     "smith-sl-calf": {
       "id": "smith-sl-calf",
-      "name": "smith seated one leg calf raise",
-      "exerciseId": "0S75mYG",
-      "gifUrl": "https://static.exercisedb.dev/media/0S75mYG.gif",
+      "name": "Single-leg calf raise (Smith)",
+      "day": "wednesday",
+      "exercisedbId": "9GXrTE6",
+      "exercisedbName": "smith one leg floor calf raise",
+      "gifUrl": "https://static.exercisedb.dev/media/9GXrTE6.gif",
+      "gif": "real/smith-sl-calf.gif",
       "file": "real/smith-sl-calf.gif",
-      "equipments": [
-        "smith machine"
-      ],
-      "source": "exercisedb"
+      "letterbox": {
+        "bg": "#0B0C0E",
+        "innerBg": "#16181F",
+        "objectFit": "contain"
+      },
+      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attributionUrl": "https://exercisedb.dev",
+      "matchNote": "Smith single-leg floor calf raise; standing Smith single-leg variant not found in free catalog."
     },
     "deadlift": {
       "id": "deadlift",
-      "name": "barbell deadlift",
-      "exerciseId": "ila4NZS",
+      "name": "Deadlift",
+      "day": "friday",
+      "exercisedbId": "ila4NZS",
+      "exercisedbName": "barbell deadlift",
       "gifUrl": "https://static.exercisedb.dev/media/ila4NZS.gif",
+      "gif": "real/deadlift.gif",
       "file": "real/deadlift.gif",
-      "equipments": [
-        "barbell"
-      ],
-      "source": "exercisedb"
+      "letterbox": {
+        "bg": "#0B0C0E",
+        "innerBg": "#16181F",
+        "objectFit": "contain"
+      },
+      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attributionUrl": "https://exercisedb.dev"
     },
     "pulldown": {
       "id": "pulldown",
-      "name": "cable lat pulldown full range of motion",
-      "exerciseId": "LEprlgG",
+      "name": "Lat pulldown / Pull-up",
+      "day": "friday",
+      "exercisedbId": "LEprlgG",
+      "exercisedbName": "cable lat pulldown full range of motion",
       "gifUrl": "https://static.exercisedb.dev/media/LEprlgG.gif",
+      "gif": "real/pulldown.gif",
       "file": "real/pulldown.gif",
-      "equipments": [
-        "cable"
-      ],
-      "source": "exercisedb"
+      "letterbox": {
+        "bg": "#0B0C0E",
+        "innerBg": "#16181F",
+        "objectFit": "contain"
+      },
+      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attributionUrl": "https://exercisedb.dev"
     },
     "seal-row": {
       "id": "seal-row",
-      "name": "dumbbell incline row",
-      "exerciseId": "7vG5o25",
+      "name": "Chest-supported / seal row",
+      "day": "friday",
+      "exercisedbId": "7vG5o25",
+      "exercisedbName": "dumbbell incline row",
       "gifUrl": "https://static.exercisedb.dev/media/7vG5o25.gif",
+      "gif": "real/seal-row.gif",
       "file": "real/seal-row.gif",
-      "equipments": [
-        "dumbbell"
-      ],
-      "source": "exercisedb"
+      "letterbox": {
+        "bg": "#0B0C0E",
+        "innerBg": "#16181F",
+        "objectFit": "contain"
+      },
+      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attributionUrl": "https://exercisedb.dev",
+      "matchNote": "No seal/chest-supported machine row in free catalog; dumbbell incline (chest-on-bench) row is the closest."
     },
     "straight-arm-pd": {
       "id": "straight-arm-pd",
-      "name": "cable straight arm pulldown (with rope)",
-      "exerciseId": "DT14T9T",
+      "name": "Straight-arm pulldown",
+      "day": "friday",
+      "exercisedbId": "DT14T9T",
+      "exercisedbName": "cable straight arm pulldown (with rope)",
       "gifUrl": "https://static.exercisedb.dev/media/DT14T9T.gif",
+      "gif": "real/straight-arm-pd.gif",
       "file": "real/straight-arm-pd.gif",
-      "equipments": [
-        "cable"
-      ],
-      "source": "exercisedb"
+      "letterbox": {
+        "bg": "#0B0C0E",
+        "innerBg": "#16181F",
+        "objectFit": "contain"
+      },
+      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attributionUrl": "https://exercisedb.dev"
+    },
+    "hip-thrust": {
+      "id": "hip-thrust",
+      "name": "Barbell hip thrust",
+      "day": "wednesday",
+      "exercisedbId": "qg2PGl6",
+      "exercisedbName": "barbell glute bridge two legs on bench (male)",
+      "gifUrl": "https://static.exercisedb.dev/media/qg2PGl6.gif",
+      "gif": "real/hip-thrust.gif",
+      "file": "real/hip-thrust.gif",
+      "letterbox": {
+        "bg": "#0B0C0E",
+        "innerBg": "#16181F",
+        "objectFit": "contain"
+      },
+      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attributionUrl": "https://exercisedb.dev",
+      "matchNote": "No exact 'barbell hip thrust' in free ExerciseDB; upper-back-on-bench barbell glute bridge is the closest hip-thrust pattern."
     },
     "face-pull-fri": {
       "id": "face-pull-fri",
-      "name": "cable kneeling rear delt row (with rope) (male)",
-      "exerciseId": "G61cXLk",
-      "gifUrl": "https://static.exercisedb.dev/media/G61cXLk.gif",
+      "name": "Face pull",
+      "day": "friday",
+      "exercisedbId": "ZfyAGhK",
+      "exercisedbName": "cable standing rear delt row (with rope)",
+      "gifUrl": "https://static.exercisedb.dev/media/ZfyAGhK.gif",
+      "gif": "real/face-pull-fri.gif",
       "file": "real/face-pull-fri.gif",
-      "equipments": [
-        "cable"
-      ],
-      "source": "exercisedb",
-      "note": "Closest ExerciseDB match to face pull (cable rear delt row with rope)"
+      "letterbox": {
+        "bg": "#0B0C0E",
+        "innerBg": "#16181F",
+        "objectFit": "contain"
+      },
+      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attributionUrl": "https://exercisedb.dev",
+      "matchNote": "No exercise named 'face pull' in free ExerciseDB; standing cable rear-delt row with rope is the closest face-pull pattern."
+    },
+    "goblet-squat": {
+      "id": "goblet-squat",
+      "name": "Goblet squat",
+      "day": "wednesday",
+      "exercisedbId": "yn8yg1r",
+      "exercisedbName": "dumbbell goblet squat",
+      "gifUrl": "https://static.exercisedb.dev/media/yn8yg1r.gif",
+      "gif": "real/goblet-squat.gif",
+      "file": "real/goblet-squat.gif",
+      "letterbox": {
+        "bg": "#0B0C0E",
+        "innerBg": "#16181F",
+        "objectFit": "contain"
+      },
+      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attributionUrl": "https://exercisedb.dev"
+    },
+    "leg-press": {
+      "id": "leg-press",
+      "name": "Leg press",
+      "day": "wednesday",
+      "exercisedbId": "10Z2DXU",
+      "exercisedbName": "sled 45\u00b0 leg press",
+      "gifUrl": "https://static.exercisedb.dev/media/10Z2DXU.gif",
+      "gif": "real/leg-press.gif",
+      "file": "real/leg-press.gif",
+      "letterbox": {
+        "bg": "#0B0C0E",
+        "innerBg": "#16181F",
+        "objectFit": "contain"
+      },
+      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attributionUrl": "https://exercisedb.dev"
+    },
+    "hack-squat": {
+      "id": "hack-squat",
+      "name": "Hack squat",
+      "day": "wednesday",
+      "exercisedbId": "Qa55kX1",
+      "exercisedbName": "sled hack squat",
+      "gifUrl": "https://static.exercisedb.dev/media/Qa55kX1.gif",
+      "gif": "real/hack-squat.gif",
+      "file": "real/hack-squat.gif",
+      "letterbox": {
+        "bg": "#0B0C0E",
+        "innerBg": "#16181F",
+        "objectFit": "contain"
+      },
+      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attributionUrl": "https://exercisedb.dev"
+    },
+    "dumbbell-hip-thrust": {
+      "id": "dumbbell-hip-thrust",
+      "name": "Dumbbell hip thrust",
+      "day": "wednesday",
+      "exercisedbId": "qKBpF7I",
+      "exercisedbName": "barbell glute bridge",
+      "gifUrl": "https://static.exercisedb.dev/media/qKBpF7I.gif",
+      "gif": "real/dumbbell-hip-thrust.gif",
+      "file": "real/dumbbell-hip-thrust.gif",
+      "letterbox": {
+        "bg": "#0B0C0E",
+        "innerBg": "#16181F",
+        "objectFit": "contain"
+      },
+      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attributionUrl": "https://exercisedb.dev",
+      "matchNote": "No dumbbell hip thrust in free catalog; floor barbell glute bridge is the closest weighted glute-bridge pattern."
+    },
+    "glute-bridge": {
+      "id": "glute-bridge",
+      "name": "Glute bridge (weighted)",
+      "day": "wednesday",
+      "exercisedbId": "u0cNiij",
+      "exercisedbName": "low glute bridge on floor",
+      "gifUrl": "https://static.exercisedb.dev/media/u0cNiij.gif",
+      "gif": "real/glute-bridge.gif",
+      "file": "real/glute-bridge.gif",
+      "letterbox": {
+        "bg": "#0B0C0E",
+        "innerBg": "#16181F",
+        "objectFit": "contain"
+      },
+      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attributionUrl": "https://exercisedb.dev"
+    },
+    "cable-pull-through": {
+      "id": "cable-pull-through",
+      "name": "Cable pull-through",
+      "day": "wednesday",
+      "exercisedbId": "OM46QHm",
+      "exercisedbName": "cable pull through (with rope)",
+      "gifUrl": "https://static.exercisedb.dev/media/OM46QHm.gif",
+      "gif": "real/cable-pull-through.gif",
+      "file": "real/cable-pull-through.gif",
+      "letterbox": {
+        "bg": "#0B0C0E",
+        "innerBg": "#16181F",
+        "objectFit": "contain"
+      },
+      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attributionUrl": "https://exercisedb.dev"
+    },
+    "cable-hip-abduction": {
+      "id": "cable-hip-abduction",
+      "name": "Cable / band hip abduction",
+      "day": "wednesday",
+      "exercisedbId": "0xDpB4L",
+      "exercisedbName": "resistance band seated hip abduction",
+      "gifUrl": "https://static.exercisedb.dev/media/0xDpB4L.gif",
+      "gif": "real/cable-hip-abduction.gif",
+      "file": "real/cable-hip-abduction.gif",
+      "letterbox": {
+        "bg": "#0B0C0E",
+        "innerBg": "#16181F",
+        "objectFit": "contain"
+      },
+      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attributionUrl": "https://exercisedb.dev",
+      "matchNote": "No cable hip abduction in free catalog; band seated hip abduction is the closest."
+    },
+    "band-lateral-walk": {
+      "id": "band-lateral-walk",
+      "name": "Band side walk",
+      "day": "wednesday",
+      "exercisedbId": "O95afRA",
+      "exercisedbName": "monster walk",
+      "gifUrl": "https://static.exercisedb.dev/media/O95afRA.gif",
+      "gif": "real/band-lateral-walk.gif",
+      "file": "real/band-lateral-walk.gif",
+      "letterbox": {
+        "bg": "#0B0C0E",
+        "innerBg": "#16181F",
+        "objectFit": "contain"
+      },
+      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attributionUrl": "https://exercisedb.dev",
+      "matchNote": "Closest available band/side walk pattern (monster walk)."
+    },
+    "cable-adduction": {
+      "id": "cable-adduction",
+      "name": "Cable adduction",
+      "day": "wednesday",
+      "exercisedbId": "hBGWILP",
+      "exercisedbName": "cable hip adduction",
+      "gifUrl": "https://static.exercisedb.dev/media/hBGWILP.gif",
+      "gif": "real/cable-adduction.gif",
+      "file": "real/cable-adduction.gif",
+      "letterbox": {
+        "bg": "#0B0C0E",
+        "innerBg": "#16181F",
+        "objectFit": "contain"
+      },
+      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attributionUrl": "https://exercisedb.dev"
+    },
+    "side-lying-adductor": {
+      "id": "side-lying-adductor",
+      "name": "Side-lying adductor raise",
+      "day": "wednesday",
+      "exercisedbId": "c8f5cSY",
+      "exercisedbName": "side lying hip adduction (male)",
+      "gifUrl": "https://static.exercisedb.dev/media/c8f5cSY.gif",
+      "gif": "real/side-lying-adductor.gif",
+      "file": "real/side-lying-adductor.gif",
+      "letterbox": {
+        "bg": "#0B0C0E",
+        "innerBg": "#16181F",
+        "objectFit": "contain"
+      },
+      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attributionUrl": "https://exercisedb.dev"
+    },
+    "standing-db-calf": {
+      "id": "standing-db-calf",
+      "name": "Standing dumbbell calf raise",
+      "day": "wednesday",
+      "exercisedbId": "dPmaUaU",
+      "exercisedbName": "dumbbell standing calf raise",
+      "gifUrl": "https://static.exercisedb.dev/media/dPmaUaU.gif",
+      "gif": "real/standing-db-calf.gif",
+      "file": "real/standing-db-calf.gif",
+      "letterbox": {
+        "bg": "#0B0C0E",
+        "innerBg": "#16181F",
+        "objectFit": "contain"
+      },
+      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attributionUrl": "https://exercisedb.dev"
+    },
+    "seated-calf": {
+      "id": "seated-calf",
+      "name": "Seated calf raise",
+      "day": "wednesday",
+      "exercisedbId": "bOOdeyc",
+      "exercisedbName": "lever seated calf raise",
+      "gifUrl": "https://static.exercisedb.dev/media/bOOdeyc.gif",
+      "gif": "real/seated-calf.gif",
+      "file": "real/seated-calf.gif",
+      "letterbox": {
+        "bg": "#0B0C0E",
+        "innerBg": "#16181F",
+        "objectFit": "contain"
+      },
+      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attributionUrl": "https://exercisedb.dev"
+    },
+    "leg-press-calf": {
+      "id": "leg-press-calf",
+      "name": "Leg-press calf raise",
+      "day": "wednesday",
+      "exercisedbId": "ykHcWme",
+      "exercisedbName": "sled calf press on leg press",
+      "gifUrl": "https://static.exercisedb.dev/media/ykHcWme.gif",
+      "gif": "real/leg-press-calf.gif",
+      "file": "real/leg-press-calf.gif",
+      "letterbox": {
+        "bg": "#0B0C0E",
+        "innerBg": "#16181F",
+        "objectFit": "contain"
+      },
+      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attributionUrl": "https://exercisedb.dev"
+    },
+    "barbell-row": {
+      "id": "barbell-row",
+      "name": "Heavy barbell row",
+      "day": "friday",
+      "exercisedbId": "eZyBC3j",
+      "exercisedbName": "barbell bent over row",
+      "gifUrl": "https://static.exercisedb.dev/media/eZyBC3j.gif",
+      "gif": "real/barbell-row.gif",
+      "file": "real/barbell-row.gif",
+      "letterbox": {
+        "bg": "#0B0C0E",
+        "innerBg": "#16181F",
+        "objectFit": "contain"
+      },
+      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attributionUrl": "https://exercisedb.dev"
+    },
+    "rdl": {
+      "id": "rdl",
+      "name": "Romanian deadlift",
+      "day": "friday",
+      "exercisedbId": "wQ2c4XD",
+      "exercisedbName": "barbell romanian deadlift",
+      "gifUrl": "https://static.exercisedb.dev/media/wQ2c4XD.gif",
+      "gif": "real/rdl.gif",
+      "file": "real/rdl.gif",
+      "letterbox": {
+        "bg": "#0B0C0E",
+        "innerBg": "#16181F",
+        "objectFit": "contain"
+      },
+      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attributionUrl": "https://exercisedb.dev"
+    },
+    "rack-pull": {
+      "id": "rack-pull",
+      "name": "Rack pull",
+      "day": "friday",
+      "exercisedbId": "za9Ni4z",
+      "exercisedbName": "barbell rack pull",
+      "gifUrl": "https://static.exercisedb.dev/media/za9Ni4z.gif",
+      "gif": "real/rack-pull.gif",
+      "file": "real/rack-pull.gif",
+      "letterbox": {
+        "bg": "#0B0C0E",
+        "innerBg": "#16181F",
+        "objectFit": "contain"
+      },
+      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attributionUrl": "https://exercisedb.dev"
+    },
+    "assisted-pull-up": {
+      "id": "assisted-pull-up",
+      "name": "Assisted pull-up",
+      "day": "friday",
+      "exercisedbId": "kiJ4Z2K",
+      "exercisedbName": "assisted pull-up",
+      "gifUrl": "https://static.exercisedb.dev/media/kiJ4Z2K.gif",
+      "gif": "real/assisted-pull-up.gif",
+      "file": "real/assisted-pull-up.gif",
+      "letterbox": {
+        "bg": "#0B0C0E",
+        "innerBg": "#16181F",
+        "objectFit": "contain"
+      },
+      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attributionUrl": "https://exercisedb.dev"
+    },
+    "neutral-pulldown": {
+      "id": "neutral-pulldown",
+      "name": "Neutral-grip pulldown",
+      "day": "friday",
+      "exercisedbId": "4c9BhzB",
+      "exercisedbName": "cable lateral pulldown with v-bar",
+      "gifUrl": "https://static.exercisedb.dev/media/4c9BhzB.gif",
+      "gif": "real/neutral-pulldown.gif",
+      "file": "real/neutral-pulldown.gif",
+      "letterbox": {
+        "bg": "#0B0C0E",
+        "innerBg": "#16181F",
+        "objectFit": "contain"
+      },
+      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attributionUrl": "https://exercisedb.dev",
+      "matchNote": "V-bar / neutral-grip style pulldown."
+    },
+    "one-arm-db-row": {
+      "id": "one-arm-db-row",
+      "name": "One-arm dumbbell row",
+      "day": "friday",
+      "exercisedbId": "C0MA9bC",
+      "exercisedbName": "dumbbell one arm bent-over row",
+      "gifUrl": "https://static.exercisedb.dev/media/C0MA9bC.gif",
+      "gif": "real/one-arm-db-row.gif",
+      "file": "real/one-arm-db-row.gif",
+      "letterbox": {
+        "bg": "#0B0C0E",
+        "innerBg": "#16181F",
+        "objectFit": "contain"
+      },
+      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attributionUrl": "https://exercisedb.dev"
+    },
+    "seated-cable-row": {
+      "id": "seated-cable-row",
+      "name": "Cable seated row",
+      "day": "friday",
+      "exercisedbId": "fUBheHs",
+      "exercisedbName": "cable seated row",
+      "gifUrl": "https://static.exercisedb.dev/media/fUBheHs.gif",
+      "gif": "real/seated-cable-row.gif",
+      "file": "real/seated-cable-row.gif",
+      "letterbox": {
+        "bg": "#0B0C0E",
+        "innerBg": "#16181F",
+        "objectFit": "contain"
+      },
+      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attributionUrl": "https://exercisedb.dev"
+    },
+    "db-pullover": {
+      "id": "db-pullover",
+      "name": "Dumbbell pullover",
+      "day": "friday",
+      "exercisedbId": "9XjtHvS",
+      "exercisedbName": "dumbbell pullover",
+      "gifUrl": "https://static.exercisedb.dev/media/9XjtHvS.gif",
+      "gif": "real/db-pullover.gif",
+      "file": "real/db-pullover.gif",
+      "letterbox": {
+        "bg": "#0B0C0E",
+        "innerBg": "#16181F",
+        "objectFit": "contain"
+      },
+      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attributionUrl": "https://exercisedb.dev"
+    },
+    "single-arm-cable-row": {
+      "id": "single-arm-cable-row",
+      "name": "Single-arm cable row",
+      "day": "friday",
+      "exercisedbId": "EIsE3u8",
+      "exercisedbName": "cable one arm bent over row",
+      "gifUrl": "https://static.exercisedb.dev/media/EIsE3u8.gif",
+      "gif": "real/single-arm-cable-row.gif",
+      "file": "real/single-arm-cable-row.gif",
+      "letterbox": {
+        "bg": "#0B0C0E",
+        "innerBg": "#16181F",
+        "objectFit": "contain"
+      },
+      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attributionUrl": "https://exercisedb.dev"
+    },
+    "band-reverse-fly": {
+      "id": "band-reverse-fly",
+      "name": "Band pull-apart / reverse fly",
+      "day": "friday",
+      "exercisedbId": "sTfvVsG",
+      "exercisedbName": "band reverse fly",
+      "gifUrl": "https://static.exercisedb.dev/media/sTfvVsG.gif",
+      "gif": "real/band-reverse-fly.gif",
+      "file": "real/band-reverse-fly.gif",
+      "letterbox": {
+        "bg": "#0B0C0E",
+        "innerBg": "#16181F",
+        "objectFit": "contain"
+      },
+      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attributionUrl": "https://exercisedb.dev",
+      "matchNote": "No band pull-apart in free catalog; band reverse fly is the closest rear-delt pattern."
+    },
+    "reverse-pec-deck": {
+      "id": "reverse-pec-deck",
+      "name": "Reverse pec-deck",
+      "day": "friday",
+      "exercisedbId": "myfUsKf",
+      "exercisedbName": "lever seated reverse fly",
+      "gifUrl": "https://static.exercisedb.dev/media/myfUsKf.gif",
+      "gif": "real/reverse-pec-deck.gif",
+      "file": "real/reverse-pec-deck.gif",
+      "letterbox": {
+        "bg": "#0B0C0E",
+        "innerBg": "#16181F",
+        "objectFit": "contain"
+      },
+      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attributionUrl": "https://exercisedb.dev"
     }
   }
 }

@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "source": "ExerciseDB / AscendAPI",
   "attribution": "Exercise media from AscendAPI / ExerciseDB (https://exercisedb.dev). Free tier requires attribution.",
   "exercises": {
@@ -9,22 +9,11 @@
       "exerciseId": "qXTaZnJ",
       "gifUrl": "https://static.exercisedb.dev/media/qXTaZnJ.gif",
       "file": "real/back-squat.gif",
+      "gif": "real/back-squat.gif",
       "equipments": [
         "barbell"
       ],
       "source": "exercisedb"
-    },
-    "hip-thrust": {
-      "id": "hip-thrust",
-      "name": "barbell glute bridge",
-      "exerciseId": "qKBpF7I",
-      "gifUrl": "https://static.exercisedb.dev/media/qKBpF7I.gif",
-      "file": "real/hip-thrust.gif",
-      "equipments": [
-        "barbell"
-      ],
-      "source": "exercisedb",
-      "note": "Closest ExerciseDB match to barbell hip thrust (glute bridge pattern)"
     },
     "hip-abductor": {
       "id": "hip-abductor",
@@ -32,6 +21,7 @@
       "exerciseId": "CHpahtl",
       "gifUrl": "https://static.exercisedb.dev/media/CHpahtl.gif",
       "file": "real/hip-abductor.gif",
+      "gif": "real/hip-abductor.gif",
       "equipments": [
         "leverage machine"
       ],
@@ -43,6 +33,7 @@
       "exerciseId": "oHsrypV",
       "gifUrl": "https://static.exercisedb.dev/media/oHsrypV.gif",
       "file": "real/hip-adductor.gif",
+      "gif": "real/hip-adductor.gif",
       "equipments": [
         "leverage machine"
       ],
@@ -50,14 +41,17 @@
     },
     "smith-sl-calf": {
       "id": "smith-sl-calf",
-      "name": "smith seated one leg calf raise",
-      "exerciseId": "0S75mYG",
-      "gifUrl": "https://static.exercisedb.dev/media/0S75mYG.gif",
+      "name": "smith one leg floor calf raise",
+      "exerciseId": "9GXrTE6",
+      "gifUrl": "https://static.exercisedb.dev/media/9GXrTE6.gif",
       "file": "real/smith-sl-calf.gif",
+      "gif": "real/smith-sl-calf.gif",
       "equipments": [
         "smith machine"
       ],
-      "source": "exercisedb"
+      "source": "exercisedb",
+      "note": "Smith single-leg floor calf raise; standing Smith single-leg variant not found in free catalog.",
+      "matchNote": "Smith single-leg floor calf raise; standing Smith single-leg variant not found in free catalog."
     },
     "deadlift": {
       "id": "deadlift",
@@ -65,6 +59,7 @@
       "exerciseId": "ila4NZS",
       "gifUrl": "https://static.exercisedb.dev/media/ila4NZS.gif",
       "file": "real/deadlift.gif",
+      "gif": "real/deadlift.gif",
       "equipments": [
         "barbell"
       ],
@@ -76,6 +71,7 @@
       "exerciseId": "LEprlgG",
       "gifUrl": "https://static.exercisedb.dev/media/LEprlgG.gif",
       "file": "real/pulldown.gif",
+      "gif": "real/pulldown.gif",
       "equipments": [
         "cable"
       ],
@@ -87,10 +83,13 @@
       "exerciseId": "7vG5o25",
       "gifUrl": "https://static.exercisedb.dev/media/7vG5o25.gif",
       "file": "real/seal-row.gif",
+      "gif": "real/seal-row.gif",
       "equipments": [
         "dumbbell"
       ],
-      "source": "exercisedb"
+      "source": "exercisedb",
+      "note": "No seal/chest-supported machine row in free catalog; dumbbell incline (chest-on-bench) row is the closest.",
+      "matchNote": "No seal/chest-supported machine row in free catalog; dumbbell incline (chest-on-bench) row is the closest."
     },
     "straight-arm-pd": {
       "id": "straight-arm-pd",
@@ -98,22 +97,337 @@
       "exerciseId": "DT14T9T",
       "gifUrl": "https://static.exercisedb.dev/media/DT14T9T.gif",
       "file": "real/straight-arm-pd.gif",
+      "gif": "real/straight-arm-pd.gif",
       "equipments": [
         "cable"
       ],
       "source": "exercisedb"
     },
+    "hip-thrust": {
+      "id": "hip-thrust",
+      "name": "barbell glute bridge two legs on bench (male)",
+      "exerciseId": "qg2PGl6",
+      "gifUrl": "https://static.exercisedb.dev/media/qg2PGl6.gif",
+      "file": "real/hip-thrust.gif",
+      "gif": "real/hip-thrust.gif",
+      "equipments": [
+        "barbell"
+      ],
+      "source": "exercisedb",
+      "note": "No exact 'barbell hip thrust' in free ExerciseDB; upper-back-on-bench barbell glute bridge is the closest hip-thrust pattern.",
+      "matchNote": "No exact 'barbell hip thrust' in free ExerciseDB; upper-back-on-bench barbell glute bridge is the closest hip-thrust pattern."
+    },
     "face-pull-fri": {
       "id": "face-pull-fri",
-      "name": "cable kneeling rear delt row (with rope) (male)",
-      "exerciseId": "G61cXLk",
-      "gifUrl": "https://static.exercisedb.dev/media/G61cXLk.gif",
+      "name": "cable standing rear delt row (with rope)",
+      "exerciseId": "ZfyAGhK",
+      "gifUrl": "https://static.exercisedb.dev/media/ZfyAGhK.gif",
       "file": "real/face-pull-fri.gif",
+      "gif": "real/face-pull-fri.gif",
       "equipments": [
         "cable"
       ],
       "source": "exercisedb",
-      "note": "Closest ExerciseDB match to face pull (cable rear delt row with rope)"
+      "note": "No exercise named 'face pull' in free ExerciseDB; standing cable rear-delt row with rope is the closest face-pull pattern.",
+      "matchNote": "No exercise named 'face pull' in free ExerciseDB; standing cable rear-delt row with rope is the closest face-pull pattern."
+    },
+    "goblet-squat": {
+      "id": "goblet-squat",
+      "name": "dumbbell goblet squat",
+      "exerciseId": "yn8yg1r",
+      "gifUrl": "https://static.exercisedb.dev/media/yn8yg1r.gif",
+      "file": "real/goblet-squat.gif",
+      "gif": "real/goblet-squat.gif",
+      "equipments": [
+        "dumbbell"
+      ],
+      "source": "exercisedb"
+    },
+    "leg-press": {
+      "id": "leg-press",
+      "name": "sled 45\u00b0 leg press",
+      "exerciseId": "10Z2DXU",
+      "gifUrl": "https://static.exercisedb.dev/media/10Z2DXU.gif",
+      "file": "real/leg-press.gif",
+      "gif": "real/leg-press.gif",
+      "equipments": [
+        "sled machine"
+      ],
+      "source": "exercisedb"
+    },
+    "hack-squat": {
+      "id": "hack-squat",
+      "name": "sled hack squat",
+      "exerciseId": "Qa55kX1",
+      "gifUrl": "https://static.exercisedb.dev/media/Qa55kX1.gif",
+      "file": "real/hack-squat.gif",
+      "gif": "real/hack-squat.gif",
+      "equipments": [
+        "sled machine"
+      ],
+      "source": "exercisedb"
+    },
+    "dumbbell-hip-thrust": {
+      "id": "dumbbell-hip-thrust",
+      "name": "barbell glute bridge",
+      "exerciseId": "qKBpF7I",
+      "gifUrl": "https://static.exercisedb.dev/media/qKBpF7I.gif",
+      "file": "real/dumbbell-hip-thrust.gif",
+      "gif": "real/dumbbell-hip-thrust.gif",
+      "equipments": [
+        "barbell"
+      ],
+      "source": "exercisedb",
+      "note": "No dumbbell hip thrust in free catalog; floor barbell glute bridge is the closest weighted glute-bridge pattern.",
+      "matchNote": "No dumbbell hip thrust in free catalog; floor barbell glute bridge is the closest weighted glute-bridge pattern."
+    },
+    "glute-bridge": {
+      "id": "glute-bridge",
+      "name": "low glute bridge on floor",
+      "exerciseId": "u0cNiij",
+      "gifUrl": "https://static.exercisedb.dev/media/u0cNiij.gif",
+      "file": "real/glute-bridge.gif",
+      "gif": "real/glute-bridge.gif",
+      "equipments": [
+        "body weight"
+      ],
+      "source": "exercisedb"
+    },
+    "cable-pull-through": {
+      "id": "cable-pull-through",
+      "name": "cable pull through (with rope)",
+      "exerciseId": "OM46QHm",
+      "gifUrl": "https://static.exercisedb.dev/media/OM46QHm.gif",
+      "file": "real/cable-pull-through.gif",
+      "gif": "real/cable-pull-through.gif",
+      "equipments": [
+        "cable"
+      ],
+      "source": "exercisedb"
+    },
+    "cable-hip-abduction": {
+      "id": "cable-hip-abduction",
+      "name": "resistance band seated hip abduction",
+      "exerciseId": "0xDpB4L",
+      "gifUrl": "https://static.exercisedb.dev/media/0xDpB4L.gif",
+      "file": "real/cable-hip-abduction.gif",
+      "gif": "real/cable-hip-abduction.gif",
+      "equipments": [
+        "resistance band"
+      ],
+      "source": "exercisedb",
+      "note": "No cable hip abduction in free catalog; band seated hip abduction is the closest.",
+      "matchNote": "No cable hip abduction in free catalog; band seated hip abduction is the closest."
+    },
+    "band-lateral-walk": {
+      "id": "band-lateral-walk",
+      "name": "monster walk",
+      "exerciseId": "O95afRA",
+      "gifUrl": "https://static.exercisedb.dev/media/O95afRA.gif",
+      "file": "real/band-lateral-walk.gif",
+      "gif": "real/band-lateral-walk.gif",
+      "equipments": [
+        "body weight"
+      ],
+      "source": "exercisedb",
+      "note": "Closest available band/side walk pattern (monster walk).",
+      "matchNote": "Closest available band/side walk pattern (monster walk)."
+    },
+    "cable-adduction": {
+      "id": "cable-adduction",
+      "name": "cable hip adduction",
+      "exerciseId": "hBGWILP",
+      "gifUrl": "https://static.exercisedb.dev/media/hBGWILP.gif",
+      "file": "real/cable-adduction.gif",
+      "gif": "real/cable-adduction.gif",
+      "equipments": [
+        "cable"
+      ],
+      "source": "exercisedb"
+    },
+    "side-lying-adductor": {
+      "id": "side-lying-adductor",
+      "name": "side lying hip adduction (male)",
+      "exerciseId": "c8f5cSY",
+      "gifUrl": "https://static.exercisedb.dev/media/c8f5cSY.gif",
+      "file": "real/side-lying-adductor.gif",
+      "gif": "real/side-lying-adductor.gif",
+      "equipments": [
+        "body weight"
+      ],
+      "source": "exercisedb"
+    },
+    "standing-db-calf": {
+      "id": "standing-db-calf",
+      "name": "dumbbell standing calf raise",
+      "exerciseId": "dPmaUaU",
+      "gifUrl": "https://static.exercisedb.dev/media/dPmaUaU.gif",
+      "file": "real/standing-db-calf.gif",
+      "gif": "real/standing-db-calf.gif",
+      "equipments": [
+        "dumbbell"
+      ],
+      "source": "exercisedb"
+    },
+    "seated-calf": {
+      "id": "seated-calf",
+      "name": "lever seated calf raise",
+      "exerciseId": "bOOdeyc",
+      "gifUrl": "https://static.exercisedb.dev/media/bOOdeyc.gif",
+      "file": "real/seated-calf.gif",
+      "gif": "real/seated-calf.gif",
+      "equipments": [
+        "leverage machine"
+      ],
+      "source": "exercisedb"
+    },
+    "leg-press-calf": {
+      "id": "leg-press-calf",
+      "name": "sled calf press on leg press",
+      "exerciseId": "ykHcWme",
+      "gifUrl": "https://static.exercisedb.dev/media/ykHcWme.gif",
+      "file": "real/leg-press-calf.gif",
+      "gif": "real/leg-press-calf.gif",
+      "equipments": [
+        "sled machine"
+      ],
+      "source": "exercisedb"
+    },
+    "barbell-row": {
+      "id": "barbell-row",
+      "name": "barbell bent over row",
+      "exerciseId": "eZyBC3j",
+      "gifUrl": "https://static.exercisedb.dev/media/eZyBC3j.gif",
+      "file": "real/barbell-row.gif",
+      "gif": "real/barbell-row.gif",
+      "equipments": [
+        "barbell"
+      ],
+      "source": "exercisedb"
+    },
+    "rdl": {
+      "id": "rdl",
+      "name": "barbell romanian deadlift",
+      "exerciseId": "wQ2c4XD",
+      "gifUrl": "https://static.exercisedb.dev/media/wQ2c4XD.gif",
+      "file": "real/rdl.gif",
+      "gif": "real/rdl.gif",
+      "equipments": [
+        "barbell"
+      ],
+      "source": "exercisedb"
+    },
+    "rack-pull": {
+      "id": "rack-pull",
+      "name": "barbell rack pull",
+      "exerciseId": "za9Ni4z",
+      "gifUrl": "https://static.exercisedb.dev/media/za9Ni4z.gif",
+      "file": "real/rack-pull.gif",
+      "gif": "real/rack-pull.gif",
+      "equipments": [
+        "barbell"
+      ],
+      "source": "exercisedb"
+    },
+    "assisted-pull-up": {
+      "id": "assisted-pull-up",
+      "name": "assisted pull-up",
+      "exerciseId": "kiJ4Z2K",
+      "gifUrl": "https://static.exercisedb.dev/media/kiJ4Z2K.gif",
+      "file": "real/assisted-pull-up.gif",
+      "gif": "real/assisted-pull-up.gif",
+      "equipments": [
+        "leverage machine"
+      ],
+      "source": "exercisedb"
+    },
+    "neutral-pulldown": {
+      "id": "neutral-pulldown",
+      "name": "cable lateral pulldown with v-bar",
+      "exerciseId": "4c9BhzB",
+      "gifUrl": "https://static.exercisedb.dev/media/4c9BhzB.gif",
+      "file": "real/neutral-pulldown.gif",
+      "gif": "real/neutral-pulldown.gif",
+      "equipments": [
+        "cable"
+      ],
+      "source": "exercisedb",
+      "note": "V-bar / neutral-grip style pulldown.",
+      "matchNote": "V-bar / neutral-grip style pulldown."
+    },
+    "one-arm-db-row": {
+      "id": "one-arm-db-row",
+      "name": "dumbbell one arm bent-over row",
+      "exerciseId": "C0MA9bC",
+      "gifUrl": "https://static.exercisedb.dev/media/C0MA9bC.gif",
+      "file": "real/one-arm-db-row.gif",
+      "gif": "real/one-arm-db-row.gif",
+      "equipments": [
+        "dumbbell"
+      ],
+      "source": "exercisedb"
+    },
+    "seated-cable-row": {
+      "id": "seated-cable-row",
+      "name": "cable seated row",
+      "exerciseId": "fUBheHs",
+      "gifUrl": "https://static.exercisedb.dev/media/fUBheHs.gif",
+      "file": "real/seated-cable-row.gif",
+      "gif": "real/seated-cable-row.gif",
+      "equipments": [
+        "cable"
+      ],
+      "source": "exercisedb"
+    },
+    "db-pullover": {
+      "id": "db-pullover",
+      "name": "dumbbell pullover",
+      "exerciseId": "9XjtHvS",
+      "gifUrl": "https://static.exercisedb.dev/media/9XjtHvS.gif",
+      "file": "real/db-pullover.gif",
+      "gif": "real/db-pullover.gif",
+      "equipments": [
+        "dumbbell"
+      ],
+      "source": "exercisedb"
+    },
+    "single-arm-cable-row": {
+      "id": "single-arm-cable-row",
+      "name": "cable one arm bent over row",
+      "exerciseId": "EIsE3u8",
+      "gifUrl": "https://static.exercisedb.dev/media/EIsE3u8.gif",
+      "file": "real/single-arm-cable-row.gif",
+      "gif": "real/single-arm-cable-row.gif",
+      "equipments": [
+        "cable"
+      ],
+      "source": "exercisedb"
+    },
+    "band-reverse-fly": {
+      "id": "band-reverse-fly",
+      "name": "band reverse fly",
+      "exerciseId": "sTfvVsG",
+      "gifUrl": "https://static.exercisedb.dev/media/sTfvVsG.gif",
+      "file": "real/band-reverse-fly.gif",
+      "gif": "real/band-reverse-fly.gif",
+      "equipments": [
+        "band"
+      ],
+      "source": "exercisedb",
+      "note": "No band pull-apart in free catalog; band reverse fly is the closest rear-delt pattern.",
+      "matchNote": "No band pull-apart in free catalog; band reverse fly is the closest rear-delt pattern."
+    },
+    "reverse-pec-deck": {
+      "id": "reverse-pec-deck",
+      "name": "lever seated reverse fly",
+      "exerciseId": "myfUsKf",
+      "gifUrl": "https://static.exercisedb.dev/media/myfUsKf.gif",
+      "file": "real/reverse-pec-deck.gif",
+      "gif": "real/reverse-pec-deck.gif",
+      "equipments": [
+        "leverage machine"
+      ],
+      "source": "exercisedb"
     }
   }
 }
