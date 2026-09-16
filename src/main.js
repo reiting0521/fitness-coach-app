@@ -1,7 +1,8 @@
 import './style.css'
 import seedPlan from './plan.json'
 import seedLog from './seed-log-2026-09-16.json'
-import { diagramFor, formatRest } from './diagrams.js'
+import { diagramFor, formatRest, icon } from './diagrams.js'
+import { getDemoForExercise, demoAssetUrl, normalizeCues } from './demos.js'
 import {
   getZurichDateString,
   getZurichDisplayDate,
@@ -153,6 +154,7 @@ function buildSessionFromPlan(day, dateStr) {
       id: ex.id || null,
       name: ex.name,
       originalName: ex.name,
+      equipment: ex.equipment || null,
       planned: {
         sets: ex.sets,
         reps: ex.reps,
@@ -237,9 +239,9 @@ function renderWeekStrip() {
         .join('')}
     </div>
     <div class="week-nav">
-      <button type="button" class="btn-icon" data-week-shift="-7" aria-label="Previous week">‹</button>
+      <button type="button" class="btn-icon" data-week-shift="-7" aria-label="Previous week">${icon('chevron-left')}</button>
       <span class="week-label">${displayDateFor(days[0].date)} – ${displayDateFor(days[6].date)}</span>
-      <button type="button" class="btn-icon" data-week-shift="7" aria-label="Next week">›</button>
+      <button type="button" class="btn-icon" data-week-shift="7" aria-label="Next week">${icon('chevron-right')}</button>
       ${selectedDate !== today ? `<button type="button" class="btn-text" data-jump-today>Today</button>` : ''}
     </div>
   `
@@ -255,37 +257,46 @@ function render() {
     <header class="app-header">
       <div class="header-top">
         <div>
-          <p class="eyebrow">Fitness Coach</p>
-          <h1>${session.rest ? 'Rest' : session.dayFocus}</h1>
+          <p class="eyebrow">${view === 'settings' ? 'Account' : (isToday ? 'This week' : 'Week view')}</p>
+          <h1>${view === 'settings' ? 'Settings' : (session.rest ? 'Rest' : session.dayFocus)}</h1>
         </div>
         <div class="header-meta">
-          <span class="pill">${isToday ? 'Today' : SHORT_LABELS[weekdayKeyFor(selectedDate)] || ''}</span>
+          ${view === 'settings' ? '' : `<span class="pill">${isToday ? 'Today' : SHORT_LABELS[weekdayKeyFor(selectedDate)] || ''}</span>`}
           <span class="pill muted">${settings.unit.toUpperCase()}</span>
+          ${
+            view !== 'settings' && session.overallFeeling
+              ? `<span class="pill feeling-${session.overallFeeling}">${session.overallFeeling}</span>`
+              : ''
+          }
         </div>
       </div>
-      <div class="sub">${displayDateFor(selectedDate)} · ${TZ}</div>
+      ${
+        view === 'settings'
+          ? `<div class="sub">Drive sync · units · on-device history</div>`
+          : `<div class="sub">${displayDateFor(selectedDate)} · ${TZ}</div>
       <div class="badge-row">
         <span class="badge accent">${day.rest ? 'Rest day' : day.focus}</span>
         ${
           session.locked
-            ? `<span class="badge ok">Locked</span>`
+            ? `<span class="badge ok">Logged</span>`
             : drive.isSignedIn()
-              ? `<span class="badge ok">Drive</span>`
+              ? `<span class="badge ok">${icon('cloud-sync', 'ico')} Connected</span>`
               : drive.isConfigured()
-                ? `<span class="badge">Drive off</span>`
+                ? `<span class="badge">${icon('cloud-off', 'ico')} Drive off</span>`
                 : `<span class="badge">Local</span>`
         }
       </div>
-      ${view === 'today' ? renderWeekStrip() : ''}
+      ${renderWeekStrip()}`
+      }
     </header>
     <main id="main"></main>
     <nav class="nav">
       <div class="nav-inner">
         <button type="button" data-nav="today" class="${view === 'today' ? 'active' : ''}">
-          <span class="nav-ico">◎</span> Workout
+          <span class="nav-ico">${icon('nav-today')}</span> Workout
         </button>
         <button type="button" data-nav="settings" class="${view === 'settings' ? 'active' : ''}">
-          <span class="nav-ico">⚙</span> Settings
+          <span class="nav-ico">${icon('nav-settings')}</span> Settings
         </button>
       </div>
     </nav>
@@ -348,30 +359,44 @@ function renderRest() {
     .join('')
 
   return `
-    <section class="rest-hero card glass">
-      <div class="rest-orb" aria-hidden="true"></div>
+    <section class="rest-hero card">
+      <div class="rest-icon" aria-hidden="true">${icon('rest')}</div>
       <p class="eyebrow">Recovery</p>
       <h2>Rest day</h2>
       <p class="lead">Walk, stretch, sleep. Next hard session is locked in.</p>
     </section>
     <section class="card preview-card">
       <div class="card-head">
-        <h3>Up next</h3>
-        <span class="pill accent">${next?.day?.focus || '—'}</span>
+        <h3>Tomorrow — ${next?.day?.focus || 'Next'}</h3>
+        <span class="pill muted">${next ? SHORT_LABELS[next.key] : '—'}</span>
       </div>
       <p class="meta">${nextLabel}</p>
       ${previewExercises ? `<ul class="preview-list">${previewExercises}</ul>` : ''}
     </section>
-    ${
-      !session.completed
-        ? `<button type="button" class="btn btn-primary" id="finish-rest">Log rest day</button>`
-        : `<div class="banner completed-banner">Rest logged · ${session.overallFeeling || 'done'}</div>`
-    }
+    <div class="rest-actions">
+      ${
+        next
+          ? `<button type="button" class="btn btn-secondary" id="preview-tomorrow">Preview tomorrow</button>`
+          : ''
+      }
+      ${
+        !session.completed
+          ? `<button type="button" class="btn btn-secondary" id="finish-rest">Log rest day</button>`
+          : `<div class="banner completed-banner">Rest logged · ${session.overallFeeling || 'done'}</div>`
+      }
+    </div>
   `
 }
 
 function bindRest(main) {
   main.querySelector('#finish-rest')?.addEventListener('click', () => openFinishModal(true))
+  main.querySelector('#preview-tomorrow')?.addEventListener('click', () => {
+    const next = nextTrainingDay(plan, selectedDate)
+    if (!next) return
+    selectedDate = next.date
+    session = null
+    render()
+  })
 }
 
 function renderLockedHistory() {
@@ -415,10 +440,10 @@ function renderLockedHistory() {
   return `
     <div class="banner completed-banner locked-banner">
       <div>
-        <strong>Session locked</strong>
-        <p>Read-only history · ${session.overallFeeling || 'logged'}</p>
+        <strong>Logged · read only</strong>
+        <p>${displayDateFor(session.date)} · ${session.overallFeeling || 'done'}</p>
       </div>
-      <span class="lock-ico" aria-hidden="true">🔒</span>
+      <span class="lock-ico" aria-hidden="true">${icon('lock')}</span>
     </div>
     ${session.sessionNote ? `<div class="card note-card"><p>${session.sessionNote}</p></div>` : ''}
     ${exercisesHtml}
@@ -449,9 +474,9 @@ function renderWorkout() {
     <div class="card session-hero">
       <div class="card-head">
         <h2>${session.dayFocus}</h2>
-        <span class="pill">${session.exercises.length} lifts</span>
+        <span class="pill muted">${session.exercises.length} exercises</span>
       </div>
-      <p class="meta">Leave 1–2 RIR on main lifts · tap an exercise for cues & swaps</p>
+      <p class="meta">${session.exercises.length} exercises · leave 1–2 RIR on main lifts</p>
     </div>
     ${
       !drive.isSignedIn()
@@ -463,7 +488,7 @@ function renderWorkout() {
         : ''
     }
     ${exercisesHtml}
-    <button type="button" class="btn btn-primary" id="open-finish">Finish day</button>
+    <button type="button" class="btn btn-primary" id="open-finish">Finish workout</button>
   `
 }
 
@@ -501,15 +526,16 @@ function renderExercise(ex, index) {
         </div>
       </div>
       <div class="ex-actions">
-        <button type="button" class="btn btn-ghost sm" data-open-detail="${index}">How-to</button>
-        <button type="button" class="btn btn-ghost sm" data-open-swap="${index}">Swap</button>
+        <button type="button" class="btn btn-ghost sm" data-open-detail="${index}">${icon('cues', 'ico')} How-to</button>
+        <button type="button" class="btn btn-ghost sm" data-open-swap="${index}">${icon('swap', 'ico')} Swap</button>
       </div>
+      <div class="set-cols" aria-hidden="true"><span>#</span><span>${unit.toUpperCase()}</span><span>REPS</span></div>
       <div class="sets">${sets}</div>
       <div class="chips">${chips}</div>
       <textarea placeholder="Exercise note" data-ex-note="${index}">${ex.exerciseNote || ''}</textarea>
       <div class="row-actions">
         <button type="button" class="btn btn-done ${ex.done ? 'on' : ''}" data-toggle-done="${index}">
-          ${ex.done ? '✓ Done' : 'Mark done'}
+          ${ex.done ? `${icon('check', 'ico')} Done` : 'Mark done'}
         </button>
       </div>
     </article>
@@ -574,17 +600,62 @@ function bindWorkout(main) {
   })
 }
 
+function renderHowtoDemo(ex) {
+  const demo = getDemoForExercise(ex)
+  if (demo?.loop) {
+    const src = demoAssetUrl(demo.loop)
+    return `<div class="howto-demo"><img src="${src}" alt="${ex.name} demo" loading="lazy" /></div>`
+  }
+  if (demo?.frames?.length) {
+    const frames = demo.frames
+      .map(
+        (f) => `<figure class="howto-demo-frame">
+          <img src="${demoAssetUrl(f.file)}" alt="${f.label}" loading="lazy" />
+          <figcaption>${f.label}</figcaption>
+        </figure>`,
+      )
+      .join('')
+    return `<div class="howto-demo"><div class="howto-demo-strip">${frames}</div></div>`
+  }
+  const cues = normalizeCues(ex.cues)
+  const steps = [
+    ...(cues.setup.slice(0, 1).map((s) => `1. Setup — ${s}`)),
+    ...(cues.move.slice(0, 2).map((s, i) => `${i + 2}. Move — ${s}`)),
+    ...(cues.avoid.slice(0, 1).map((s) => `Avoid — ${s}`)),
+  ]
+  return `<div class="howto-demo"><div class="howto-demo-placeholder">
+    <strong>Demo media coming soon</strong>
+    <span>Follow Setup → Move → Avoid below${steps.length ? ':' : '.'}</span>
+    ${steps.map((s) => `<span>${s}</span>`).join('')}
+  </div></div>`
+}
+
+function renderCueBlocks(ex) {
+  const cues = normalizeCues(ex.cues)
+  const block = (label, lines) => {
+    if (!lines?.length) return ''
+    return `<div class="cue-block">
+      <h3 class="sheet-section">${label}</h3>
+      <ul class="cue-lines">${lines.map((l) => `<li>${l}</li>`).join('')}</ul>
+    </div>`
+  }
+  const html =
+    block('Setup', cues.setup) + block('Move', cues.move) + block('Avoid', cues.avoid)
+  if (html) return html
+  return `<div class="cue-block"><h3 class="sheet-section">Move</h3>
+    <ul class="cue-lines"><li>Move with control; stop 1–2 reps shy of failure on compounds.</li></ul></div>`
+}
+
 function openExerciseSheet(index, readOnly) {
   const ex = session.exercises[index]
   if (!ex) return
-  const cues = (ex.cues || [])
-    .map((c) => `<li>${c}</li>`)
-    .join('')
+  const demoMeta = getDemoForExercise(ex)
+  const equipment = ex.equipment || demoMeta?.equipment || 'Free weight'
   const alts = (ex.alternatives || [])
     .map(
       (a, ai) => `
-      <button type="button" class="alt-row" data-swap-to="${ai}" ${readOnly ? 'disabled' : ''}>
-        <strong>${a.name}</strong>
+      <button type="button" class="alt-row ${readOnly ? 'locked-alt' : ''}" data-swap-to="${ai}" ${readOnly ? 'disabled' : ''}>
+        <strong>${a.name}${readOnly ? `<span class="lock-micro">${icon('lock')}</span>` : ''}</strong>
         <span>${a.note || 'Alternative'}</span>
       </button>`,
     )
@@ -593,28 +664,35 @@ function openExerciseSheet(index, readOnly) {
   openSheet(
     `
     <div class="sheet-handle"></div>
-    <div class="sheet-head">
-      <div class="ex-diagram lg">${diagramFor(ex.name)}</div>
+    ${renderHowtoDemo(ex)}
+    <div class="howto-title-row">
       <div>
         <h2>${ex.name}</h2>
         <p class="meta">${ex.planned.sets}×${ex.planned.reps}${formatRest(ex.planned.restSec) ? ` · ${formatRest(ex.planned.restSec)}` : ''}</p>
       </div>
+      <span class="equip-chip">${equipment}</span>
     </div>
-    <h3 class="sheet-section">Form cues</h3>
-    <ul class="cue-list">${cues || '<li>Move with control; stop 1–2 reps shy of failure on compounds.</li>'}</ul>
+    ${renderCueBlocks(ex)}
     ${
       alts
         ? `<h3 class="sheet-section">Alternatives</h3>
            <div class="alt-list">${alts}</div>
-           ${!readOnly ? `<p class="hint">Tap an alternative to swap it into this session.</p>` : ''}`
+           ${!readOnly ? `<p class="hint">Tap an alternative to swap it into this session.</p>` : `<p class="hint">Read-only — alternatives shown for reference.</p>`}`
         : ''
     }
-    ${
-      ex.swapped
-        ? `<button type="button" class="btn btn-secondary" data-restore-original ${readOnly ? 'disabled' : ''}>Restore ${ex.originalName}</button>`
-        : ''
-    }
-    <button type="button" class="btn btn-ghost" data-close-sheet style="width:100%;margin-top:8px">Close</button>
+    <div class="sheet-actions">
+      ${
+        !readOnly && (ex.alternatives || []).length
+          ? `<button type="button" class="btn btn-secondary" data-open-swap-from-detail>${icon('swap', 'ico')} Swap alternative</button>`
+          : ''
+      }
+      ${
+        ex.swapped && !readOnly
+          ? `<button type="button" class="btn btn-secondary" data-restore-original>Restore ${ex.originalName}</button>`
+          : ''
+      }
+      <button type="button" class="btn btn-ghost" data-close-sheet style="width:100%">${icon('close', 'ico')} Close</button>
+    </div>
   `,
     (sheet) => {
       sheet.querySelectorAll('[data-swap-to]').forEach((btn) => {
@@ -631,6 +709,10 @@ function openExerciseSheet(index, readOnly) {
         closeSheet()
         render()
         toast('Restored original exercise')
+      })
+      sheet.querySelector('[data-open-swap-from-detail]')?.addEventListener('click', () => {
+        closeSheet()
+        openSwapSheet(index)
       })
     },
   )
@@ -853,8 +935,8 @@ function renderSettings() {
       <p>${
         drive.isConfigured()
           ? drive.isSignedIn()
-            ? 'Connected. Prefers plan-v2.json, else plan.json. Logs upload on Finish day.'
-            : 'Client ID found. Sign in to sync plan + workout logs.'
+            ? `${icon('cloud-sync', 'ico')} <span class="pill feeling-easy" style="margin-left:6px">Connected</span><br/>Prefers plan-v2.json, else plan.json. Logs upload on Finish day.`
+            : `${icon('cloud-off', 'ico')} <span class="pill muted" style="margin-left:6px">Not connected</span><br/>Client ID found. Sign in to sync plan + workout logs.`
           : 'No VITE_GOOGLE_CLIENT_ID — offline localStorage mode.'
       }</p>
       ${
@@ -1001,13 +1083,16 @@ async function boot() {
   if (drive.isConfigured()) {
     try {
       await drive.initGoogle()
-      if (settings.driveConnected) {
+      if (settings.driveConnected || drive.isSignedIn()) {
         try {
-          await drive.signIn()
+          await drive.ensureSignedIn({ allowConsent: false })
+          settings.driveConnected = true
+          saveSettings(settings)
           await refreshPlanFromDrive(false)
           render()
         } catch {
-          /* user dismissed */
+          /* silent refresh failed — keep UI; user can Connect manually */
+          render()
         }
       }
     } catch (err) {

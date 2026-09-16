@@ -1,0 +1,187 @@
+{
+  "version": 1,
+  "palette": "iron-quiet",
+  "base": "demos/",
+  "exercises": {
+    "back-squat": {
+      "id": "back-squat",
+      "name": "Barbell back squat",
+      "equipment": "Free weight",
+      "loop": "back-squat.gif",
+      "frames": [
+        {
+          "key": "start",
+          "label": "SETUP",
+          "file": "back-squat/0.jpg"
+        },
+        {
+          "key": "mid",
+          "label": "MOVE",
+          "file": "back-squat/1.jpg"
+        }
+      ]
+    },
+    "hip-thrust": {
+      "id": "hip-thrust",
+      "name": "Barbell hip thrust",
+      "equipment": "Free weight",
+      "loop": "hip-thrust.gif",
+      "frames": [
+        {
+          "key": "start",
+          "label": "SETUP",
+          "file": "hip-thrust/0.jpg"
+        },
+        {
+          "key": "mid",
+          "label": "MOVE",
+          "file": "hip-thrust/1.jpg"
+        }
+      ]
+    },
+    "hip-abductor": {
+      "id": "hip-abductor",
+      "name": "Hip abductor machine",
+      "equipment": "Machine",
+      "loop": "hip-abductor.gif",
+      "frames": [
+        {
+          "key": "start",
+          "label": "SETUP",
+          "file": "hip-abductor/0.jpg"
+        },
+        {
+          "key": "mid",
+          "label": "MOVE",
+          "file": "hip-abductor/1.jpg"
+        }
+      ]
+    },
+    "hip-adductor": {
+      "id": "hip-adductor",
+      "name": "Hip adductor machine",
+      "equipment": "Machine",
+      "loop": "hip-adductor.gif",
+      "frames": [
+        {
+          "key": "start",
+          "label": "SETUP",
+          "file": "hip-adductor/0.jpg"
+        },
+        {
+          "key": "mid",
+          "label": "MOVE",
+          "file": "hip-adductor/1.jpg"
+        }
+      ]
+    },
+    "smith-sl-calf": {
+      "id": "smith-sl-calf",
+      "name": "Single-leg calf raise",
+      "equipment": "Smith",
+      "loop": "smith-sl-calf.gif",
+      "frames": [
+        {
+          "key": "start",
+          "label": "SETUP",
+          "file": "smith-sl-calf/0.jpg"
+        },
+        {
+          "key": "mid",
+          "label": "MOVE",
+          "file": "smith-sl-calf/1.jpg"
+        }
+      ]
+    },
+    "deadlift": {
+      "id": "deadlift",
+      "name": "Deadlift",
+      "equipment": "Free weight",
+      "loop": "deadlift.gif",
+      "frames": [
+        {
+          "key": "start",
+          "label": "SETUP",
+          "file": "deadlift/0.jpg"
+        },
+        {
+          "key": "mid",
+          "label": "MOVE",
+          "file": "deadlift/1.jpg"
+        }
+      ]
+    },
+    "pulldown": {
+      "id": "pulldown",
+      "name": "Pull-up / lat pulldown",
+      "equipment": "Cable",
+      "loop": "pulldown.gif",
+      "frames": [
+        {
+          "key": "start",
+          "label": "SETUP",
+          "file": "pulldown/0.jpg"
+        },
+        {
+          "key": "mid",
+          "label": "MOVE",
+          "file": "pulldown/1.jpg"
+        }
+      ]
+    },
+    "seal-row": {
+      "id": "seal-row",
+      "name": "Chest-supported row",
+      "equipment": "Free weight",
+      "loop": "seal-row.gif",
+      "frames": [
+        {
+          "key": "start",
+          "label": "SETUP",
+          "file": "seal-row/0.jpg"
+        },
+        {
+          "key": "mid",
+          "label": "MOVE",
+          "file": "seal-row/1.jpg"
+        }
+      ]
+    },
+    "straight-arm-pd": {
+      "id": "straight-arm-pd",
+      "name": "Straight-arm pulldown",
+      "equipment": "Cable",
+      "loop": "straight-arm-pd.gif",
+      "frames": [
+        {
+          "key": "start",
+          "label": "SETUP",
+          "file": "straight-arm-pd/0.jpg"
+        },
+        {
+          "key": "mid",
+          "label": "MOVE",
+          "file": "straight-arm-pd/1.jpg"
+        }
+      ]
+    },
+    "face-pull-fri": {
+      "id": "face-pull-fri",
+      "name": "Face pull",
+      "equipment": "Cable",
+      "loop": null,
+      "frames": [
+        {
+          "key": "start",
+          "label": "SETUP",
+          "file": "face-pull-fri/0.jpg"
+        },
+        {
+          "key": "mid",
+          "label": "MOVE",
+          "file": "face-pull-fri/1.jpg"
+        }
+      ]
+    }
+  }
+}

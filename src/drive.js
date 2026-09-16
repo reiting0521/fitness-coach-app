@@ -1,11 +1,14 @@
 /**
  * Google Identity Services + Drive API v3 helpers.
- * Works without a client ID (calls no-op / throw friendly errors).
+ * Persists access token across reloads so Connect is not required every visit.
  */
 
 const SCOPES = 'https://www.googleapis.com/auth/drive'
+const TOKEN_KEY = 'fc_drive_token_v1'
+
 let tokenClient = null
 let accessToken = null
+let expiresAt = 0
 let gisReady = false
 let gapiReady = false
 
@@ -22,7 +25,48 @@ export function getAccessToken() {
 }
 
 export function isSignedIn() {
-  return Boolean(accessToken)
+  return Boolean(accessToken) && Date.now() < expiresAt
+}
+
+function loadStoredToken() {
+  try {
+    const raw = localStorage.getItem(TOKEN_KEY)
+    if (!raw) return null
+    const data = JSON.parse(raw)
+    if (!data?.accessToken || !data?.expiresAt) return null
+    if (Date.now() >= data.expiresAt) {
+      localStorage.removeItem(TOKEN_KEY)
+      return null
+    }
+    return data
+  } catch {
+    return null
+  }
+}
+
+function persistToken(token, expiresInSec) {
+  const skewMs = 60_000
+  const ttl = Number(expiresInSec) > 0 ? Number(expiresInSec) : 3600
+  expiresAt = Date.now() + ttl * 1000 - skewMs
+  accessToken = token
+  try {
+    localStorage.setItem(
+      TOKEN_KEY,
+      JSON.stringify({ accessToken: token, expiresAt }),
+    )
+  } catch {
+    /* private mode */
+  }
+}
+
+function clearStoredToken() {
+  accessToken = null
+  expiresAt = 0
+  try {
+    localStorage.removeItem(TOKEN_KEY)
+  } catch {
+    /* ignore */
+  }
 }
 
 function loadScript(src) {
@@ -53,10 +97,17 @@ export async function initGoogle() {
   })
   gisReady = true
   gapiReady = true
-  return { ok: true }
+
+  const stored = loadStoredToken()
+  if (stored) {
+    accessToken = stored.accessToken
+    expiresAt = stored.expiresAt
+  }
+
+  return { ok: true, restored: Boolean(stored) }
 }
 
-export function signIn() {
+function requestToken(prompt) {
   return new Promise((resolve, reject) => {
     if (!isConfigured()) {
       reject(new Error('Set VITE_GOOGLE_CLIENT_ID to enable Google Drive sync.'))
@@ -66,26 +117,62 @@ export function signIn() {
       reject(new Error('Google Identity Services not initialized yet.'))
       return
     }
-    tokenClient.callback = async (resp) => {
+    tokenClient.callback = (resp) => {
       if (resp.error) {
         reject(new Error(resp.error))
         return
       }
-      accessToken = resp.access_token
+      persistToken(resp.access_token, resp.expires_in)
       resolve({ accessToken })
     }
-    tokenClient.requestAccessToken({ prompt: accessToken ? '' : 'consent' })
+    tokenClient.requestAccessToken({ prompt })
   })
 }
 
-export function signOut() {
-  if (accessToken && window.google?.accounts?.oauth2) {
-    google.accounts.oauth2.revoke(accessToken, () => {})
+/** Interactive connect — prefer silent if we already have a live session elsewhere. */
+export function signIn() {
+  return ensureSignedIn({ allowConsent: true })
+}
+
+/**
+ * Restore or refresh token without forcing consent on every open.
+ * 1) valid stored token → return
+ * 2) silent requestAccessToken({ prompt: '' })
+ * 3) only if that fails and allowConsent → prompt:'consent' once
+ */
+export async function ensureSignedIn({ allowConsent = true } = {}) {
+  if (isSignedIn()) return { accessToken }
+
+  const stored = loadStoredToken()
+  if (stored) {
+    accessToken = stored.accessToken
+    expiresAt = stored.expiresAt
+    if (isSignedIn()) return { accessToken }
   }
-  accessToken = null
+
+  try {
+    return await requestToken('')
+  } catch (silentErr) {
+    if (!allowConsent) throw silentErr
+    return requestToken('consent')
+  }
+}
+
+export function signOut() {
+  const token = accessToken
+  if (token && window.google?.accounts?.oauth2) {
+    try {
+      google.accounts.oauth2.revoke(token, () => {})
+    } catch {
+      /* ignore */
+    }
+  }
+  clearStoredToken()
 }
 
 async function driveGet(path, params = {}) {
+  await ensureSignedIn({ allowConsent: false }).catch(() => {})
+  if (!accessToken) throw new Error('Not signed in')
   const qs = new URLSearchParams(params).toString()
   const url = `https://www.googleapis.com/drive/v3${path}${qs ? `?${qs}` : ''}`
   const res = await fetch(url, {
@@ -99,6 +186,8 @@ async function driveGet(path, params = {}) {
 }
 
 async function driveDownload(fileId) {
+  await ensureSignedIn({ allowConsent: false }).catch(() => {})
+  if (!accessToken) throw new Error('Not signed in')
   const url = `https://www.googleapis.com/drive/v3/files/${fileId}?alt=media`
   const res = await fetch(url, {
     headers: { Authorization: `Bearer ${accessToken}` },
@@ -172,7 +261,6 @@ async function uploadOrUpdateJson(parentId, name, json, existingId) {
  */
 export async function resolveFolders(settings) {
   const ids = { ...settings.folderIds }
-  // Verify known ids; if fail, fall back to search under My Drive root
   try {
     if (ids.fitnessCoach) {
       await driveGet(`/files/${ids.fitnessCoach}`, { fields: 'id,name' })
@@ -189,7 +277,6 @@ export async function resolveFolders(settings) {
   }
 
   if (!ids.fitnessCoach) {
-    // Search by name
     const data = await driveGet('/files', {
       q: "name = 'Fitness Coach' and mimeType = 'application/vnd.google-apps.folder' and trashed = false",
       fields: 'files(id,name)',
@@ -218,10 +305,10 @@ export async function resolveFolders(settings) {
 }
 
 export async function fetchPlanFromDrive(settings) {
+  await ensureSignedIn({ allowConsent: false })
   if (!accessToken) throw new Error('Not signed in')
   const ids = await resolveFolders(settings)
 
-  // Prefer plan-v2.json, then fall back to plan.json / cached plan id
   const v2 = await findChildByName(ids.fitnessCoach, 'plan-v2.json', 'application/json')
   if (v2) {
     ids.plan = v2.id
@@ -246,6 +333,7 @@ export async function fetchPlanFromDrive(settings) {
 }
 
 export async function saveLogToDrive(settings, dateStr, log) {
+  await ensureSignedIn({ allowConsent: false })
   if (!accessToken) throw new Error('Not signed in')
   const ids = await resolveFolders(settings)
   const name = `${dateStr}.json`
