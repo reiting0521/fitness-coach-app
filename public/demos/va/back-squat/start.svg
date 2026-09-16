@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="360" viewBox="0 0 480 360" fill="none" role="img" aria-label="START: Brace hard; bar on traps">
+  <rect width="480" height="360" rx="12" fill="#16181F"/>
+  <rect x="0.5" y="0.5" width="479" height="359" rx="11.5" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <path d="M60.0 290.0 L420.0 290.0" stroke="#6E7485" stroke-width="1.5"/>
+    <path d="M70.0 70.0 L70.0 290.0" stroke="#9AA0AE" stroke-width="1.6"/>
+    <path d="M95.0 70.0 L95.0 290.0" stroke="#9AA0AE" stroke-width="1.6"/>
+    <path d="M70.0 95.0 L95.0 95.0" stroke="#9AA0AE" stroke-width="1.6"/>
+    <path d="M70.0 160.0 L95.0 160.0" stroke="#9AA0AE" stroke-width="1.6"/>
+    <circle cx="250" cy="95" r="13" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M250.0 108.0 L242.0 175.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M248.0 135.0 L195.0 138.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M248.0 135.0 L290.0 142.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M242.0 175.0 L215.0 235.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M242.0 175.0 L275.0 240.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M215.0 235.0 L212.0 290.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M275.0 240.0 L278.0 290.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M198.0 290.0 L226.0 290.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M266.0 290.0 L292.0 290.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M175.0 138.0 L305.0 140.0" stroke="#9AA0AE" stroke-width="3.2"/>
+    <ellipse cx="175" cy="138" rx="12" ry="18" stroke="#9AA0AE" stroke-width="2" fill="none"/>
+    <ellipse cx="305" cy="140" rx="12" ry="18" stroke="#9AA0AE" stroke-width="2" fill="none"/>
+
+  </g>
+  <text x="240.0" y="332" text-anchor="middle" font-family="DM Sans, SF Pro Text, system-ui, sans-serif" font-size="13" font-weight="700" letter-spacing="0.12em" fill="#F3F4F6">START</text>
+  <text x="240.0" y="348" text-anchor="middle" font-family="DM Sans, SF Pro Text, system-ui, sans-serif" font-size="11" font-weight="450" fill="#6E7485">Brace hard; bar on traps</text>
+</svg>

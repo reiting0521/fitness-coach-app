@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="360" viewBox="0 0 480 360" fill="none" role="img" aria-label="MID: Hips &amp; shoulders rise">
+  <rect width="480" height="360" rx="12" fill="#16181F"/>
+  <rect x="0.5" y="0.5" width="479" height="359" rx="11.5" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <path d="M50.0 300.0 L430.0 300.0" stroke="#6E7485" stroke-width="1.5"/>
+    <circle cx="275" cy="105" r="13" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M268.0 118.0 L215.0 185.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M240.0 145.0 L170.0 235.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M240.0 145.0 L185.0 240.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M215.0 185.0 L235.0 245.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M235.0 245.0 L238.0 300.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M220.0 300.0 L258.0 300.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M100.0 245.0 L260.0 245.0" stroke="#9AA0AE" stroke-width="3.2"/>
+    <ellipse cx="115" cy="245" rx="18" ry="22" stroke="#9AA0AE" stroke-width="2" fill="none"/>
+    <ellipse cx="245" cy="245" rx="18" ry="22" stroke="#9AA0AE" stroke-width="2" fill="none"/>
+    <path d="M350.0 260.0 L350.0 195.0" stroke="#FF5A1F" stroke-width="2.2"/>
+    <path d="M344.0 190.0 L350.0 195.0 L344.0 200.0" stroke="#FF5A1F" stroke-width="2.2" fill="none"/>
+  </g>
+  <text x="240.0" y="332" text-anchor="middle" font-family="DM Sans, SF Pro Text, system-ui, sans-serif" font-size="13" font-weight="700" letter-spacing="0.12em" fill="#F3F4F6">MID</text>
+  <text x="240.0" y="348" text-anchor="middle" font-family="DM Sans, SF Pro Text, system-ui, sans-serif" font-size="11" font-weight="450" fill="#6E7485">Hips &amp; shoulders rise</text>
+</svg>

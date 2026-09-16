@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="360" viewBox="0 0 480 360" fill="none" role="img" aria-label="MID: Push out — outer glutes">
+  <rect width="480" height="360" rx="12" fill="#16181F"/>
+  <rect x="0.5" y="0.5" width="479" height="359" rx="11.5" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <rect x="180" y="100" width="120" height="90" rx="8" stroke="#9AA0AE" stroke-width="1.8" fill="none"/>
+    <rect x="170" y="185" width="140" height="22" rx="4" stroke="#9AA0AE" stroke-width="1.8" fill="none"/>
+    <path d="M190.0 207.0 L190.0 280.0" stroke="#9AA0AE" stroke-width="1.6"/>
+    <path d="M290.0 207.0 L290.0 280.0" stroke="#9AA0AE" stroke-width="1.6"/>
+    <path d="M160.0 280.0 L320.0 280.0" stroke="#6E7485" stroke-width="1.5"/>
+    <circle cx="240" cy="130" r="13" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M240.0 143.0 L240.0 185.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M240.0 160.0 L210.0 175.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M240.0 160.0 L270.0 175.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M220.0 205.0 L175.0 265.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M260.0 205.0 L305.0 265.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M160.0 265.0 L185.0 265.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M295.0 265.0 L320.0 265.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <ellipse cx="180" cy="245" rx="10" ry="22" stroke="#9AA0AE" stroke-width="2" fill="none"/>
+    <ellipse cx="300" cy="245" rx="10" ry="22" stroke="#9AA0AE" stroke-width="2" fill="none"/>
+    <path d="M200.0 175.0 L210.0 175.0" stroke="#9AA0AE" stroke-width="2"/>
+    <path d="M270.0 175.0 L280.0 175.0" stroke="#9AA0AE" stroke-width="2"/>
+    <path d="M230 250 L185 250" stroke="#FF5A1F" stroke-width="2.2"/>
+    <path d="M191 245 L185 250 L191 255" stroke="#FF5A1F" stroke-width="2.2"/>
+    <path d="M250 250 L295 250" stroke="#FF5A1F" stroke-width="2.2"/>
+    <path d="M289 245 L295 250 L289 255" stroke="#FF5A1F" stroke-width="2.2"/>
+  </g>
+  <text x="240.0" y="332" text-anchor="middle" font-family="DM Sans, SF Pro Text, system-ui, sans-serif" font-size="13" font-weight="700" letter-spacing="0.12em" fill="#F3F4F6">MID</text>
+  <text x="240.0" y="348" text-anchor="middle" font-family="DM Sans, SF Pro Text, system-ui, sans-serif" font-size="11" font-weight="450" fill="#6E7485">Push out — outer glutes</text>
+</svg>

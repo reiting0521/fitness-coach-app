@@ -917,9 +917,14 @@ main { padding: 16px 16px 28px; flex: 1; }
   font-size: 0.9rem;
 }
 .howto-demo-placeholder strong { color: var(--text); }
+.howto-demo-sequence img {
+  min-height: 280px;
+  max-height: 420px;
+  object-fit: contain;
+}
 .howto-demo-strip {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(var(--howto-cols, 3), 1fr);
   gap: 8px;
   padding: 12px;
   width: 100%;
@@ -928,21 +933,22 @@ main { padding: 16px 16px 28px; flex: 1; }
   margin: 0;
 }
 .howto-demo-frame img {
-  min-height: 140px;
-  max-height: 180px;
+  min-height: 120px;
+  max-height: 200px;
   border-radius: 10px;
   width: 100%;
-  object-fit: cover;
+  object-fit: contain;
   background: #0B0C0E;
 }
 .howto-demo-frame figcaption {
   margin-top: 8px;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--muted);
   text-align: center;
+  line-height: 1.35;
 }
 .howto-title-row {
   display: flex;

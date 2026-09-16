@@ -2,186 +2,308 @@
   "version": 1,
   "palette": "iron-quiet",
   "base": "demos/",
+  "days": {
+    "wednesday": {
+      "focus": "Legs",
+      "exercises": [
+        "back-squat",
+        "hip-thrust",
+        "hip-abductor",
+        "hip-adductor",
+        "smith-sl-calf"
+      ]
+    },
+    "friday": {
+      "focus": "Back",
+      "exercises": [
+        "deadlift",
+        "pulldown",
+        "seal-row",
+        "straight-arm-pd",
+        "face-pull-fri"
+      ]
+    }
+  },
   "exercises": {
     "back-squat": {
       "id": "back-squat",
       "name": "Barbell back squat",
+      "day": "wednesday",
       "equipment": "Free weight",
-      "loop": "back-squat.gif",
+      "sequence": "va/back-squat/sequence.svg",
       "frames": [
         {
           "key": "start",
-          "label": "SETUP",
-          "file": "back-squat/0.jpg"
+          "label": "START",
+          "file": "va/back-squat/start.svg",
+          "cue": "Brace hard; bar on traps"
         },
         {
           "key": "mid",
-          "label": "MOVE",
-          "file": "back-squat/1.jpg"
+          "label": "MID",
+          "file": "va/back-squat/mid.svg",
+          "cue": "Hip crease below knee"
+        },
+        {
+          "key": "end",
+          "label": "END",
+          "file": "va/back-squat/end.svg",
+          "cue": "Drive mid-foot; lockout"
         }
-      ]
+      ],
+      "loop": "back-squat.gif"
     },
     "hip-thrust": {
       "id": "hip-thrust",
       "name": "Barbell hip thrust",
+      "day": "wednesday",
       "equipment": "Free weight",
-      "loop": "hip-thrust.gif",
+      "sequence": "va/hip-thrust/sequence.svg",
       "frames": [
         {
           "key": "start",
-          "label": "SETUP",
-          "file": "hip-thrust/0.jpg"
+          "label": "START",
+          "file": "va/hip-thrust/start.svg",
+          "cue": "Upper back on bench"
         },
         {
           "key": "mid",
-          "label": "MOVE",
-          "file": "hip-thrust/1.jpg"
+          "label": "MID",
+          "file": "va/hip-thrust/mid.svg",
+          "cue": "Drive through heels"
+        },
+        {
+          "key": "end",
+          "label": "END",
+          "file": "va/hip-thrust/end.svg",
+          "cue": "Full hip extension"
         }
-      ]
+      ],
+      "loop": "hip-thrust.gif"
     },
     "hip-abductor": {
       "id": "hip-abductor",
-      "name": "Hip abductor machine",
+      "name": "Hip abductor machine (out)",
+      "day": "wednesday",
       "equipment": "Machine",
-      "loop": "hip-abductor.gif",
+      "sequence": "va/hip-abductor/sequence.svg",
       "frames": [
         {
           "key": "start",
-          "label": "SETUP",
-          "file": "hip-abductor/0.jpg"
+          "label": "START",
+          "file": "va/hip-abductor/start.svg",
+          "cue": "Pads on outer thighs"
         },
         {
           "key": "mid",
-          "label": "MOVE",
-          "file": "hip-abductor/1.jpg"
+          "label": "MID",
+          "file": "va/hip-abductor/mid.svg",
+          "cue": "Push out \u2014 outer glutes"
+        },
+        {
+          "key": "end",
+          "label": "END",
+          "file": "va/hip-abductor/end.svg",
+          "cue": "Pause at full abduction"
         }
-      ]
+      ],
+      "loop": "hip-abductor.gif"
     },
     "hip-adductor": {
       "id": "hip-adductor",
-      "name": "Hip adductor machine",
+      "name": "Hip adductor machine (in)",
+      "day": "wednesday",
       "equipment": "Machine",
-      "loop": "hip-adductor.gif",
+      "sequence": "va/hip-adductor/sequence.svg",
       "frames": [
         {
           "key": "start",
-          "label": "SETUP",
-          "file": "hip-adductor/0.jpg"
+          "label": "START",
+          "file": "va/hip-adductor/start.svg",
+          "cue": "Start from stretch"
         },
         {
           "key": "mid",
-          "label": "MOVE",
-          "file": "hip-adductor/1.jpg"
+          "label": "MID",
+          "file": "va/hip-adductor/mid.svg",
+          "cue": "Squeeze inward smoothly"
+        },
+        {
+          "key": "end",
+          "label": "END",
+          "file": "va/hip-adductor/end.svg",
+          "cue": "Squeezed \u2014 pelvis stable"
         }
-      ]
+      ],
+      "loop": "hip-adductor.gif"
     },
     "smith-sl-calf": {
       "id": "smith-sl-calf",
-      "name": "Single-leg calf raise",
+      "name": "Single-leg calf raise (Smith)",
+      "day": "wednesday",
       "equipment": "Smith",
-      "loop": "smith-sl-calf.gif",
+      "sequence": "va/smith-sl-calf/sequence.svg",
       "frames": [
         {
           "key": "start",
-          "label": "SETUP",
-          "file": "smith-sl-calf/0.jpg"
+          "label": "START",
+          "file": "va/smith-sl-calf/start.svg",
+          "cue": "Full stretch at bottom"
         },
         {
           "key": "mid",
-          "label": "MOVE",
-          "file": "smith-sl-calf/1.jpg"
+          "label": "MID",
+          "file": "va/smith-sl-calf/mid.svg",
+          "cue": "Rise \u2014 knee soft stable"
+        },
+        {
+          "key": "end",
+          "label": "END",
+          "file": "va/smith-sl-calf/end.svg",
+          "cue": "Top squeeze \u2014 pause"
         }
-      ]
+      ],
+      "loop": "smith-sl-calf.gif"
     },
     "deadlift": {
       "id": "deadlift",
-      "name": "Deadlift",
+      "name": "Deadlift or trap-bar deadlift",
+      "day": "friday",
       "equipment": "Free weight",
-      "loop": "deadlift.gif",
+      "sequence": "va/deadlift/sequence.svg",
       "frames": [
         {
           "key": "start",
-          "label": "SETUP",
-          "file": "deadlift/0.jpg"
+          "label": "START",
+          "file": "va/deadlift/start.svg",
+          "cue": "Bar mid-foot; lats tight"
         },
         {
           "key": "mid",
-          "label": "MOVE",
-          "file": "deadlift/1.jpg"
+          "label": "MID",
+          "file": "va/deadlift/mid.svg",
+          "cue": "Hips & shoulders rise"
+        },
+        {
+          "key": "end",
+          "label": "END",
+          "file": "va/deadlift/end.svg",
+          "cue": "Stand tall \u2014 don't lean"
         }
-      ]
+      ],
+      "loop": "deadlift.gif"
     },
     "pulldown": {
       "id": "pulldown",
-      "name": "Pull-up / lat pulldown",
+      "name": "Pull-up or lat pulldown",
+      "day": "friday",
       "equipment": "Cable",
-      "loop": "pulldown.gif",
+      "sequence": "va/pulldown/sequence.svg",
       "frames": [
         {
           "key": "start",
-          "label": "SETUP",
-          "file": "pulldown/0.jpg"
+          "label": "START",
+          "file": "va/pulldown/start.svg",
+          "cue": "Dead hang / full stretch"
         },
         {
           "key": "mid",
-          "label": "MOVE",
-          "file": "pulldown/1.jpg"
+          "label": "MID",
+          "file": "va/pulldown/mid.svg",
+          "cue": "Elbows drive to ribs"
+        },
+        {
+          "key": "end",
+          "label": "END",
+          "file": "va/pulldown/end.svg",
+          "cue": "Chest up; elbows to ribs"
         }
-      ]
+      ],
+      "loop": "pulldown.gif"
     },
     "seal-row": {
       "id": "seal-row",
-      "name": "Chest-supported row",
+      "name": "Chest-supported or seal row",
+      "day": "friday",
       "equipment": "Free weight",
-      "loop": "seal-row.gif",
+      "sequence": "va/seal-row/sequence.svg",
       "frames": [
         {
           "key": "start",
-          "label": "SETUP",
-          "file": "seal-row/0.jpg"
+          "label": "START",
+          "file": "va/seal-row/start.svg",
+          "cue": "Chest glued; full stretch"
         },
         {
           "key": "mid",
-          "label": "MOVE",
-          "file": "seal-row/1.jpg"
+          "label": "MID",
+          "file": "va/seal-row/mid.svg",
+          "cue": "Elbows toward hips"
+        },
+        {
+          "key": "end",
+          "label": "END",
+          "file": "va/seal-row/end.svg",
+          "cue": "Squeeze mid-back"
         }
-      ]
+      ],
+      "loop": "seal-row.gif"
     },
     "straight-arm-pd": {
       "id": "straight-arm-pd",
       "name": "Straight-arm pulldown",
+      "day": "friday",
       "equipment": "Cable",
-      "loop": "straight-arm-pd.gif",
+      "sequence": "va/straight-arm-pd/sequence.svg",
       "frames": [
         {
           "key": "start",
-          "label": "SETUP",
-          "file": "straight-arm-pd/0.jpg"
+          "label": "START",
+          "file": "va/straight-arm-pd/start.svg",
+          "cue": "Arms high; slight hinge"
         },
         {
           "key": "mid",
-          "label": "MOVE",
-          "file": "straight-arm-pd/1.jpg"
+          "label": "MID",
+          "file": "va/straight-arm-pd/mid.svg",
+          "cue": "Sweep with lats"
+        },
+        {
+          "key": "end",
+          "label": "END",
+          "file": "va/straight-arm-pd/end.svg",
+          "cue": "Bar at thighs"
         }
-      ]
+      ],
+      "loop": "straight-arm-pd.gif"
     },
     "face-pull-fri": {
       "id": "face-pull-fri",
       "name": "Face pull",
+      "day": "friday",
       "equipment": "Cable",
-      "loop": null,
+      "sequence": "va/face-pull-fri/sequence.svg",
       "frames": [
         {
           "key": "start",
-          "label": "SETUP",
-          "file": "face-pull-fri/0.jpg"
+          "label": "START",
+          "file": "va/face-pull-fri/start.svg",
+          "cue": "Arms extended to cable"
         },
         {
           "key": "mid",
-          "label": "MOVE",
-          "file": "face-pull-fri/1.jpg"
+          "label": "MID",
+          "file": "va/face-pull-fri/mid.svg",
+          "cue": "Pull to face line"
+        },
+        {
+          "key": "end",
+          "label": "END",
+          "file": "va/face-pull-fri/end.svg",
+          "cue": "External rotation finish"
         }
-      ]
+      ],
+      "loop": null
     }
   }
 }

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="360" viewBox="0 0 1440 360" fill="none" role="img" aria-label="smith-sl-calf form sequence">
+  <rect width="1440" height="360" rx="12" fill="#16181F"/>
+
+  <g transform="translate(0,0)">
+    <rect x="0.5" y="0.5" width="479" height="359" rx="11.5" stroke="rgba(255,255,255,0.08)" stroke-width="1" fill="none"/>
+    <g stroke-linecap="round" stroke-linejoin="round">
+        <path d="M60.0 300.0 L420.0 300.0" stroke="#6E7485" stroke-width="1.5"/>
+        <rect x="200" y="285" width="80" height="15" rx="2" stroke="#9AA0AE" stroke-width="1.8" fill="none"/>
+        <path d="M140.0 60.0 L140.0 300.0" stroke="#9AA0AE" stroke-width="1.5"/>
+        <path d="M340.0 60.0 L340.0 300.0" stroke="#9AA0AE" stroke-width="1.5"/>
+        <circle cx="240" cy="95" r="12" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M240.0 107.0 L240.0 175.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M240.0 130.0 L200.0 145.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M240.0 130.0 L285.0 100.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M240.0 175.0 L245.0 240.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M245.0 240.0 L248.0 285.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M240.0 175.0 L205.0 220.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M205.0 220.0 L190.0 250.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M235 285 L265 285 L270 305" stroke="#F3F4F6" stroke-width="2.4" fill="none"/>
+        <path d="M150.0 100.0 L330.0 100.0" stroke="#9AA0AE" stroke-width="3.0"/>
+        <path d="M380.0 160.0 L380.0 220.0" stroke="#FF5A1F" stroke-width="2.2"/>
+        <path d="M374.0 215.0 L380.0 220.0 L374.0 225.0" stroke="#FF5A1F" stroke-width="2.2" fill="none"/>
+    </g>
+    <text x="240" y="332" text-anchor="middle" font-family="DM Sans, SF Pro Text, system-ui, sans-serif" font-size="13" font-weight="700" letter-spacing="0.12em" fill="#F3F4F6">START</text>
+    <text x="240" y="348" text-anchor="middle" font-family="DM Sans, SF Pro Text, system-ui, sans-serif" font-size="11" font-weight="450" fill="#6E7485">Full stretch at bottom</text>
+  </g>
+  <line x1="480" y1="16" x2="480" y2="344" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+  <g transform="translate(480,0)">
+    <rect x="0.5" y="0.5" width="479" height="359" rx="11.5" stroke="rgba(255,255,255,0.08)" stroke-width="1" fill="none"/>
+    <g stroke-linecap="round" stroke-linejoin="round">
+        <path d="M60.0 300.0 L420.0 300.0" stroke="#6E7485" stroke-width="1.5"/>
+        <rect x="200" y="285" width="80" height="15" rx="2" stroke="#9AA0AE" stroke-width="1.8" fill="none"/>
+        <path d="M140.0 60.0 L140.0 300.0" stroke="#9AA0AE" stroke-width="1.5"/>
+        <path d="M340.0 60.0 L340.0 300.0" stroke="#9AA0AE" stroke-width="1.5"/>
+        <circle cx="240" cy="85" r="12" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M240.0 97.0 L240.0 165.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M240.0 120.0 L200.0 135.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M240.0 120.0 L285.0 90.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M240.0 165.0 L245.0 230.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M245.0 230.0 L248.0 275.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M240.0 165.0 L205.0 210.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M205.0 210.0 L190.0 240.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M235 275 L268 275 L262 285" stroke="#F3F4F6" stroke-width="2.4" fill="none"/>
+        <path d="M150.0 90.0 L330.0 90.0" stroke="#9AA0AE" stroke-width="3.0"/>
+        <path d="M380.0 200.0 L380.0 140.0" stroke="#FF5A1F" stroke-width="2.2"/>
+        <path d="M374.0 135.0 L380.0 140.0 L374.0 145.0" stroke="#FF5A1F" stroke-width="2.2" fill="none"/>
+    </g>
+    <text x="240" y="332" text-anchor="middle" font-family="DM Sans, SF Pro Text, system-ui, sans-serif" font-size="13" font-weight="700" letter-spacing="0.12em" fill="#F3F4F6">MID</text>
+    <text x="240" y="348" text-anchor="middle" font-family="DM Sans, SF Pro Text, system-ui, sans-serif" font-size="11" font-weight="450" fill="#6E7485">Rise — knee soft stable</text>
+  </g>
+  <line x1="960" y1="16" x2="960" y2="344" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+  <g transform="translate(960,0)">
+    <rect x="0.5" y="0.5" width="479" height="359" rx="11.5" stroke="rgba(255,255,255,0.08)" stroke-width="1" fill="none"/>
+    <g stroke-linecap="round" stroke-linejoin="round">
+        <path d="M60.0 300.0 L420.0 300.0" stroke="#6E7485" stroke-width="1.5"/>
+        <rect x="200" y="285" width="80" height="15" rx="2" stroke="#9AA0AE" stroke-width="1.8" fill="none"/>
+        <path d="M140.0 60.0 L140.0 300.0" stroke="#9AA0AE" stroke-width="1.5"/>
+        <path d="M340.0 60.0 L340.0 300.0" stroke="#9AA0AE" stroke-width="1.5"/>
+        <circle cx="240" cy="75" r="12" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M240.0 87.0 L240.0 155.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M240.0 110.0 L200.0 125.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M240.0 110.0 L285.0 80.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M240.0 155.0 L245.0 220.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M245.0 220.0 L248.0 265.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M240.0 155.0 L205.0 200.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M205.0 200.0 L190.0 230.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M238 265 L270 265 L258 275" stroke="#F3F4F6" stroke-width="2.4" fill="none"/>
+        <path d="M150.0 80.0 L330.0 80.0" stroke="#9AA0AE" stroke-width="3.0"/>
+        <circle cx="248" cy="250" r="5" fill="#3DDC97" stroke="none"/>
+        <path d="M380.0 180.0 L380.0 120.0" stroke="#FF5A1F" stroke-width="2.2"/>
+        <path d="M374.0 115.0 L380.0 120.0 L374.0 125.0" stroke="#FF5A1F" stroke-width="2.2" fill="none"/>
+    </g>
+    <text x="240" y="332" text-anchor="middle" font-family="DM Sans, SF Pro Text, system-ui, sans-serif" font-size="13" font-weight="700" letter-spacing="0.12em" fill="#F3F4F6">END</text>
+    <text x="240" y="348" text-anchor="middle" font-family="DM Sans, SF Pro Text, system-ui, sans-serif" font-size="11" font-weight="450" fill="#6E7485">Top squeeze — pause</text>
+  </g>
+</svg>

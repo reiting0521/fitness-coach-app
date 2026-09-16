@@ -151,6 +151,8 @@ function buildSessionFromPlan(day, dateStr) {
           findPlanExercise(day, ex.name)
         return {
           ...ex,
+          id: ex.id || planEx?.id || null,
+          equipment: ex.equipment || planEx?.equipment || null,
           cues: ex.cues || planEx?.cues || [],
           alternatives: ex.alternatives || planEx?.alternatives || [],
           originalName: ex.originalName || ex.name,
@@ -620,21 +622,33 @@ function bindWorkout(main) {
 
 function renderHowtoDemo(ex) {
   const demo = getDemoForExercise(ex)
-  if (demo?.loop) {
-    const src = demoAssetUrl(demo.loop)
-    return `<div class="howto-demo"><img src="${escapeHtml(src)}" alt="${escapeHtml(ex.name)} demo" loading="lazy" /></div>`
+
+  // 1) Visual Artist sequence strip (preferred teaching surface)
+  if (demo?.sequence) {
+    const src = demoAssetUrl(demo.sequence)
+    return `<div class="howto-demo howto-demo-sequence"><img src="${escapeHtml(src)}" alt="${escapeHtml(ex.name)} sequence" loading="lazy" /></div>`
   }
+
+  // 2) VA start/mid/end frames (or any mapped frame strip)
   if (demo?.frames?.length) {
+    const n = demo.frames.length
     const frames = demo.frames
       .map(
         (f) => `<figure class="howto-demo-frame">
           <img src="${escapeHtml(demoAssetUrl(f.file))}" alt="${escapeHtml(f.label)}" loading="lazy" />
-          <figcaption>${escapeHtml(f.label)}</figcaption>
+          <figcaption>${escapeHtml(f.label)}${f.cue ? ` · ${escapeHtml(f.cue)}` : ''}</figcaption>
         </figure>`,
       )
       .join('')
-    return `<div class="howto-demo"><div class="howto-demo-strip">${frames}</div></div>`
+    return `<div class="howto-demo"><div class="howto-demo-strip" style="--howto-cols:${n}">${frames}</div></div>`
   }
+
+  // 3) Legacy GIF/loop only when VA sequence/frames are missing
+  if (demo?.loop) {
+    const src = demoAssetUrl(demo.loop)
+    return `<div class="howto-demo"><img src="${escapeHtml(src)}" alt="${escapeHtml(ex.name)} demo" loading="lazy" /></div>`
+  }
+
   const cues = normalizeCues(ex.cues)
   const steps = [
     ...(cues.setup.slice(0, 1).map((s) => `1. Setup — ${s}`)),

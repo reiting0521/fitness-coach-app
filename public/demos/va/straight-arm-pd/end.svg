@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="360" viewBox="0 0 480 360" fill="none" role="img" aria-label="END: Bar at thighs">
+  <rect width="480" height="360" rx="12" fill="#16181F"/>
+  <rect x="0.5" y="0.5" width="479" height="359" rx="11.5" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <path d="M50.0 300.0 L430.0 300.0" stroke="#6E7485" stroke-width="1.5"/>
+    <path d="M80.0 50.0 L80.0 300.0" stroke="#9AA0AE" stroke-width="1.5"/>
+    <path d="M80.0 50.0 L200.0 50.0" stroke="#9AA0AE" stroke-width="1.6"/>
+    <path d="M200.0 50.0 L200.0 70.0" stroke="#9AA0AE" stroke-width="1.5"/>
+    <path d="M200.0 50.0 L215.0 200.0" stroke="#9AA0AE" stroke-width="1.4"/>
+    <circle cx="270" cy="130" r="13" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M270.0 143.0 L260.0 200.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M265.0 155.0 L215.0 200.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M265.0 155.0 L230.0 205.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M260.0 200.0 L240.0 260.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M260.0 200.0 L290.0 265.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M240.0 260.0 L240.0 300.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M290.0 265.0 L292.0 300.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M225.0 300.0 L255.0 300.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M275.0 300.0 L310.0 300.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M180.0 200.0 L250.0 205.0" stroke="#9AA0AE" stroke-width="2.8"/>
+    <circle cx="215" cy="200" r="5" fill="#3DDC97" stroke="none"/>
+  </g>
+  <text x="240.0" y="332" text-anchor="middle" font-family="DM Sans, SF Pro Text, system-ui, sans-serif" font-size="13" font-weight="700" letter-spacing="0.12em" fill="#F3F4F6">END</text>
+  <text x="240.0" y="348" text-anchor="middle" font-family="DM Sans, SF Pro Text, system-ui, sans-serif" font-size="11" font-weight="450" fill="#6E7485">Bar at thighs</text>
+</svg>
