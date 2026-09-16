@@ -36,11 +36,15 @@ npm run preview
 
 ## Google Drive OAuth setup
 
-Drive sync needs a **Google Cloud OAuth 2.0 Web client ID**. The app uses [Google Identity Services](https://developers.google.com/identity/oauth2/web/guides/overview) + Drive API (`drive` scope).
+Drive sync needs a **Google Cloud OAuth 2.0 Web client ID**. The app uses [Google Identity Services](https://developers.google.com/identity/oauth2/web/guides/overview) + Drive API with **least privilege**:
+
+- Scope: `https://www.googleapis.com/auth/drive.file` (only files this app creates or the user opens with it)
+- Access tokens stay **in memory only** (not `localStorage`); silent `requestAccessToken({ prompt: '' })` refreshes when needed
+- **Reconnect required** after this change: Disconnect in Settings (or revoke the old grant at [Google Account → Third-party access](https://myaccount.google.com/permissions)), then **Connect Google Drive** again so consent uses `drive.file`
 
 1. Go to [Google Cloud Console](https://console.cloud.google.com/) → create or select a project.
 2. Enable **Google Drive API**.
-3. **OAuth consent screen**: configure; add your account as a test user while in Testing.
+3. **OAuth consent screen**: configure; add your account as a test user while in Testing. If you previously published with full `drive` scope, update the consent screen scopes to `drive.file` (or add it and remove full Drive).
 4. **Credentials → OAuth client ID → Web application**.
 5. **Authorized JavaScript origins**:
    - `http://localhost:5173`
@@ -49,12 +53,22 @@ Drive sync needs a **Google Cloud OAuth 2.0 Web client ID**. The app uses [Googl
 6. Put the client ID in `.env` (never commit `.env`):
 
 ```bash
-VITE_GOOGLE_CLIENT_ID=123456789-abcdef.apps.googleusercontent.com
+VITE_GOOGLE_CLIENT_ID=your-client-id.apps.googleusercontent.com
 ```
 
 7. Rebuild / redeploy so Vite embeds the env var.
 
-Without a client ID the app still works fully offline.
+Without a client ID the app still works fully offline (bundled plan + `localStorage` logs).
+
+### `drive.file` folder / plan notes
+
+Under `drive.file`, list/search only returns files **created or opened by this app**. Resolution order:
+
+1. Cached folder IDs in Settings (from a prior successful connect)
+2. Search among app-visible files for `Fitness Coach` / `logs`
+3. Create folders if missing
+
+If an older `plan-v2.json` / `plan.json` was uploaded manually (outside the app), it may not be visible after switching scopes. Workarounds: open that file once with a Google Picker flow (not implemented), re-upload the plan via an app write, or temporarily use cached file IDs from a previous app session. Offline mode always keeps the bundled `src/plan.json`.
 
 ### Known Drive folder IDs (defaults in Settings)
 

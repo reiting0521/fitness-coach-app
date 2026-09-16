@@ -1,10 +1,12 @@
 /**
  * Google Identity Services + Drive API v3 helpers.
- * Persists access token across reloads so Connect is not required every visit.
+ * Access tokens stay in module memory only (never localStorage).
+ * Scope: drive.file (files created/opened by this app).
  */
 
-const SCOPES = 'https://www.googleapis.com/auth/drive'
-const TOKEN_KEY = 'fc_drive_token_v1'
+const SCOPES = 'https://www.googleapis.com/auth/drive.file'
+/** Legacy key — cleared on init so old broad-scope tokens are not reused. */
+const LEGACY_TOKEN_KEY = 'fc_drive_token_v1'
 
 let tokenClient = null
 let accessToken = null
@@ -28,45 +30,59 @@ export function isSignedIn() {
   return Boolean(accessToken) && Date.now() < expiresAt
 }
 
-function loadStoredToken() {
+/** Wipe any previously persisted token (XSS / shared-device risk). */
+function clearLegacyStoredToken() {
   try {
-    const raw = localStorage.getItem(TOKEN_KEY)
-    if (!raw) return null
-    const data = JSON.parse(raw)
-    if (!data?.accessToken || !data?.expiresAt) return null
-    if (Date.now() >= data.expiresAt) {
-      localStorage.removeItem(TOKEN_KEY)
-      return null
-    }
-    return data
+    localStorage.removeItem(LEGACY_TOKEN_KEY)
   } catch {
-    return null
+    /* ignore */
+  }
+  try {
+    sessionStorage.removeItem(LEGACY_TOKEN_KEY)
+  } catch {
+    /* ignore */
   }
 }
 
-function persistToken(token, expiresInSec) {
+function setMemoryToken(token, expiresInSec) {
   const skewMs = 60_000
   const ttl = Number(expiresInSec) > 0 ? Number(expiresInSec) : 3600
   expiresAt = Date.now() + ttl * 1000 - skewMs
   accessToken = token
-  try {
-    localStorage.setItem(
-      TOKEN_KEY,
-      JSON.stringify({ accessToken: token, expiresAt }),
-    )
-  } catch {
-    /* private mode */
-  }
 }
 
-function clearStoredToken() {
+function clearMemoryToken() {
   accessToken = null
   expiresAt = 0
-  try {
-    localStorage.removeItem(TOKEN_KEY)
-  } catch {
-    /* ignore */
-  }
+}
+
+/**
+ * Safe Drive error: status + short phrase only (no response body / Google JSON).
+ */
+function driveError(action, status) {
+  const code = Number(status) || 0
+  let phrase = 'request failed'
+  if (code === 401) phrase = 'unauthorized'
+  else if (code === 403) phrase = 'forbidden'
+  else if (code === 404) phrase = 'not found'
+  else if (code === 429) phrase = 'rate limited'
+  else if (code >= 500) phrase = 'server error'
+  return new Error(`Drive ${action}: ${code || 'error'} (${phrase})`)
+}
+
+function safeAuthError(code) {
+  const c = String(code || 'auth_error')
+  // GIS codes are short tokens; never forward arbitrary strings
+  const known = new Set([
+    'access_denied',
+    'popup_closed',
+    'popup_failed_to_open',
+    'immediate_failed',
+    'invalid_request',
+    'opt_out_or_no_session',
+  ])
+  const safe = known.has(c) ? c : 'auth_error'
+  return new Error(`Google sign-in failed (${safe})`)
 }
 
 function loadScript(src) {
@@ -79,13 +95,15 @@ function loadScript(src) {
     s.src = src
     s.async = true
     s.onload = () => resolve()
-    s.onerror = () => reject(new Error(`Failed to load ${src}`))
+    s.onerror = () => reject(new Error('Failed to load Google Identity script'))
     document.head.appendChild(s)
   })
 }
 
 export async function initGoogle() {
   if (!isConfigured()) return { ok: false, reason: 'no_client_id' }
+
+  clearLegacyStoredToken()
 
   await loadScript('https://accounts.google.com/gsi/client')
 
@@ -98,13 +116,7 @@ export async function initGoogle() {
   gisReady = true
   gapiReady = true
 
-  const stored = loadStoredToken()
-  if (stored) {
-    accessToken = stored.accessToken
-    expiresAt = stored.expiresAt
-  }
-
-  return { ok: true, restored: Boolean(stored) }
+  return { ok: true, restored: false }
 }
 
 function requestToken(prompt) {
@@ -119,36 +131,29 @@ function requestToken(prompt) {
     }
     tokenClient.callback = (resp) => {
       if (resp.error) {
-        reject(new Error(resp.error))
+        reject(safeAuthError(resp.error))
         return
       }
-      persistToken(resp.access_token, resp.expires_in)
+      setMemoryToken(resp.access_token, resp.expires_in)
       resolve({ accessToken })
     }
     tokenClient.requestAccessToken({ prompt })
   })
 }
 
-/** Interactive connect — prefer silent if we already have a live session elsewhere. */
+/** Interactive connect — consent if silent restore is unavailable. */
 export function signIn() {
   return ensureSignedIn({ allowConsent: true })
 }
 
 /**
- * Restore or refresh token without forcing consent on every open.
- * 1) valid stored token → return
+ * Keep / refresh token in memory without forcing consent on every open.
+ * 1) valid in-memory token → return
  * 2) silent requestAccessToken({ prompt: '' })
  * 3) only if that fails and allowConsent → prompt:'consent' once
  */
 export async function ensureSignedIn({ allowConsent = true } = {}) {
   if (isSignedIn()) return { accessToken }
-
-  const stored = loadStoredToken()
-  if (stored) {
-    accessToken = stored.accessToken
-    expiresAt = stored.expiresAt
-    if (isSignedIn()) return { accessToken }
-  }
 
   try {
     return await requestToken('')
@@ -167,7 +172,8 @@ export function signOut() {
       /* ignore */
     }
   }
-  clearStoredToken()
+  clearMemoryToken()
+  clearLegacyStoredToken()
 }
 
 async function driveGet(path, params = {}) {
@@ -179,8 +185,9 @@ async function driveGet(path, params = {}) {
     headers: { Authorization: `Bearer ${accessToken}` },
   })
   if (!res.ok) {
-    const text = await res.text()
-    throw new Error(`Drive GET ${path}: ${res.status} ${text}`)
+    // Drain body without exposing it
+    await res.text().catch(() => '')
+    throw driveError(`GET ${path}`, res.status)
   }
   return res.json()
 }
@@ -193,8 +200,8 @@ async function driveDownload(fileId) {
     headers: { Authorization: `Bearer ${accessToken}` },
   })
   if (!res.ok) {
-    const text = await res.text()
-    throw new Error(`Drive download: ${res.status} ${text}`)
+    await res.text().catch(() => '')
+    throw driveError('download', res.status)
   }
   return res.text()
 }
@@ -224,7 +231,10 @@ async function createFolder(parentId, name) {
       parents: [parentId],
     }),
   })
-  if (!res.ok) throw new Error(`Create folder failed: ${res.status}`)
+  if (!res.ok) {
+    await res.text().catch(() => '')
+    throw driveError('create folder', res.status)
+  }
   return res.json()
 }
 
@@ -250,14 +260,16 @@ async function uploadOrUpdateJson(parentId, name, json, existingId) {
     body: form,
   })
   if (!res.ok) {
-    const text = await res.text()
-    throw new Error(`Upload failed: ${res.status} ${text}`)
+    await res.text().catch(() => '')
+    throw driveError('upload', res.status)
   }
   return res.json()
 }
 
 /**
- * Resolve Fitness Coach + logs folders using known ids, else find/create by name.
+ * Resolve Fitness Coach + logs folders.
+ * Under drive.file, list/search only returns files this app created or opened.
+ * Prefer cached IDs; else find among app-visible files; else create.
  */
 export async function resolveFolders(settings) {
   const ids = { ...settings.folderIds }

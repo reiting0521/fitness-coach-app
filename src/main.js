@@ -47,7 +47,25 @@ let session = null
 let toastTimer = null
 let sheetEl = null
 
+
 const app = document.querySelector('#app')
+
+
+/** Escape untrusted plan/Drive/user strings before innerHTML. */
+function escapeHtml(value) {
+  return String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+}
+
+function safeErrMsg(err) {
+  const msg = err && typeof err.message === 'string' ? err.message : 'Something went wrong'
+  // Only surface short, already-sanitized app errors
+  return msg.length > 120 ? 'Something went wrong' : msg
+}
 
 function toast(msg) {
   let el = document.querySelector('.toast')
@@ -258,14 +276,14 @@ function render() {
       <div class="header-top">
         <div>
           <p class="eyebrow">${view === 'settings' ? 'Account' : (isToday ? 'This week' : 'Week view')}</p>
-          <h1>${view === 'settings' ? 'Settings' : (session.rest ? 'Rest' : session.dayFocus)}</h1>
+          <h1>${view === 'settings' ? 'Settings' : (session.rest ? 'Rest' : escapeHtml(session.dayFocus))}</h1>
         </div>
         <div class="header-meta">
           ${view === 'settings' ? '' : `<span class="pill">${isToday ? 'Today' : SHORT_LABELS[weekdayKeyFor(selectedDate)] || ''}</span>`}
           <span class="pill muted">${settings.unit.toUpperCase()}</span>
           ${
             view !== 'settings' && session.overallFeeling
-              ? `<span class="pill feeling-${session.overallFeeling}">${session.overallFeeling}</span>`
+              ? `<span class="pill feeling-${escapeHtml(session.overallFeeling)}">${escapeHtml(session.overallFeeling)}</span>`
               : ''
           }
         </div>
@@ -275,7 +293,7 @@ function render() {
           ? `<div class="sub">Drive sync · units · on-device history</div>`
           : `<div class="sub">${displayDateFor(selectedDate)} · ${TZ}</div>
       <div class="badge-row">
-        <span class="badge accent">${day.rest ? 'Rest day' : day.focus}</span>
+        <span class="badge accent">${day.rest ? 'Rest day' : escapeHtml(day.focus)}</span>
         ${
           session.locked
             ? `<span class="badge ok">Logged</span>`
@@ -351,11 +369,11 @@ function render() {
 function renderRest() {
   const next = nextTrainingDay(plan, selectedDate)
   const nextLabel = next
-    ? `${SHORT_LABELS[next.key]} ${next.day.focus} · ${displayDateFor(next.date)}`
+    ? `${escapeHtml(SHORT_LABELS[next.key])} ${escapeHtml(next.day.focus)} · ${escapeHtml(displayDateFor(next.date))}`
     : '—'
   const previewExercises = (next?.day?.exercises || [])
     .slice(0, 4)
-    .map((e) => `<li><strong>${e.name}</strong><span>${e.sets}×${e.reps}</span></li>`)
+    .map((e) => `<li><strong>${escapeHtml(e.name)}</strong><span>${escapeHtml(e.sets)}×${escapeHtml(e.reps)}</span></li>`)
     .join('')
 
   return `
@@ -367,7 +385,7 @@ function renderRest() {
     </section>
     <section class="card preview-card">
       <div class="card-head">
-        <h3>Tomorrow — ${next?.day?.focus || 'Next'}</h3>
+        <h3>Tomorrow — ${escapeHtml(next?.day?.focus || 'Next')}</h3>
         <span class="pill muted">${next ? SHORT_LABELS[next.key] : '—'}</span>
       </div>
       <p class="meta">${nextLabel}</p>
@@ -413,12 +431,12 @@ function renderLockedHistory() {
       return `
         <article class="card hist-card">
           <div class="card-head">
-            <h2>${ex.name}</h2>
-            ${ex.feeling ? `<span class="pill feeling-${ex.feeling}">${ex.feeling}</span>` : ''}
+            <h2>${escapeHtml(ex.name)}</h2>
+            ${ex.feeling ? `<span class="pill feeling-${escapeHtml(ex.feeling)}">${escapeHtml(ex.feeling)}</span>` : ''}
           </div>
-          ${ex.swapped ? `<p class="swap-ref">Swapped from ${ex.originalName}</p>` : ''}
+          ${ex.swapped ? `<p class="swap-ref">Swapped from ${escapeHtml(ex.originalName)}</p>` : ''}
           <div class="hist-sets">${sets || '<p class="meta">No sets logged</p>'}</div>
-          ${ex.exerciseNote ? `<p class="note-line">${ex.exerciseNote}</p>` : ''}
+          ${ex.exerciseNote ? `<p class="note-line">${escapeHtml(ex.exerciseNote)}</p>` : ''}
           <button type="button" class="btn-text" data-open-detail="${i}">Cues & form</button>
         </article>`
     })
@@ -430,9 +448,9 @@ function renderLockedHistory() {
     .map(
       (l) =>
         `<button type="button" class="recent-row" data-select-date="${l.date}">
-          <span>${displayDateFor(l.date)}</span>
-          <strong>${l.dayFocus || 'Session'}</strong>
-          <span class="pill">${l.overallFeeling || 'done'}</span>
+          <span>${escapeHtml(displayDateFor(l.date))}</span>
+          <strong>${escapeHtml(l.dayFocus || 'Session')}</strong>
+          <span class="pill">${escapeHtml(l.overallFeeling || 'done')}</span>
         </button>`,
     )
     .join('')
@@ -441,11 +459,11 @@ function renderLockedHistory() {
     <div class="banner completed-banner locked-banner">
       <div>
         <strong>Logged · read only</strong>
-        <p>${displayDateFor(session.date)} · ${session.overallFeeling || 'done'}</p>
+        <p>${escapeHtml(displayDateFor(session.date))} · ${escapeHtml(session.overallFeeling || 'done')}</p>
       </div>
       <span class="lock-ico" aria-hidden="true">${icon('lock')}</span>
     </div>
-    ${session.sessionNote ? `<div class="card note-card"><p>${session.sessionNote}</p></div>` : ''}
+    ${session.sessionNote ? `<div class="card note-card"><p>${escapeHtml(session.sessionNote)}</p></div>` : ''}
     ${exercisesHtml}
     ${
       recent
@@ -473,7 +491,7 @@ function renderWorkout() {
   return `
     <div class="card session-hero">
       <div class="card-head">
-        <h2>${session.dayFocus}</h2>
+        <h2>${escapeHtml(session.dayFocus)}</h2>
         <span class="pill muted">${session.exercises.length} exercises</span>
       </div>
       <p class="meta">${session.exercises.length} exercises · leave 1–2 RIR on main lifts</p>
@@ -520,9 +538,9 @@ function renderExercise(ex, index) {
       <div class="ex-top">
         <div class="ex-diagram">${diagramFor(ex.name)}</div>
         <div class="ex-title">
-          <h2>${ex.name}${ex.optional ? '<span class="optional-tag">Optional</span>' : ''}</h2>
-          <div class="meta">${ex.planned.sets}×${ex.planned.reps}${ex.planned.note ? ` · ${ex.planned.note}` : ''}${rest ? ` · ${rest}` : ''}</div>
-          ${ex.swapped ? `<div class="swap-ref">Was: ${ex.originalName}</div>` : ''}
+          <h2>${escapeHtml(ex.name)}${ex.optional ? '<span class="optional-tag">Optional</span>' : ''}</h2>
+          <div class="meta">${escapeHtml(ex.planned.sets)}×${escapeHtml(ex.planned.reps)}${ex.planned.note ? ` · ${escapeHtml(ex.planned.note)}` : ''}${rest ? ` · ${escapeHtml(rest)}` : ''}</div>
+          ${ex.swapped ? `<div class="swap-ref">Was: ${escapeHtml(ex.originalName)}</div>` : ''}
         </div>
       </div>
       <div class="ex-actions">
@@ -532,7 +550,7 @@ function renderExercise(ex, index) {
       <div class="set-cols" aria-hidden="true"><span>#</span><span>${unit.toUpperCase()}</span><span>REPS</span></div>
       <div class="sets">${sets}</div>
       <div class="chips">${chips}</div>
-      <textarea placeholder="Exercise note" data-ex-note="${index}">${ex.exerciseNote || ''}</textarea>
+      <textarea placeholder="Exercise note" data-ex-note="${index}">${escapeHtml(ex.exerciseNote || '')}</textarea>
       <div class="row-actions">
         <button type="button" class="btn btn-done ${ex.done ? 'on' : ''}" data-toggle-done="${index}">
           ${ex.done ? `${icon('check', 'ico')} Done` : 'Mark done'}
@@ -604,14 +622,14 @@ function renderHowtoDemo(ex) {
   const demo = getDemoForExercise(ex)
   if (demo?.loop) {
     const src = demoAssetUrl(demo.loop)
-    return `<div class="howto-demo"><img src="${src}" alt="${ex.name} demo" loading="lazy" /></div>`
+    return `<div class="howto-demo"><img src="${escapeHtml(src)}" alt="${escapeHtml(ex.name)} demo" loading="lazy" /></div>`
   }
   if (demo?.frames?.length) {
     const frames = demo.frames
       .map(
         (f) => `<figure class="howto-demo-frame">
-          <img src="${demoAssetUrl(f.file)}" alt="${f.label}" loading="lazy" />
-          <figcaption>${f.label}</figcaption>
+          <img src="${escapeHtml(demoAssetUrl(f.file))}" alt="${escapeHtml(f.label)}" loading="lazy" />
+          <figcaption>${escapeHtml(f.label)}</figcaption>
         </figure>`,
       )
       .join('')
@@ -626,7 +644,7 @@ function renderHowtoDemo(ex) {
   return `<div class="howto-demo"><div class="howto-demo-placeholder">
     <strong>Demo media coming soon</strong>
     <span>Follow Setup → Move → Avoid below${steps.length ? ':' : '.'}</span>
-    ${steps.map((s) => `<span>${s}</span>`).join('')}
+    ${steps.map((s) => `<span>${escapeHtml(s)}</span>`).join('')}
   </div></div>`
 }
 
@@ -636,7 +654,7 @@ function renderCueBlocks(ex) {
     if (!lines?.length) return ''
     return `<div class="cue-block">
       <h3 class="sheet-section">${label}</h3>
-      <ul class="cue-lines">${lines.map((l) => `<li>${l}</li>`).join('')}</ul>
+      <ul class="cue-lines">${lines.map((l) => `<li>${escapeHtml(l)}</li>`).join('')}</ul>
     </div>`
   }
   const html =
@@ -655,8 +673,8 @@ function openExerciseSheet(index, readOnly) {
     .map(
       (a, ai) => `
       <button type="button" class="alt-row ${readOnly ? 'locked-alt' : ''}" data-swap-to="${ai}" ${readOnly ? 'disabled' : ''}>
-        <strong>${a.name}${readOnly ? `<span class="lock-micro">${icon('lock')}</span>` : ''}</strong>
-        <span>${a.note || 'Alternative'}</span>
+        <strong>${escapeHtml(a.name)}${readOnly ? `<span class="lock-micro">${icon('lock')}</span>` : ''}</strong>
+        <span>${escapeHtml(a.note || 'Alternative')}</span>
       </button>`,
     )
     .join('')
@@ -667,10 +685,10 @@ function openExerciseSheet(index, readOnly) {
     ${renderHowtoDemo(ex)}
     <div class="howto-title-row">
       <div>
-        <h2>${ex.name}</h2>
-        <p class="meta">${ex.planned.sets}×${ex.planned.reps}${formatRest(ex.planned.restSec) ? ` · ${formatRest(ex.planned.restSec)}` : ''}</p>
+        <h2>${escapeHtml(ex.name)}</h2>
+        <p class="meta">${escapeHtml(ex.planned.sets)}×${escapeHtml(ex.planned.reps)}${formatRest(ex.planned.restSec) ? ` · ${escapeHtml(formatRest(ex.planned.restSec))}` : ''}</p>
       </div>
-      <span class="equip-chip">${equipment}</span>
+      <span class="equip-chip">${escapeHtml(equipment)}</span>
     </div>
     ${renderCueBlocks(ex)}
     ${
@@ -688,7 +706,7 @@ function openExerciseSheet(index, readOnly) {
       }
       ${
         ex.swapped && !readOnly
-          ? `<button type="button" class="btn btn-secondary" data-restore-original>Restore ${ex.originalName}</button>`
+          ? `<button type="button" class="btn btn-secondary" data-restore-original>Restore ${escapeHtml(ex.originalName)}</button>`
           : ''
       }
       <button type="button" class="btn btn-ghost" data-close-sheet style="width:100%">${icon('close', 'ico')} Close</button>
@@ -731,21 +749,21 @@ function openSwapSheet(index) {
     <div class="sheet-handle"></div>
     <h2>Swap exercise</h2>
     <p class="hint">Machine busy? Pick a swap for this session. Original stays as reference.</p>
-    <p class="meta" style="margin-bottom:12px">Current: <strong>${ex.name}</strong></p>
+    <p class="meta" style="margin-bottom:12px">Current: <strong>${escapeHtml(ex.name)}</strong></p>
     <div class="alt-list">
       ${alts
         .map(
           (a, ai) => `
         <button type="button" class="alt-row" data-swap-to="${ai}">
-          <strong>${a.name}</strong>
-          <span>${a.note || 'Use same sets/reps unless noted'}</span>
+          <strong>${escapeHtml(a.name)}</strong>
+          <span>${escapeHtml(a.note || 'Use same sets/reps unless noted')}</span>
         </button>`,
         )
         .join('')}
     </div>
     ${
       ex.swapped
-        ? `<button type="button" class="btn btn-secondary" data-restore-original style="margin-top:12px">Restore ${ex.originalName}</button>`
+        ? `<button type="button" class="btn btn-secondary" data-restore-original style="margin-top:12px">Restore ${escapeHtml(ex.originalName)}</button>`
         : ''
     }
     <button type="button" class="btn btn-ghost" data-close-sheet style="width:100%;margin-top:8px">Cancel</button>
@@ -821,7 +839,7 @@ function openFinishModal(isRest) {
       </div>
       <div class="field">
         <label>Session note</label>
-        <textarea id="session-note" placeholder="How did it feel overall?">${session.sessionNote || ''}</textarea>
+        <textarea id="session-note" placeholder="How did it feel overall?">${escapeHtml(session.sessionNote || '')}</textarea>
       </div>
       <button type="button" class="btn btn-primary" id="confirm-finish">Lock & save</button>
       <button type="button" class="btn btn-ghost" id="cancel-finish" style="width:100%;margin-top:8px">Cancel</button>
@@ -858,8 +876,8 @@ function openFinishModal(isRest) {
       toast(drive.isSignedIn() ? 'Locked + synced to Drive' : 'Locked on this device')
       render()
     } catch (err) {
-      console.error(err)
-      toast(`Locked locally. Drive sync failed: ${err.message}`)
+      console.error(safeErrMsg(err))
+      toast(`Locked locally. Drive sync failed: ${safeErrMsg(err)}`)
       backdrop.remove()
       render()
     }
@@ -959,8 +977,8 @@ function renderSettings() {
             .map(
               (l) =>
                 `<button type="button" class="recent-row" data-jump-log="${l.date}">
-                  <span>${displayDateFor(l.date)}</span>
-                  <strong>${l.dayFocus || 'Session'}</strong>
+                  <span>${escapeHtml(displayDateFor(l.date))}</span>
+                  <strong>${escapeHtml(l.dayFocus || 'Session')}</strong>
                   <span class="pill">Locked</span>
                 </button>`,
             )
@@ -971,9 +989,9 @@ function renderSettings() {
 
     <div class="card settings-block">
       <h3>Folder IDs</h3>
-      <p>Fitness Coach<br/><code>${ids.fitnessCoach || '—'}</code></p>
-      <p style="margin-top:8px">logs/<br/><code>${ids.logs || '—'}</code></p>
-      <p style="margin-top:8px">plan file<br/><code>${ids.plan || '—'}</code></p>
+      <p>Fitness Coach<br/><code>${escapeHtml(ids.fitnessCoach || '—')}</code></p>
+      <p style="margin-top:8px">logs/<br/><code>${escapeHtml(ids.logs || '—')}</code></p>
+      <p style="margin-top:8px">plan file<br/><code>${escapeHtml(ids.plan || '—')}</code></p>
       <button type="button" class="btn btn-ghost" id="reset-folder-ids" style="margin-top:8px">Reset to defaults</button>
     </div>
 
@@ -1018,8 +1036,8 @@ function bindSettings(main) {
       await refreshPlanFromDrive(true)
       render()
     } catch (err) {
-      console.error(err)
-      toast(err.message || 'Sign-in failed')
+      console.error(safeErrMsg(err))
+      toast(safeErrMsg(err) || 'Sign-in failed')
     }
   })
 
@@ -1038,7 +1056,7 @@ function bindSettings(main) {
       toast('Plan refreshed')
       render()
     } catch (err) {
-      toast(err.message || 'Refresh failed')
+      toast(safeErrMsg(err) || 'Refresh failed')
     }
   })
 
@@ -1096,7 +1114,7 @@ async function boot() {
         }
       }
     } catch (err) {
-      console.warn('Google init failed', err)
+      console.warn('Google init failed', safeErrMsg(err))
     }
   }
 }
