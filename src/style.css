@@ -149,7 +149,7 @@ textarea { min-height: 80px; resize: vertical; }
   border-color: color-mix(in srgb, var(--accent) 35%, transparent);
 }
 .pill.feeling-easy { color: var(--ok); background: var(--ok-soft); border-color: color-mix(in srgb, var(--ok) 35%, var(--border)); }
-.pill.feeling-solid { color: var(--warn); background: var(--warn-soft); border-color: color-mix(in srgb, var(--warn) 35%, var(--border)); }
+.pill.feeling-solid { color: var(--muted); background: var(--chip); border-color: var(--border-strong); }
 .pill.feeling-grind { color: var(--danger); background: var(--danger-soft); border-color: color-mix(in srgb, var(--danger) 35%, var(--border)); }
 
 .badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
@@ -307,8 +307,9 @@ main { padding: 16px 16px 28px; flex: 1; }
 }
 
 .card.session-hero {
-  border-color: color-mix(in srgb, var(--accent) 28%, var(--border));
+  border-color: var(--border);
   background: var(--bg-card);
+  border-left: 2px solid color-mix(in srgb, var(--accent) 45%, var(--border));
 }
 
 /* —— Exercise cards —— */
@@ -442,9 +443,9 @@ main { padding: 16px 16px 28px; flex: 1; }
   color: var(--ok);
 }
 .chip.solid.active {
-  border-color: var(--warn);
-  background: var(--warn-soft);
-  color: var(--warn);
+  border-color: var(--border-strong);
+  background: var(--bg-card-2);
+  color: var(--text);
 }
 .chip.grind.active {
   border-color: var(--danger);
@@ -832,12 +833,24 @@ main { padding: 16px 16px 28px; flex: 1; }
 }
 
 .banner {
-  background: var(--accent-soft);
-  border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--border));
+  background: transparent;
+  border: 1px solid var(--border-strong);
   border-radius: 14px;
   padding: 12px 14px;
   margin-bottom: 12px;
   font-size: 0.88rem;
+  color: var(--muted);
+}
+.banner.banner-drive {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+.banner.banner-drive button {
+  margin-top: 8px;
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: underline;
 }
 .banner button {
   margin-top: 8px;
@@ -885,12 +898,12 @@ main { padding: 16px 16px 28px; flex: 1; }
 /* —— How-to sheet (DESIGN-DIRECTION §8 / how-to-sheet.md) —— */
 .howto-demo {
   width: 100%;
-  min-height: 280px;
-  background: var(--bg-elev);
+  min-height: 200px;
+  background: #0B0C0E;
   border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow: hidden;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -899,8 +912,8 @@ main { padding: 16px 16px 28px; flex: 1; }
 .howto-demo video {
   width: 100%;
   height: auto;
-  min-height: 280px;
-  max-height: 360px;
+  min-height: 200px;
+  max-height: 280px;
   display: block;
   object-fit: contain;
   background: #0B0C0E;
@@ -999,3 +1012,33 @@ main { padding: 16px 16px 28px; flex: 1; }
 .alt-row .lock-micro svg { width: 14px; height: 14px; }
 .ico { width: 24px; height: 24px; display: block; }
 .btn .ico, .btn-done .ico { width: 16px; height: 16px; }
+
+/* Compact how-to cues so Setup → Move → Avoid fit first sheet viewport */
+.howto-title-row { margin-bottom: 8px; }
+.cue-blocks {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0 0 12px;
+}
+.cue-block { margin: 0; padding: 10px 12px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm); }
+.cue-block .sheet-section { margin: 0 0 6px; color: var(--muted); }
+.cue-block.cue-avoid {
+  border-color: color-mix(in srgb, var(--danger) 28%, var(--border));
+}
+.cue-block.cue-avoid .sheet-section { color: var(--danger); }
+.cue-lines { gap: 4px; }
+.cue-lines li { font-size: 0.88rem; line-height: 1.35; padding: 2px 0; }
+.howto-attr {
+  margin: 8px 0 0;
+  font-size: 0.7rem;
+  color: var(--muted-2);
+  letter-spacing: 0.02em;
+}
+.howto-attr a { color: var(--muted); text-decoration: underline; text-underline-offset: 2px; }
+.howto-demo-sequence img {
+  min-height: 200px;
+  max-height: 280px;
+  object-fit: contain;
+  background: #0B0C0E;
+}

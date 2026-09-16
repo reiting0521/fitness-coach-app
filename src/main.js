@@ -2,7 +2,7 @@ import './style.css'
 import seedPlan from './plan.json'
 import seedLog from './seed-log-2026-09-16.json'
 import { diagramFor, formatRest, icon } from './diagrams.js'
-import { getDemoForExercise, demoAssetUrl, normalizeCues } from './demos.js'
+import { demoAssetUrl, getDemoForExercise, hasRealDemo, normalizeCues } from './demos.js'
 import {
   getZurichDateString,
   getZurichDisplayDate,
@@ -500,7 +500,7 @@ function renderWorkout() {
     </div>
     ${
       !drive.isSignedIn()
-        ? `<div class="banner">${
+        ? `<div class="banner banner-drive">${
             drive.isConfigured()
               ? 'Logs save locally. <button type="button" data-goto-settings>Connect Drive</button>'
               : 'Offline mode — localStorage only.'
@@ -623,32 +623,28 @@ function bindWorkout(main) {
 function renderHowtoDemo(ex) {
   const demo = getDemoForExercise(ex)
 
-  // 1) Visual Artist sequence strip (preferred teaching surface)
-  if (demo?.sequence) {
-    const src = demoAssetUrl(demo.sequence)
-    return `<div class="howto-demo howto-demo-sequence"><img src="${escapeHtml(src)}" alt="${escapeHtml(ex.name)} sequence" loading="lazy" /></div>`
+  // Priority (Design Director): 1) real/{id}.gif  2) legacy loop gif  3) NEVER VA sequence/frames as hero
+  const realPath =
+    (demo?.real && String(demo.real).includes('real/') && !String(demo.real).endsWith('.svg') && demo.real) ||
+    (demo?.gif && String(demo.gif).includes('real/') && demo.gif) ||
+    (demo?.realGif && demo.realGif) ||
+    null
+
+  if (realPath) {
+    const src = demoAssetUrl(realPath)
+    return `<div class="howto-demo howto-demo-real"><img src="${escapeHtml(src)}" alt="${escapeHtml(ex.name)} form demo" loading="lazy" /></div>
+    <p class="howto-attr">Form demo: <a href="https://exercisedb.dev" target="_blank" rel="noopener noreferrer">ExerciseDB / AscendAPI</a></p>`
   }
 
-  // 2) VA start/mid/end frames (or any mapped frame strip)
-  if (demo?.frames?.length) {
-    const n = demo.frames.length
-    const frames = demo.frames
-      .map(
-        (f) => `<figure class="howto-demo-frame">
-          <img src="${escapeHtml(demoAssetUrl(f.file))}" alt="${escapeHtml(f.label)}" loading="lazy" />
-          <figcaption>${escapeHtml(f.label)}${f.cue ? ` · ${escapeHtml(f.cue)}` : ''}</figcaption>
-        </figure>`,
-      )
-      .join('')
-    return `<div class="howto-demo"><div class="howto-demo-strip" style="--howto-cols:${n}">${frames}</div></div>`
-  }
-
-  // 3) Legacy GIF/loop only when VA sequence/frames are missing
-  if (demo?.loop) {
+  if (demo?.loop && !String(demo.loop).endsWith('.svg') && !String(demo.loop).includes('/va/')) {
     const src = demoAssetUrl(demo.loop)
-    return `<div class="howto-demo"><img src="${escapeHtml(src)}" alt="${escapeHtml(ex.name)} demo" loading="lazy" /></div>`
+    const attr = String(demo.loop).includes('real/') || demo?.source === 'exercisedb'
+      ? `<p class="howto-attr">Form demo: <a href="https://exercisedb.dev" target="_blank" rel="noopener noreferrer">ExerciseDB / AscendAPI</a></p>`
+      : ''
+    return `<div class="howto-demo howto-demo-real"><img src="${escapeHtml(src)}" alt="${escapeHtml(ex.name)} form demo" loading="lazy" /></div>${attr}`
   }
 
+  // Do NOT render demo.sequence / demo.frames (white anatomical SVGs) as teaching hero
   const cues = normalizeCues(ex.cues)
   const steps = [
     ...(cues.setup.slice(0, 1).map((s) => `1. Setup — ${s}`)),
@@ -662,21 +658,30 @@ function renderHowtoDemo(ex) {
   </div></div>`
 }
 
+
 function renderCueBlocks(ex) {
   const cues = normalizeCues(ex.cues)
-  const block = (label, lines) => {
+  const block = (label, lines, cls = '') => {
     if (!lines?.length) return ''
-    return `<div class="cue-block">
+    return `<div class="cue-block ${cls}">
       <h3 class="sheet-section">${label}</h3>
       <ul class="cue-lines">${lines.map((l) => `<li>${escapeHtml(l)}</li>`).join('')}</ul>
     </div>`
   }
+  // Always surface Avoid — fallback lines if plan omitted them
+  const avoid =
+    cues.avoid?.length
+      ? cues.avoid
+      : ['Rounding or collapsing under load', 'Using momentum instead of control', 'Cutting range of motion short']
   const html =
-    block('Setup', cues.setup) + block('Move', cues.move) + block('Avoid', cues.avoid)
-  if (html) return html
-  return `<div class="cue-block"><h3 class="sheet-section">Move</h3>
-    <ul class="cue-lines"><li>Move with control; stop 1–2 reps shy of failure on compounds.</li></ul></div>`
+    `<div class="cue-blocks">` +
+    block('Setup', cues.setup?.length ? cues.setup : ['Set stance, brace, and lock your start position.']) +
+    block('Move', cues.move?.length ? cues.move : (Array.isArray(ex.cues) ? ex.cues : ['Move with control; stop 1–2 reps shy of failure on compounds.'])) +
+    block('Avoid', avoid, 'cue-avoid') +
+    `</div>`
+  return html
 }
+
 
 function openExerciseSheet(index, readOnly) {
   const ex = session.exercises[index]
@@ -979,6 +984,11 @@ function renderSettings() {
             : `<button type="button" class="btn btn-primary" id="drive-connect" style="margin-top:10px">Connect Google Drive</button>`
           : `<p style="margin-top:8px">See README for OAuth setup.</p>`
       }
+    </div>
+
+    <div class="card settings-block">
+      <h3>Credits</h3>
+      <p class="meta">Exercise form GIFs from <a href="https://exercisedb.dev" target="_blank" rel="noopener noreferrer">ExerciseDB / AscendAPI</a> (free tier — attribution required).</p>
     </div>
 
     <div class="card settings-block">

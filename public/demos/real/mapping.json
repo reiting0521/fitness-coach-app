@@ -1,0 +1,119 @@
+{
+  "version": 2,
+  "source": "ExerciseDB / AscendAPI",
+  "attribution": "Exercise media from AscendAPI / ExerciseDB (https://exercisedb.dev). Free tier requires attribution.",
+  "exercises": {
+    "back-squat": {
+      "id": "back-squat",
+      "name": "barbell full squat",
+      "exerciseId": "qXTaZnJ",
+      "gifUrl": "https://static.exercisedb.dev/media/qXTaZnJ.gif",
+      "file": "real/back-squat.gif",
+      "equipments": [
+        "barbell"
+      ],
+      "source": "exercisedb"
+    },
+    "hip-thrust": {
+      "id": "hip-thrust",
+      "name": "barbell glute bridge",
+      "exerciseId": "qKBpF7I",
+      "gifUrl": "https://static.exercisedb.dev/media/qKBpF7I.gif",
+      "file": "real/hip-thrust.gif",
+      "equipments": [
+        "barbell"
+      ],
+      "source": "exercisedb",
+      "note": "Closest ExerciseDB match to barbell hip thrust (glute bridge pattern)"
+    },
+    "hip-abductor": {
+      "id": "hip-abductor",
+      "name": "lever seated hip abduction",
+      "exerciseId": "CHpahtl",
+      "gifUrl": "https://static.exercisedb.dev/media/CHpahtl.gif",
+      "file": "real/hip-abductor.gif",
+      "equipments": [
+        "leverage machine"
+      ],
+      "source": "exercisedb"
+    },
+    "hip-adductor": {
+      "id": "hip-adductor",
+      "name": "lever seated hip adduction",
+      "exerciseId": "oHsrypV",
+      "gifUrl": "https://static.exercisedb.dev/media/oHsrypV.gif",
+      "file": "real/hip-adductor.gif",
+      "equipments": [
+        "leverage machine"
+      ],
+      "source": "exercisedb"
+    },
+    "smith-sl-calf": {
+      "id": "smith-sl-calf",
+      "name": "smith seated one leg calf raise",
+      "exerciseId": "0S75mYG",
+      "gifUrl": "https://static.exercisedb.dev/media/0S75mYG.gif",
+      "file": "real/smith-sl-calf.gif",
+      "equipments": [
+        "smith machine"
+      ],
+      "source": "exercisedb"
+    },
+    "deadlift": {
+      "id": "deadlift",
+      "name": "barbell deadlift",
+      "exerciseId": "ila4NZS",
+      "gifUrl": "https://static.exercisedb.dev/media/ila4NZS.gif",
+      "file": "real/deadlift.gif",
+      "equipments": [
+        "barbell"
+      ],
+      "source": "exercisedb"
+    },
+    "pulldown": {
+      "id": "pulldown",
+      "name": "cable lat pulldown full range of motion",
+      "exerciseId": "LEprlgG",
+      "gifUrl": "https://static.exercisedb.dev/media/LEprlgG.gif",
+      "file": "real/pulldown.gif",
+      "equipments": [
+        "cable"
+      ],
+      "source": "exercisedb"
+    },
+    "seal-row": {
+      "id": "seal-row",
+      "name": "dumbbell incline row",
+      "exerciseId": "7vG5o25",
+      "gifUrl": "https://static.exercisedb.dev/media/7vG5o25.gif",
+      "file": "real/seal-row.gif",
+      "equipments": [
+        "dumbbell"
+      ],
+      "source": "exercisedb"
+    },
+    "straight-arm-pd": {
+      "id": "straight-arm-pd",
+      "name": "cable straight arm pulldown (with rope)",
+      "exerciseId": "DT14T9T",
+      "gifUrl": "https://static.exercisedb.dev/media/DT14T9T.gif",
+      "file": "real/straight-arm-pd.gif",
+      "equipments": [
+        "cable"
+      ],
+      "source": "exercisedb"
+    },
+    "face-pull-fri": {
+      "id": "face-pull-fri",
+      "name": "cable kneeling rear delt row (with rope) (male)",
+      "exerciseId": "G61cXLk",
+      "gifUrl": "https://static.exercisedb.dev/media/G61cXLk.gif",
+      "file": "real/face-pull-fri.gif",
+      "equipments": [
+        "cable"
+      ],
+      "source": "exercisedb",
+      "note": "Closest ExerciseDB match to face pull (cable rear delt row with rope)"
+    }
+  }
+}

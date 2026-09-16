@@ -51,7 +51,11 @@
           "cue": "Drive mid-foot; lockout"
         }
       ],
-      "loop": "back-squat.gif"
+      "loop": "real/back-squat.gif",
+      "real": "real/back-squat.gif",
+      "source": "exercisedb",
+      "preferGif": true,
+      "exerciseId": "qXTaZnJ"
     },
     "hip-thrust": {
       "id": "hip-thrust",
@@ -79,7 +83,11 @@
           "cue": "Full hip extension"
         }
       ],
-      "loop": "hip-thrust.gif"
+      "loop": "real/hip-thrust.gif",
+      "real": "real/hip-thrust.gif",
+      "source": "exercisedb",
+      "preferGif": true,
+      "exerciseId": "qKBpF7I"
     },
     "hip-abductor": {
       "id": "hip-abductor",
@@ -107,7 +115,11 @@
           "cue": "Pause at full abduction"
         }
       ],
-      "loop": "hip-abductor.gif"
+      "loop": "real/hip-abductor.gif",
+      "real": "real/hip-abductor.gif",
+      "source": "exercisedb",
+      "preferGif": true,
+      "exerciseId": "CHpahtl"
     },
     "hip-adductor": {
       "id": "hip-adductor",
@@ -135,7 +147,11 @@
           "cue": "Squeezed \u2014 pelvis stable"
         }
       ],
-      "loop": "hip-adductor.gif"
+      "loop": "real/hip-adductor.gif",
+      "real": "real/hip-adductor.gif",
+      "source": "exercisedb",
+      "preferGif": true,
+      "exerciseId": "oHsrypV"
     },
     "smith-sl-calf": {
       "id": "smith-sl-calf",
@@ -163,7 +179,11 @@
           "cue": "Top squeeze \u2014 pause"
         }
       ],
-      "loop": "smith-sl-calf.gif"
+      "loop": "real/smith-sl-calf.gif",
+      "real": "real/smith-sl-calf.gif",
+      "source": "exercisedb",
+      "preferGif": true,
+      "exerciseId": "0S75mYG"
     },
     "deadlift": {
       "id": "deadlift",
@@ -191,7 +211,11 @@
           "cue": "Stand tall \u2014 don't lean"
         }
       ],
-      "loop": "deadlift.gif"
+      "loop": "real/deadlift.gif",
+      "real": "real/deadlift.gif",
+      "source": "exercisedb",
+      "preferGif": true,
+      "exerciseId": "ila4NZS"
     },
     "pulldown": {
       "id": "pulldown",
@@ -219,7 +243,11 @@
           "cue": "Chest up; elbows to ribs"
         }
       ],
-      "loop": "pulldown.gif"
+      "loop": "real/pulldown.gif",
+      "real": "real/pulldown.gif",
+      "source": "exercisedb",
+      "preferGif": true,
+      "exerciseId": "LEprlgG"
     },
     "seal-row": {
       "id": "seal-row",
@@ -247,7 +275,11 @@
           "cue": "Squeeze mid-back"
         }
       ],
-      "loop": "seal-row.gif"
+      "loop": "real/seal-row.gif",
+      "real": "real/seal-row.gif",
+      "source": "exercisedb",
+      "preferGif": true,
+      "exerciseId": "7vG5o25"
     },
     "straight-arm-pd": {
       "id": "straight-arm-pd",
@@ -275,7 +307,11 @@
           "cue": "Bar at thighs"
         }
       ],
-      "loop": "straight-arm-pd.gif"
+      "loop": "real/straight-arm-pd.gif",
+      "real": "real/straight-arm-pd.gif",
+      "source": "exercisedb",
+      "preferGif": true,
+      "exerciseId": "DT14T9T"
     },
     "face-pull-fri": {
       "id": "face-pull-fri",
@@ -303,7 +339,13 @@
           "cue": "External rotation finish"
         }
       ],
-      "loop": null
+      "loop": "real/face-pull-fri.gif",
+      "real": "real/face-pull-fri.gif",
+      "source": "exercisedb",
+      "preferGif": true,
+      "exerciseId": "G61cXLk"
     }
-  }
+  },
+  "attribution": "Exercise media from AscendAPI / ExerciseDB (https://exercisedb.dev). Free tier requires attribution.",
+  "mediaSource": "ExerciseDB / AscendAPI"
 }
