@@ -1,56 +1,394 @@
 {
-  "planVersion": 1,
-  "updatedAt": "2026-09-16T21:49:00+02:00",
+  "planVersion": 2,
+  "updatedAt": "2026-09-16T23:00:00+02:00",
   "timezone": "Europe/Zurich",
   "goal": "strength",
   "unit": "kg",
-  "notes": "Week 1 seed. Intermediate, full gym. Leave 1–2 reps in reserve on main lifts.",
+  "notes": "Plan v2 — intermediate full gym. Leave 1–2 RIR on main lifts. Swap machines when occupied.",
   "week": {
     "monday": {
       "focus": "Shoulders",
       "rest": false,
       "exercises": [
-        {"name": "Overhead press", "sets": 4, "reps": "5", "note": "1–2 RIR"},
-        {"name": "Dumbbell lateral raise", "sets": 3, "reps": "10-12"},
-        {"name": "Face pull", "sets": 3, "reps": "12-15"},
-        {"name": "Rear-delt fly", "sets": 3, "reps": "12-15"},
-        {"name": "Shrug", "sets": 3, "reps": "8-10", "optional": true}
+        {
+          "id": "ohp",
+          "name": "Overhead press",
+          "sets": 4,
+          "reps": "5",
+          "restSec": 180,
+          "note": "1–2 RIR",
+          "cues": [
+            "Brace core, ribs down — avoid excessive arch",
+            "Bar starts on upper chest / front delts",
+            "Press up and slightly back to lockout over mid-foot",
+            "Elbows ~45°, wrists stacked over elbows",
+            "Control the eccentric; reset breath each rep"
+          ],
+          "alternatives": [
+            { "name": "Seated dumbbell shoulder press", "note": "Same sets/reps" },
+            { "name": "Landmine press", "note": "Joint-friendlier option" }
+          ]
+        },
+        {
+          "id": "lateral-raise",
+          "name": "Dumbbell lateral raise",
+          "sets": 3,
+          "reps": "10-12",
+          "restSec": 90,
+          "cues": [
+            "Slight elbow bend; raise to ~shoulder height",
+            "Lead with elbows, pinkies slightly up",
+            "Stop short of shrugging traps",
+            "Slow lower — 2–3 sec eccentric"
+          ],
+          "alternatives": [
+            { "name": "Cable lateral raise", "note": "Constant tension" },
+            { "name": "Machine lateral raise", "note": "If available" }
+          ]
+        },
+        {
+          "id": "face-pull",
+          "name": "Face pull",
+          "sets": 3,
+          "reps": "12-15",
+          "restSec": 90,
+          "cues": [
+            "Rope to upper chest / face height",
+            "Pull to nose/forehead, elbows high",
+            "Externally rotate at end (thumbs back)",
+            "Squeeze rear delts 1 sec"
+          ],
+          "alternatives": [
+            { "name": "Band face pull", "note": "Same intent" },
+            { "name": "Reverse pec-deck", "note": "Machine swap" }
+          ]
+        },
+        {
+          "id": "rear-delt-fly",
+          "name": "Rear-delt fly",
+          "sets": 3,
+          "reps": "12-15",
+          "restSec": 90,
+          "cues": [
+            "Hinge or chest-supported; soft elbows",
+            "Sweep arms wide, squeeze shoulder blades lightly",
+            "Don't shrug — keep neck long",
+            "Pause briefly at peak contraction"
+          ],
+          "alternatives": [
+            { "name": "Cable rear-delt fly", "note": "Cross-body cables" },
+            { "name": "Bent-over DB rear fly", "note": "Free-weight option" }
+          ]
+        },
+        {
+          "id": "shrug",
+          "name": "Shrug",
+          "sets": 3,
+          "reps": "8-10",
+          "restSec": 90,
+          "optional": true,
+          "cues": [
+            "Stand tall, arms straight",
+            "Elevate shoulders straight up toward ears",
+            "Pause at top; lower under control",
+            "Avoid rolling shoulders forward"
+          ],
+          "alternatives": [
+            { "name": "Dumbbell shrug", "note": "Same pattern" },
+            { "name": "Trap bar shrug", "note": "If trap bar available" }
+          ]
+        }
       ]
     },
     "tuesday": {
       "focus": "Chest",
       "rest": false,
       "exercises": [
-        {"name": "Flat barbell bench press", "sets": 4, "reps": "5", "note": "1–2 RIR"},
-        {"name": "Incline dumbbell press", "sets": 3, "reps": "6-8"},
-        {"name": "Weighted dip or close-grip bench", "sets": 3, "reps": "6-8"},
-        {"name": "Cable or dumbbell fly", "sets": 2, "reps": "12-15"}
+        {
+          "id": "bench",
+          "name": "Flat barbell bench press",
+          "sets": 4,
+          "reps": "5",
+          "restSec": 180,
+          "note": "1–2 RIR",
+          "cues": [
+            "Feet planted, slight arch, scapula retracted",
+            "Bar path: mid-chest to stacked lockout",
+            "Elbows ~45–70°, wrists stacked",
+            "Touch lightly, drive up explosively",
+            "Keep upper back tight the whole set"
+          ],
+          "alternatives": [
+            { "name": "Dumbbell bench press", "note": "Same sets/reps" },
+            { "name": "Smith machine bench", "note": "If racks busy" },
+            { "name": "Machine chest press", "note": "Stable machine option" }
+          ]
+        },
+        {
+          "id": "incline-db",
+          "name": "Incline dumbbell press",
+          "sets": 3,
+          "reps": "6-8",
+          "restSec": 150,
+          "cues": [
+            "Bench ~30–45°",
+            "DBs start at outer chest, press up and slightly in",
+            "Don't bounce at bottom",
+            "Control the stretch on the way down"
+          ],
+          "alternatives": [
+            { "name": "Incline barbell press", "note": "Barbell variant" },
+            { "name": "Incline machine press", "note": "Machine swap" }
+          ]
+        },
+        {
+          "id": "dip-cgbp",
+          "name": "Weighted dip or close-grip bench",
+          "sets": 3,
+          "reps": "6-8",
+          "restSec": 150,
+          "note": "Pick one",
+          "cues": [
+            "Dip: lean slightly forward for chest bias",
+            "Dip: elbows track back, not flared wide",
+            "CGBP: hands ~shoulder-width, elbows tucked",
+            "Full lockout without losing scapular tension"
+          ],
+          "alternatives": [
+            { "name": "Close-grip bench press", "note": "If no dip station" },
+            { "name": "Push-up (weighted/deficit)", "note": "Bodyweight option" },
+            { "name": "JM press", "note": "Triceps/chest hybrid" }
+          ]
+        },
+        {
+          "id": "fly",
+          "name": "Cable or dumbbell fly",
+          "sets": 2,
+          "reps": "12-15",
+          "restSec": 90,
+          "cues": [
+            "Soft elbows fixed through the arc",
+            "Big stretch at bottom, squeeze at midline",
+            "Don't turn it into a press",
+            "Slow eccentrics"
+          ],
+          "alternatives": [
+            { "name": "Pec-deck fly", "note": "Machine" },
+            { "name": "Cable crossover", "note": "Standing cables" }
+          ]
+        }
       ]
     },
     "wednesday": {
       "focus": "Legs",
       "rest": false,
       "exercises": [
-        {"name": "Back squat", "sets": 4, "reps": "5", "note": "1–2 RIR"},
-        {"name": "Romanian deadlift", "sets": 3, "reps": "6-8"},
-        {"name": "Walking lunge or Bulgarian split squat", "sets": 3, "reps": "8/leg"},
-        {"name": "Leg curl", "sets": 3, "reps": "10-12"},
-        {"name": "Standing calf raise", "sets": 3, "reps": "10-12"}
+        {
+          "id": "back-squat",
+          "name": "Barbell back squat",
+          "sets": 4,
+          "reps": "5-8",
+          "restSec": 180,
+          "note": "Last top ~90–92×4–5 · 1–2 RIR",
+          "cues": [
+            "Bar on upper traps (high-bar) or rear delts (low-bar)",
+            "Brace hard — big breath before the descent",
+            "Break at hips & knees together; knees track over toes",
+            "Depth: hip crease below knee if mobility allows",
+            "Drive mid-foot, keep chest proud out of the hole"
+          ],
+          "alternatives": [
+            { "name": "Goblet squat", "note": "Lighter / technique" },
+            { "name": "Leg press", "note": "If squat rack busy" },
+            { "name": "Hack squat", "note": "Machine option" }
+          ]
+        },
+        {
+          "id": "hip-thrust",
+          "name": "Barbell hip thrust",
+          "sets": 4,
+          "reps": "6-10",
+          "restSec": 180,
+          "note": "Last top ~70×6–7",
+          "cues": [
+            "Upper back on bench, bar over hips (pad up)",
+            "Chin tucked, ribs down — don't hyperextend lumbar",
+            "Drive through heels; full hip extension at top",
+            "Squeeze glutes 1 sec at lockout",
+            "Control the lower — don't dump the bar"
+          ],
+          "alternatives": [
+            { "name": "Dumbbell hip thrust", "note": "If no bar setup" },
+            { "name": "Cable pull-through", "note": "Hinge/glute swap" },
+            { "name": "Glute bridge (weighted)", "note": "Floor variation" }
+          ]
+        },
+        {
+          "id": "hip-abductor",
+          "name": "Hip abductor machine (out)",
+          "sets": 3,
+          "reps": "7-10",
+          "restSec": 120,
+          "cues": [
+            "Sit tall, pads against outer thighs",
+            "Push out against the pads — feel outer glutes",
+            "Control the return; don't slam the stack",
+            "Slight pause at full abduction"
+          ],
+          "alternatives": [
+            { "name": "Cable hip abduction", "note": "Ankle cuff, standing" },
+            { "name": "Band side walk", "note": "Mini-band around knees/ankles" },
+            { "name": "Side-lying clam / band clam", "note": "Floor option" }
+          ]
+        },
+        {
+          "id": "hip-adductor",
+          "name": "Hip adductor machine (in)",
+          "sets": 3,
+          "reps": "7-10",
+          "restSec": 120,
+          "cues": [
+            "Pads on inner thighs; start from a comfortable stretch",
+            "Squeeze inward smoothly — no bouncing",
+            "Keep pelvis stable on the seat",
+            "Full ROM without pain in groin"
+          ],
+          "alternatives": [
+            { "name": "Copenhagen adductor hold / raise", "note": "Side-plank progression" },
+            { "name": "Cable adduction", "note": "Ankle cuff, standing" },
+            { "name": "Side-lying adductor raise", "note": "Bodyweight" }
+          ]
+        },
+        {
+          "id": "smith-sl-calf",
+          "name": "Single-leg calf raise (Smith)",
+          "sets": 3,
+          "reps": "8-10",
+          "restSec": 120,
+          "cues": [
+            "Ball of foot on step/plate; free hand for light balance",
+            "Full stretch at bottom, full squeeze at top",
+            "Knee soft but stable — don't bounce",
+            "Equal work both legs; pause at top"
+          ],
+          "alternatives": [
+            { "name": "Standing dumbbell calf raise", "note": "Single or double leg" },
+            { "name": "Leg-press calf raise", "note": "Feet low on sled" },
+            { "name": "Seated calf raise", "note": "Soleus bias" }
+          ]
+        }
       ]
     },
-    "thursday": {"focus": "Rest", "rest": true, "exercises": []},
+    "thursday": {
+      "focus": "Rest",
+      "rest": true,
+      "exercises": []
+    },
     "friday": {
       "focus": "Back",
       "rest": false,
       "exercises": [
-        {"name": "Deadlift or trap-bar deadlift", "sets": 3, "reps": "5", "note": "Alt: heavy barbell row 4×5"},
-        {"name": "Pull-up or lat pulldown", "sets": 4, "reps": "6-8"},
-        {"name": "Chest-supported or seal row", "sets": 3, "reps": "6-8"},
-        {"name": "Straight-arm pulldown or single-arm cable row", "sets": 2, "reps": "12-15"},
-        {"name": "Face pull", "sets": 2, "reps": "12-15"}
+        {
+          "id": "deadlift",
+          "name": "Deadlift or trap-bar deadlift",
+          "sets": 3,
+          "reps": "5",
+          "restSec": 180,
+          "note": "Alt: heavy barbell row 4×5 · 1–2 RIR",
+          "cues": [
+            "Bar over mid-foot; shins close after hinge",
+            "Neutral spine, lats tight ('protect armpits')",
+            "Push floor away — hips & shoulders rise together",
+            "Lockout: stand tall, don't lean back hard",
+            "Reset each rep if form drifts"
+          ],
+          "alternatives": [
+            { "name": "Heavy barbell row", "note": "4×5 strength alt" },
+            { "name": "Romanian deadlift", "note": "Hinge volume" },
+            { "name": "Rack pull", "note": "Partial ROM overload" }
+          ]
+        },
+        {
+          "id": "pulldown",
+          "name": "Pull-up or lat pulldown",
+          "sets": 4,
+          "reps": "6-8",
+          "restSec": 150,
+          "cues": [
+            "Start from dead hang / full stretch",
+            "Initiate with lats — elbows drive to ribs",
+            "Chest up slightly; avoid shrugging",
+            "Control the eccentric 2–3 sec"
+          ],
+          "alternatives": [
+            { "name": "Assisted pull-up", "note": "Band or machine" },
+            { "name": "Neutral-grip pulldown", "note": "Shoulder-friendly" },
+            { "name": "Chest-supported pulldown", "note": "If available" }
+          ]
+        },
+        {
+          "id": "seal-row",
+          "name": "Chest-supported or seal row",
+          "sets": 3,
+          "reps": "6-8",
+          "restSec": 150,
+          "cues": [
+            "Chest glued to pad — no torso swing",
+            "Pull elbows back toward hips",
+            "Squeeze mid-back at top",
+            "Lower with control to full stretch"
+          ],
+          "alternatives": [
+            { "name": "One-arm dumbbell row", "note": "Free-weight" },
+            { "name": "Cable seated row", "note": "Machine/cable" },
+            { "name": "Pendlay row", "note": "Strict barbell" }
+          ]
+        },
+        {
+          "id": "straight-arm-pd",
+          "name": "Straight-arm pulldown or single-arm cable row",
+          "sets": 2,
+          "reps": "12-15",
+          "restSec": 90,
+          "cues": [
+            "Slight hinge; arms nearly straight",
+            "Sweep bar/handle to thighs with lats",
+            "Feel stretch at top of every rep",
+            "No elbow-dominant curling"
+          ],
+          "alternatives": [
+            { "name": "Dumbbell pullover", "note": "Bench option" },
+            { "name": "Single-arm cable row", "note": "As listed alt" }
+          ]
+        },
+        {
+          "id": "face-pull-fri",
+          "name": "Face pull",
+          "sets": 2,
+          "reps": "12-15",
+          "restSec": 90,
+          "cues": [
+            "Rope high; pull to face with high elbows",
+            "External rotation finish",
+            "Rear delts & upper back — not traps shrugging",
+            "Smooth tempo"
+          ],
+          "alternatives": [
+            { "name": "Band pull-apart", "note": "Warm-up friendly" },
+            { "name": "Reverse pec-deck", "note": "Machine" }
+          ]
+        }
       ]
     },
-    "saturday": {"focus": "Rest", "rest": true, "exercises": []},
-    "sunday": {"focus": "Rest", "rest": true, "exercises": []}
+    "saturday": {
+      "focus": "Rest",
+      "rest": true,
+      "exercises": []
+    },
+    "sunday": {
+      "focus": "Rest",
+      "rest": true,
+      "exercises": []
+    }
   }
 }

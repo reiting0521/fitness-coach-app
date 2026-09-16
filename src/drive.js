@@ -220,20 +220,29 @@ export async function resolveFolders(settings) {
 export async function fetchPlanFromDrive(settings) {
   if (!accessToken) throw new Error('Not signed in')
   const ids = await resolveFolders(settings)
+
+  // Prefer plan-v2.json, then fall back to plan.json / cached plan id
+  const v2 = await findChildByName(ids.fitnessCoach, 'plan-v2.json', 'application/json')
+  if (v2) {
+    ids.plan = v2.id
+    const text = await driveDownload(v2.id)
+    return { plan: JSON.parse(text), folderIds: ids, planFile: 'plan-v2.json' }
+  }
+
   let planId = ids.plan
   try {
     if (planId) {
       const text = await driveDownload(planId)
-      return { plan: JSON.parse(text), folderIds: ids }
+      return { plan: JSON.parse(text), folderIds: ids, planFile: 'plan.json' }
     }
   } catch {
     planId = null
   }
   const found = await findChildByName(ids.fitnessCoach, 'plan.json', 'application/json')
-  if (!found) throw new Error('plan.json not found in Fitness Coach folder')
+  if (!found) throw new Error('plan-v2.json / plan.json not found in Fitness Coach folder')
   ids.plan = found.id
   const text = await driveDownload(found.id)
-  return { plan: JSON.parse(text), folderIds: ids }
+  return { plan: JSON.parse(text), folderIds: ids, planFile: 'plan.json' }
 }
 
 export async function saveLogToDrive(settings, dateStr, log) {

@@ -1,0 +1,79 @@
+{
+  "date": "2026-09-16",
+  "timezone": "Europe/Zurich",
+  "dayFocus": "Legs",
+  "completed": true,
+  "locked": true,
+  "overallFeeling": "solid",
+  "sessionNote": "Good legs day. Squats topped ~91×5; hip thrusts 70×6–7. Abductor/adductor machines + Smith SL calves.",
+  "exercises": [
+    {
+      "name": "Barbell back squat",
+      "planned": { "sets": 4, "reps": "5-8", "note": "Last top ~90–92×4–5 · 1–2 RIR", "restSec": 180 },
+      "performed": [
+        { "weightKg": 60, "reps": 12 },
+        { "weightKg": 80, "reps": 7 },
+        { "weightKg": 91, "reps": 5 },
+        { "weightKg": 60, "reps": 13 }
+      ],
+      "feeling": "solid",
+      "exerciseNote": "",
+      "done": true,
+      "originalName": "Barbell back squat"
+    },
+    {
+      "name": "Barbell hip thrust",
+      "planned": { "sets": 4, "reps": "6-10", "note": "Last top ~70×6–7", "restSec": 180 },
+      "performed": [
+        { "weightKg": 50, "reps": 11 },
+        { "weightKg": 60, "reps": 8 },
+        { "weightKg": 70, "reps": 6 },
+        { "weightKg": 70, "reps": 7 }
+      ],
+      "feeling": "solid",
+      "exerciseNote": "",
+      "done": true,
+      "originalName": "Barbell hip thrust"
+    },
+    {
+      "name": "Hip abductor machine (out)",
+      "planned": { "sets": 3, "reps": "7-10", "restSec": 120 },
+      "performed": [
+        { "weightKg": 65, "reps": 8 },
+        { "weightKg": 67, "reps": 8 },
+        { "weightKg": 70, "reps": 7 }
+      ],
+      "feeling": "solid",
+      "exerciseNote": "",
+      "done": true,
+      "originalName": "Hip abductor machine (out)"
+    },
+    {
+      "name": "Hip adductor machine (in)",
+      "planned": { "sets": 3, "reps": "7-10", "restSec": 120 },
+      "performed": [
+        { "weightKg": 53, "reps": 8 },
+        { "weightKg": 55, "reps": 7 },
+        { "weightKg": 57, "reps": 7 }
+      ],
+      "feeling": "solid",
+      "exerciseNote": "",
+      "done": true,
+      "originalName": "Hip adductor machine (in)"
+    },
+    {
+      "name": "Single-leg calf raise (Smith)",
+      "planned": { "sets": 3, "reps": "8-10", "restSec": 120 },
+      "performed": [
+        { "weightKg": 40, "reps": 10 },
+        { "weightKg": 30, "reps": 8 },
+        { "weightKg": 30, "reps": 7 }
+      ],
+      "feeling": "grind",
+      "exerciseNote": "",
+      "done": true,
+      "originalName": "Single-leg calf raise (Smith)"
+    }
+  ],
+  "updatedAt": "2026-09-16T22:30:00+02:00"
+}

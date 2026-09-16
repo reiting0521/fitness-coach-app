@@ -2,6 +2,7 @@ const SETTINGS_KEY = 'fc_settings'
 const LOG_PREFIX = 'fc_log_'
 const PLAN_KEY = 'fc_plan'
 const DRAFT_PREFIX = 'fc_draft_'
+const SEED_FLAG = 'fc_seed_v2_2026_09_16'
 
 const DEFAULT_SETTINGS = {
   unit: 'kg',
@@ -18,7 +19,11 @@ export function loadSettings() {
   try {
     const raw = localStorage.getItem(SETTINGS_KEY)
     if (!raw) return { ...DEFAULT_SETTINGS, folderIds: { ...DEFAULT_SETTINGS.folderIds } }
-    return { ...DEFAULT_SETTINGS, ...JSON.parse(raw), folderIds: { ...DEFAULT_SETTINGS.folderIds, ...(JSON.parse(raw).folderIds || {}) } }
+    return {
+      ...DEFAULT_SETTINGS,
+      ...JSON.parse(raw),
+      folderIds: { ...DEFAULT_SETTINGS.folderIds, ...(JSON.parse(raw).folderIds || {}) },
+    }
   } catch {
     return { ...DEFAULT_SETTINGS, folderIds: { ...DEFAULT_SETTINGS.folderIds } }
   }
@@ -54,6 +59,23 @@ export function saveLog(dateStr, log) {
   localStorage.setItem(LOG_PREFIX + dateStr, JSON.stringify(log))
 }
 
+export function listLockedLogs() {
+  const out = []
+  try {
+    for (let i = 0; i < localStorage.length; i++) {
+      const k = localStorage.key(i)
+      if (!k || !k.startsWith(LOG_PREFIX)) continue
+      const log = JSON.parse(localStorage.getItem(k))
+      if (log?.completed) {
+        out.push(log)
+      }
+    }
+  } catch {
+    /* ignore */
+  }
+  return out.sort((a, b) => (a.date < b.date ? 1 : -1))
+}
+
 export function loadDraft(dateStr) {
   try {
     const raw = localStorage.getItem(DRAFT_PREFIX + dateStr)
@@ -69,6 +91,31 @@ export function saveDraft(dateStr, draft) {
 
 export function clearDraft(dateStr) {
   localStorage.removeItem(DRAFT_PREFIX + dateStr)
+}
+
+export function ensureSeedLog(seedLog) {
+  if (!seedLog?.date) return false
+  const flag = localStorage.getItem(SEED_FLAG)
+  const existing = loadLog(seedLog.date)
+  if (existing?.completed && flag) return false
+  // Seed if missing or incomplete; don't overwrite a user-finished richer log with fewer sets
+  if (!existing?.completed) {
+    saveLog(seedLog.date, { ...seedLog, locked: true, completed: true })
+    localStorage.setItem(SEED_FLAG, '1')
+    return true
+  }
+  if (!flag) localStorage.setItem(SEED_FLAG, '1')
+  return false
+}
+
+/** Prefer bundled seed plan when local cache is older version */
+export function mergePlanPreferNewer(local, seed) {
+  if (!local) return seed
+  if (!seed) return local
+  const lv = Number(local.planVersion || 0)
+  const sv = Number(seed.planVersion || 0)
+  if (sv > lv) return seed
+  return local
 }
 
 export function kgToLb(kg) {
