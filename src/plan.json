@@ -1,0 +1,56 @@
+{
+  "planVersion": 1,
+  "updatedAt": "2026-09-16T21:49:00+02:00",
+  "timezone": "Europe/Zurich",
+  "goal": "strength",
+  "unit": "kg",
+  "notes": "Week 1 seed. Intermediate, full gym. Leave 1–2 reps in reserve on main lifts.",
+  "week": {
+    "monday": {
+      "focus": "Shoulders",
+      "rest": false,
+      "exercises": [
+        {"name": "Overhead press", "sets": 4, "reps": "5", "note": "1–2 RIR"},
+        {"name": "Dumbbell lateral raise", "sets": 3, "reps": "10-12"},
+        {"name": "Face pull", "sets": 3, "reps": "12-15"},
+        {"name": "Rear-delt fly", "sets": 3, "reps": "12-15"},
+        {"name": "Shrug", "sets": 3, "reps": "8-10", "optional": true}
+      ]
+    },
+    "tuesday": {
+      "focus": "Chest",
+      "rest": false,
+      "exercises": [
+        {"name": "Flat barbell bench press", "sets": 4, "reps": "5", "note": "1–2 RIR"},
+        {"name": "Incline dumbbell press", "sets": 3, "reps": "6-8"},
+        {"name": "Weighted dip or close-grip bench", "sets": 3, "reps": "6-8"},
+        {"name": "Cable or dumbbell fly", "sets": 2, "reps": "12-15"}
+      ]
+    },
+    "wednesday": {
+      "focus": "Legs",
+      "rest": false,
+      "exercises": [
+        {"name": "Back squat", "sets": 4, "reps": "5", "note": "1–2 RIR"},
+        {"name": "Romanian deadlift", "sets": 3, "reps": "6-8"},
+        {"name": "Walking lunge or Bulgarian split squat", "sets": 3, "reps": "8/leg"},
+        {"name": "Leg curl", "sets": 3, "reps": "10-12"},
+        {"name": "Standing calf raise", "sets": 3, "reps": "10-12"}
+      ]
+    },
+    "thursday": {"focus": "Rest", "rest": true, "exercises": []},
+    "friday": {
+      "focus": "Back",
+      "rest": false,
+      "exercises": [
+        {"name": "Deadlift or trap-bar deadlift", "sets": 3, "reps": "5", "note": "Alt: heavy barbell row 4×5"},
+        {"name": "Pull-up or lat pulldown", "sets": 4, "reps": "6-8"},
+        {"name": "Chest-supported or seal row", "sets": 3, "reps": "6-8"},
+        {"name": "Straight-arm pulldown or single-arm cable row", "sets": 2, "reps": "12-15"},
+        {"name": "Face pull", "sets": 2, "reps": "12-15"}
+      ]
+    },
+    "saturday": {"focus": "Rest", "rest": true, "exercises": []},
+    "sunday": {"focus": "Rest", "rest": true, "exercises": []}
+  }
+}
