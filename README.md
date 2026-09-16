@@ -91,22 +91,28 @@ Weights are stored in **kg** internally; Settings toggles display to lb.
 
 ## GitHub Pages deploy
 
-This repo deploys via GitHub Actions on push to `main` (see `.github/workflows/deploy.yml`).
+Static site is published from the **`gh-pages`** branch (`dist/` build output).
 
-Manual enable (once):
+Rebuild and publish:
 
 ```bash
-gh api repos/reiting0521/fitness-coach-app/pages -X POST \
-  -f build_type=workflow \
-  -f source[branch]=main \
-  -f source[path]=/
+npm run build
+# publish dist/ to gh-pages (example with git subtree or a clean orphan branch)
+npx --yes gh-pages -d dist
 ```
 
-Or: **Settings → Pages → Build and deployment → GitHub Actions**.
+Or enable in GitHub: **Settings → Pages → Deploy from a branch → `gh-pages` / root**.
 
 Site URL: **https://reiting0521.github.io/fitness-coach-app/**
 
-> If you set `VITE_GOOGLE_CLIENT_ID` as a GitHub Actions secret named `VITE_GOOGLE_CLIENT_ID`, the workflow injects it at build time.
+To bake in OAuth at build time:
+
+```bash
+echo 'VITE_GOOGLE_CLIENT_ID=your-id.apps.googleusercontent.com' > .env
+npm run build
+```
+
+Then republish `dist/` to `gh-pages`.
 
 ## Add to Home Screen
 
