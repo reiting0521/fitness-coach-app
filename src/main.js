@@ -124,6 +124,9 @@ function buildSessionFromPlan(day, dateStr) {
             restSec: ex.planned?.restSec ?? planEx?.restSec ?? null,
             optional: !!ex.planned?.optional || !!ex.optional || !!planEx?.optional,
           },
+          kind: ex.kind || planEx?.kind || null,
+          mode: ex.mode || planEx?.mode || null,
+          howtoPlain: ex.howtoPlain || planEx?.howtoPlain || null,
           cues: ex.cues || planEx?.cues || [],
           alternatives: ex.alternatives || planEx?.alternatives || [],
           performed: (ex.performed || []).map((p) => ({
@@ -158,6 +161,9 @@ function buildSessionFromPlan(day, dateStr) {
           originalId: ex.originalId || planEx?.id || ex.id || null,
           demoId: ex.demoId || ex.id || planEx?.id || null,
           equipment: ex.equipment || planEx?.equipment || null,
+          kind: ex.kind || planEx?.kind || null,
+          mode: ex.mode || planEx?.mode || null,
+          howtoPlain: ex.howtoPlain || planEx?.howtoPlain || null,
           cues: ex.cues || planEx?.cues || [],
           alternatives: ex.alternatives || planEx?.alternatives || [],
           originalName: ex.originalName || ex.name,
@@ -182,6 +188,9 @@ function buildSessionFromPlan(day, dateStr) {
       name: ex.name,
       originalName: ex.name,
       equipment: ex.equipment || null,
+      kind: ex.kind || null,
+      mode: ex.mode || null,
+      howtoPlain: ex.howtoPlain || null,
       planned: {
         sets: ex.sets,
         reps: ex.reps,
@@ -631,74 +640,107 @@ function bindWorkout(main) {
   })
 }
 
+
+function isMobilityExercise(ex) {
+  if (!ex) return false
+  if (ex.kind === 'mobility' || ex.mode === 'stretch') return true
+  const focus = String(ex.dayFocus || session?.dayFocus || '').toLowerCase()
+  if (focus.includes('mobility')) return true
+  const reps = String(ex.planned?.reps || ex.reps || '')
+  if (/\d+\s*s\b|\d+\s*-\s*\d+\s*s/i.test(reps)) return true
+  return false
+}
+
 function renderHowtoDemo(ex) {
   const demo = getDemoForExercise(ex)
+  const mobility = isMobilityExercise(ex)
   const matchNote = demo?.matchNote
     ? `<p class="howto-match-note">${escapeHtml(demo.matchNote)}</p>`
     : ''
 
-  // Priority: 1) local real/{id}.gif  2) any non-VA loop/gif  3) CDN gifUrl  4) placeholder (never prior exercise)
+  // Priority: 1) local real/{id}.gif  2) any non-VA loop/gif  3) CDN gifUrl  4) steps-as-hero (never prior exercise)
   const realPath =
     (demo?.real && String(demo.real).includes('real/') && !String(demo.real).endsWith('.svg') && demo.real) ||
     (demo?.gif && String(demo.gif).includes('real/') && demo.gif) ||
     (demo?.realGif && demo.realGif) ||
     null
 
-  const attr = `<p class="howto-attr">Form demo: <a href="https://exercisedb.dev" target="_blank" rel="noopener noreferrer">ExerciseDB / AscendAPI</a></p>`
+  const isExerciseDb = demo?.source === 'exercisedb'
+  const attr = isExerciseDb
+    ? `<p class="howto-attr">Form demo: <a href="https://exercisedb.dev" target="_blank" rel="noopener noreferrer">ExerciseDB / AscendAPI</a></p>`
+    : demo?.source === 'instructional'
+      ? `<p class="howto-attr">Motion demo: instructional graphic for this stretch</p>`
+      : `<p class="howto-attr">Form demo: <a href="https://exercisedb.dev" target="_blank" rel="noopener noreferrer">ExerciseDB / AscendAPI</a></p>`
+
+  const demoClass = mobility ? 'howto-demo howto-demo-real howto-demo-mobility' : 'howto-demo howto-demo-real'
 
   if (realPath) {
     const src = demoAssetUrl(realPath)
-    return `<div class="howto-demo howto-demo-real"><img src="${escapeHtml(src)}" alt="${escapeHtml(ex.name)} form demo" loading="lazy" /></div>${attr}${matchNote}`
+    const showAttr = isExerciseDb || demo?.source === 'instructional' || String(realPath).includes('real/')
+    return `<div class="${demoClass}"><img src="${escapeHtml(src)}" alt="${escapeHtml(ex.name)} form demo" loading="lazy" /></div>${showAttr ? attr : ''}${matchNote}`
   }
 
   if (demo?.loop && !String(demo.loop).endsWith('.svg') && !String(demo.loop).includes('/va/')) {
     const src = demoAssetUrl(demo.loop)
-    const showAttr = String(demo.loop).includes('real/') || demo?.source === 'exercisedb' || /^https?:/i.test(demo.loop)
-    return `<div class="howto-demo howto-demo-real"><img src="${escapeHtml(src)}" alt="${escapeHtml(ex.name)} form demo" loading="lazy" /></div>${showAttr ? attr : ''}${matchNote}`
+    const showAttr = String(demo.loop).includes('real/') || isExerciseDb || demo?.source === 'instructional' || /^https?:/i.test(demo.loop)
+    return `<div class="${demoClass}"><img src="${escapeHtml(src)}" alt="${escapeHtml(ex.name)} form demo" loading="lazy" /></div>${showAttr ? attr : ''}${matchNote}`
   }
 
   if (demo?.gifUrl || demo?.cdnUrl) {
     const src = demo.gifUrl || demo.cdnUrl
-    return `<div class="howto-demo howto-demo-real"><img src="${escapeHtml(src)}" alt="${escapeHtml(ex.name)} form demo" loading="lazy" /></div>${attr}${matchNote}`
+    return `<div class="${demoClass}"><img src="${escapeHtml(src)}" alt="${escapeHtml(ex.name)} form demo" loading="lazy" /></div>${attr}${matchNote}`
   }
 
-  // Swapped (or unmatched) with no media — never show previous exercise GIF
+  // No media — hero is numbered steps (especially for mobility), never empty placeholder
   const cues = normalizeCues(ex.cues)
-  const steps = [
-    ...(cues.setup.slice(0, 1).map((s) => `1. Setup — ${s}`)),
-    ...(cues.move.slice(0, 2).map((s, i) => `${i + 2}. Move — ${s}`)),
-    ...(cues.avoid.slice(0, 1).map((s) => `Avoid — ${s}`)),
-  ]
-  const title = ex.swapped
-    ? 'No demo for this alternative yet'
-    : 'Demo media coming soon'
-  return `<div class="howto-demo"><div class="howto-demo-placeholder">
+  const plain = Array.isArray(ex.howtoPlain) ? ex.howtoPlain.filter(Boolean) : []
+  const steps = plain.length
+    ? plain.map((s, i) => `${i + 1}. ${s}`)
+    : [
+        ...cues.setup.map((s, i) => `${i + 1}. ${s}`),
+        ...cues.move.map((s, i) => `${cues.setup.length + i + 1}. ${s}`),
+        ...cues.avoid.slice(0, 2).map((s) => `Don’t — ${s}`),
+      ]
+  const title = mobility ? 'Follow these steps' : ex.swapped ? 'No demo for this alternative yet' : 'Follow the steps below'
+  return `<div class="howto-demo howto-demo-mobility"><div class="howto-demo-placeholder howto-demo-steps-hero">
     <strong>${escapeHtml(title)}</strong>
-    <span>Follow Setup → Move → Avoid below${steps.length ? ':' : '.'}</span>
-    ${steps.map((s) => `<span>${escapeHtml(s)}</span>`).join('')}
+    ${steps.map((s) => `<span class="howto-step-hero">${escapeHtml(s)}</span>`).join('')}
   </div></div>`
 }
 
 
 function renderCueBlocks(ex) {
   const cues = normalizeCues(ex.cues)
+  const mobility = isMobilityExercise(ex)
+  const labels = mobility
+    ? { setup: 'Get ready', move: 'Do this', avoid: 'Avoid' }
+    : { setup: 'Setup', move: 'Move', avoid: 'Avoid' }
+  const listClass = mobility ? 'cue-lines cue-lines-numbered cue-lines-lg' : 'cue-lines'
   const block = (label, lines, cls = '') => {
     if (!lines?.length) return ''
-    return `<div class="cue-block ${cls}">
+    return `<div class="cue-block ${cls}${mobility ? ' cue-block-mobility' : ''}">
       <h3 class="sheet-section">${label}</h3>
-      <ul class="cue-lines">${lines.map((l) => `<li>${escapeHtml(l)}</li>`).join('')}</ul>
+      <ol class="${listClass}">${lines.map((l) => `<li>${escapeHtml(l)}</li>`).join('')}</ol>
     </div>`
   }
   // Always surface Avoid — fallback lines if plan omitted them
   const avoid =
     cues.avoid?.length
       ? cues.avoid
-      : ['Rounding or collapsing under load', 'Using momentum instead of control', 'Cutting range of motion short']
+      : mobility
+        ? ['Stop if sharp pain', 'Don’t bounce']
+        : ['Rounding or collapsing under load', 'Using momentum instead of control', 'Cutting range of motion short']
+  const setupFallback = mobility
+    ? ['Get into a comfortable start position.']
+    : ['Set stance, brace, and lock your start position.']
+  const moveFallback = mobility
+    ? (Array.isArray(ex.howtoPlain) && ex.howtoPlain.length ? ex.howtoPlain : ['Move slowly. Breathe. Stop before sharp pain.'])
+    : (Array.isArray(ex.cues) ? ex.cues : ['Move with control; stop 1–2 reps shy of failure on compounds.'])
   const html =
-    `<div class="cue-blocks">` +
-    block('Setup', cues.setup?.length ? cues.setup : ['Set stance, brace, and lock your start position.']) +
-    block('Move', cues.move?.length ? cues.move : (Array.isArray(ex.cues) ? ex.cues : ['Move with control; stop 1–2 reps shy of failure on compounds.'])) +
-    block('Avoid', avoid, 'cue-avoid') +
+    `<div class="cue-blocks${mobility ? ' cue-blocks-mobility' : ''}">` +
+    block(labels.setup, cues.setup?.length ? cues.setup : setupFallback) +
+    block(labels.move, cues.move?.length ? cues.move : moveFallback) +
+    block(labels.avoid, avoid, 'cue-avoid') +
     `</div>`
   return html
 }
@@ -708,7 +750,7 @@ function openExerciseSheet(index, readOnly) {
   const ex = session.exercises[index]
   if (!ex) return
   const demoMeta = getDemoForExercise(ex)
-  const equipment = ex.equipment || demoMeta?.equipment || 'Free weight'
+  const equipment = ex.equipment || demoMeta?.equipment || (isMobilityExercise(ex) ? 'Body weight · stretch' : 'Free weight')
   const alts = (ex.alternatives || [])
     .map(
       (a, ai) => `

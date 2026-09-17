@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "source": "ExerciseDB / AscendAPI",
   "attribution": "Exercise media from AscendAPI / ExerciseDB (https://exercisedb.dev). Free tier requires attribution.",
   "exercises": {
@@ -145,7 +145,7 @@
     },
     "leg-press": {
       "id": "leg-press",
-      "name": "sled 45\u00b0 leg press",
+      "name": "sled 45° leg press",
       "exerciseId": "10Z2DXU",
       "gifUrl": "https://static.exercisedb.dev/media/10Z2DXU.gif",
       "file": "real/leg-press.gif",
@@ -428,6 +428,94 @@
         "leverage machine"
       ],
       "source": "exercisedb"
+    },
+    "worlds-greatest-stretch": {
+      "id": "worlds-greatest-stretch",
+      "name": "world greatest stretch",
+      "exerciseId": "DFGXwZr",
+      "gifUrl": "https://static.exercisedb.dev/media/DFGXwZr.gif",
+      "file": "real/worlds-greatest-stretch.gif",
+      "gif": "real/worlds-greatest-stretch.gif",
+      "equipments": [
+        "body weight"
+      ],
+      "source": "exercisedb",
+      "kind": "mobility"
+    },
+    "hamstring-strap-stretch": {
+      "id": "hamstring-strap-stretch",
+      "name": "leg up hamstring stretch",
+      "exerciseId": "sU5BrfP",
+      "gifUrl": "https://static.exercisedb.dev/media/sU5BrfP.gif",
+      "file": "real/hamstring-strap-stretch.gif",
+      "gif": "real/hamstring-strap-stretch.gif",
+      "equipments": [
+        "body weight"
+      ],
+      "source": "exercisedb",
+      "kind": "mobility",
+      "note": "ExerciseDB supine leg-up hamstring (hands behind thigh). Same position as strap/towel version — use a strap if you have one.",
+      "matchNote": "Demo shows hands behind the thigh; use a strap or towel the same way."
+    },
+    "90-90-hip-switch": {
+      "id": "90-90-hip-switch",
+      "name": "90/90 hip switches",
+      "file": "real/90-90-hip-switch.gif",
+      "gif": "real/90-90-hip-switch.gif",
+      "equipments": [
+        "body weight"
+      ],
+      "source": "instructional",
+      "kind": "mobility",
+      "note": "Custom motion-graphic demo — no matching ExerciseDB GIF in free catalog."
+    },
+    "couch-stretch": {
+      "id": "couch-stretch",
+      "name": "Couch / hip-flexor stretch",
+      "file": "real/couch-stretch.gif",
+      "gif": "real/couch-stretch.gif",
+      "equipments": [
+        "body weight"
+      ],
+      "source": "instructional",
+      "kind": "mobility",
+      "note": "Custom motion-graphic demo — ExerciseDB hip-flexor GIFs used ball/partner setups that did not match couch/wall rear-foot elevation."
+    },
+    "open-book-tspine": {
+      "id": "open-book-tspine",
+      "name": "Open-book thoracic rotation",
+      "file": "real/open-book-tspine.gif",
+      "gif": "real/open-book-tspine.gif",
+      "equipments": [
+        "body weight"
+      ],
+      "source": "instructional",
+      "kind": "mobility",
+      "note": "Custom motion-graphic demo — no open-book / side-lying arm-open GIF in free ExerciseDB catalog."
+    },
+    "cat-cow": {
+      "id": "cat-cow",
+      "name": "Cat-cow",
+      "file": "real/cat-cow.gif",
+      "gif": "real/cat-cow.gif",
+      "equipments": [
+        "body weight"
+      ],
+      "source": "instructional",
+      "kind": "mobility",
+      "note": "Custom motion-graphic demo — no cat-cow in free ExerciseDB catalog."
+    },
+    "doorway-chest-stretch": {
+      "id": "doorway-chest-stretch",
+      "name": "Doorway chest / pec stretch",
+      "file": "real/doorway-chest-stretch.gif",
+      "gif": "real/doorway-chest-stretch.gif",
+      "equipments": [
+        "body weight"
+      ],
+      "source": "instructional",
+      "kind": "mobility",
+      "note": "Custom motion-graphic demo — ExerciseDB chest stretches were T-pose or bench/lat variants, not doorway."
     }
   }
 }

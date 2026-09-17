@@ -29,3 +29,9 @@ This pack redistributes only the free CDN GIF assets needed for Rei’s Fitness 
 ## No SVG redraws
 
 Assets here are **photoreal / filmed ExerciseDB GIFs**, not hand-drawn SVG teaching sequences. Prefer these over `/demos/` SVG frame packs when both exist for the same plan id.
+
+
+## Thursday mobility (2026-09)
+
+- **ExerciseDB GIFs:** `worlds-greatest-stretch.gif` (DFGXwZr), `hamstring-strap-stretch.gif` (sU5BrfP).
+- **Instructional motion graphics** (custom stick-figure GIFs on charcoal `#0B0C0E`, not ExerciseDB): `90-90-hip-switch`, `couch-stretch`, `open-book-tspine`, `cat-cow`, `doorway-chest-stretch` — shipped because free ExerciseDB had no clear matching stretch GIF. Attribution above applies only to ExerciseDB assets.

@@ -1050,3 +1050,51 @@ main { padding: 16px 16px 28px; flex: 1; }
   object-fit: contain;
   background: #0B0C0E;
 }
+
+
+/* Thursday mobility / stretch How-to */
+.howto-demo-mobility {
+  min-height: 260px;
+  background: #0B0C0E;
+}
+.howto-demo-mobility img {
+  min-height: 240px;
+  max-height: 360px;
+  object-fit: contain;
+}
+.howto-demo-steps-hero {
+  gap: 14px;
+  padding: 28px 18px;
+}
+.howto-demo-steps-hero .howto-step-hero {
+  display: block;
+  color: var(--text);
+  font-size: 1.05rem;
+  line-height: 1.45;
+}
+.cue-blocks-mobility {
+  gap: 12px;
+}
+.cue-block-mobility {
+  padding: 14px 16px;
+}
+.cue-block-mobility .sheet-section {
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.cue-lines-numbered {
+  list-style: decimal;
+  padding-left: 1.35rem;
+  gap: 10px;
+}
+.cue-lines-lg li {
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: var(--text);
+}
+.cue-block-mobility.cue-avoid .cue-lines-lg li {
+  color: color-mix(in srgb, var(--text) 92%, var(--danger));
+}

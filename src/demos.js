@@ -59,10 +59,11 @@ function realEntry(id) {
       loop: loopPath || fromReal.gifUrl || path,
       gifUrl: fromReal.gifUrl || null,
       cdnUrl: fromReal.gifUrl || ( /^https?:/i.test(path) ? path : null),
-      source: 'exercisedb',
+      source: fromReal.source || 'exercisedb',
       exerciseId: fromReal.exerciseId || fromReal.exercisedbId,
       equipment: (fromReal.equipments || [])[0],
       preferGif: true,
+      kind: fromReal.kind || null,
       matchNote: fromReal.matchNote || fromReal.note || null,
       placeholder: false,
     }

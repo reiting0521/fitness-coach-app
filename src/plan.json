@@ -500,14 +500,17 @@
           "restSec": 30,
           "cues": {
             "setup": [
-              "Long lunge, back knee soft, front foot flat"
+              "Step 1: Step into a long lunge. Front foot flat. Back leg long.",
+              "Step 2: Put both hands on the floor next to your front foot."
             ],
             "move": [
-              "Elbow toward instep, then twist open to sky",
-              "Flow slow — 5 each side"
+              "Step 3: Drop your elbow toward your front instep. Feel the hip open.",
+              "Step 4: Twist and reach that same arm up to the sky. Look at your hand.",
+              "Hold and breathe. Then switch sides."
             ],
             "avoid": [
-              "Don’t bounce; keep front knee over mid-foot"
+              "Stop if you feel sharp pain.",
+              "Don’t bounce. Keep the front knee over your mid-foot."
             ]
           },
           "alternatives": [
@@ -517,6 +520,13 @@
               "sets": 2,
               "reps": "30-45s/side"
             }
+          ],
+          "kind": "mobility",
+          "mode": "stretch",
+          "howtoPlain": [
+            "Long lunge, hands on the floor.",
+            "Elbow toward front foot, then twist open to the sky.",
+            "Slow and easy — switch sides."
           ]
         },
         {
@@ -527,13 +537,16 @@
           "restSec": 30,
           "cues": {
             "setup": [
-              "Sit tall, both knees bent ~90°"
+              "Step 1: Sit on the floor. Bend both knees about 90°.",
+              "Step 2: One shin in front of you, the other shin to the side."
             ],
             "move": [
-              "Rotate both legs side to side with control"
+              "Step 3: Sit tall. Slowly flip both legs to the other side.",
+              "Step 4: Feel the hips turn. Keep switching with control."
             ],
             "avoid": [
-              "Don’t shrug; use hips, not lower back"
+              "Don’t shrug your shoulders.",
+              "Don’t twist from the low back — move from the hips."
             ]
           },
           "alternatives": [
@@ -543,6 +556,13 @@
               "sets": 2,
               "reps": "30-45s/side"
             }
+          ],
+          "kind": "mobility",
+          "mode": "stretch",
+          "howtoPlain": [
+            "Sit tall in 90/90.",
+            "Flip both legs side to side.",
+            "Hips do the work — stay tall."
           ]
         },
         {
@@ -553,13 +573,16 @@
           "restSec": 20,
           "cues": {
             "setup": [
-              "Rear foot elevated (couch/wall), front foot planted"
+              "Step 1: Kneel. Put your back foot up on a couch or wall.",
+              "Step 2: Front foot flat on the floor, knee bent."
             ],
             "move": [
-              "Tuck pelvis gently, tall torso, breathe into front hip"
+              "Step 3: Tuck your hips under a little. Stand your chest tall.",
+              "Step 4: Feel a stretch in the front of the back hip. Hold and breathe."
             ],
             "avoid": [
-              "Don’t arch lower back hard"
+              "Don’t arch your lower back hard.",
+              "Stop if the front of the knee hurts."
             ]
           },
           "alternatives": [
@@ -569,6 +592,13 @@
               "sets": 2,
               "reps": "30-45s/side"
             }
+          ],
+          "kind": "mobility",
+          "mode": "stretch",
+          "howtoPlain": [
+            "Back foot up on couch/wall.",
+            "Tuck hips, tall chest.",
+            "Breathe into the front of the hip."
           ]
         },
         {
@@ -579,13 +609,16 @@
           "restSec": 20,
           "cues": {
             "setup": [
-              "Lie on back, strap around foot, other leg down"
+              "Step 1: Lie on your back. Loop a strap or towel around one foot.",
+              "Step 2: Keep the other leg flat on the floor."
             ],
             "move": [
-              "Gentle pull until mild stretch behind thigh; breathe"
+              "Step 3: Gently pull the strap until you feel a mild stretch behind the thigh.",
+              "Step 4: Hold and breathe. Then switch legs."
             ],
             "avoid": [
-              "No sharp pain behind knee"
+              "No sharp pain behind the knee.",
+              "Don’t yank — easy pull only."
             ]
           },
           "alternatives": [
@@ -595,6 +628,13 @@
               "sets": 2,
               "reps": "30-45s/side"
             }
+          ],
+          "kind": "mobility",
+          "mode": "stretch",
+          "howtoPlain": [
+            "Lie on your back with a strap on one foot.",
+            "Gentle pull until the back of the thigh stretches.",
+            "Breathe. Switch sides."
           ]
         },
         {
@@ -605,13 +645,16 @@
           "restSec": 20,
           "cues": {
             "setup": [
-              "Side-lying, knees bent, arms stacked"
+              "Step 1: Lie on your side. Knees bent and stacked.",
+              "Step 2: Arms straight out in front, palms together."
             ],
             "move": [
-              "Open top arm to floor behind you, follow with eyes"
+              "Step 3: Open your top arm like a book toward the floor behind you.",
+              "Step 4: Follow with your eyes. Feel the mid-back twist. Hold and breathe."
             ],
             "avoid": [
-              "Keep knees stacked; don’t force shoulder"
+              "Keep knees stacked — don’t let them flop open.",
+              "Don’t force the shoulder to the floor."
             ]
           },
           "alternatives": [
@@ -621,6 +664,13 @@
               "sets": 2,
               "reps": "6/side"
             }
+          ],
+          "kind": "mobility",
+          "mode": "stretch",
+          "howtoPlain": [
+            "Side-lying, knees stacked, arms together.",
+            "Open top arm behind you like a book.",
+            "Eyes follow. Knees stay put."
           ]
         },
         {
@@ -631,13 +681,16 @@
           "restSec": 15,
           "cues": {
             "setup": [
-              "Hands under shoulders, knees under hips"
+              "Step 1: Get on hands and knees.",
+              "Step 2: Hands under shoulders. Knees under hips."
             ],
             "move": [
-              "Alternate arch and round with breath"
+              "Step 3: Cow — drop your belly, lift your chest and look forward.",
+              "Step 4: Cat — round your back up, tuck your chin. Switch with your breath."
             ],
             "avoid": [
-              "Don’t dump into neck"
+              "Don’t dump into your neck.",
+              "Don’t rush — move slow with each breath."
             ]
           },
           "alternatives": [
@@ -647,6 +700,13 @@
               "sets": 2,
               "reps": "30-45s"
             }
+          ],
+          "kind": "mobility",
+          "mode": "stretch",
+          "howtoPlain": [
+            "Hands and knees.",
+            "Arch (cow), then round (cat).",
+            "Match the move to your breath."
           ]
         },
         {
@@ -657,13 +717,16 @@
           "restSec": 15,
           "cues": {
             "setup": [
-              "Forearm on doorframe, elbow ~90°"
+              "Step 1: Stand in a doorway. Put one forearm on the frame.",
+              "Step 2: Elbow about height with your shoulder (~90°)."
             ],
             "move": [
-              "Step through gently until chest opens"
+              "Step 3: Gently step through until you feel the chest open.",
+              "Step 4: Hold and breathe. Then switch sides."
             ],
             "avoid": [
-              "Don’t shrug shoulder to ear"
+              "Don’t shrug your shoulder up to your ear.",
+              "Stop if you feel pinching in the front of the shoulder."
             ]
           },
           "alternatives": [
@@ -673,6 +736,13 @@
               "sets": 2,
               "reps": "8-10"
             }
+          ],
+          "kind": "mobility",
+          "mode": "stretch",
+          "howtoPlain": [
+            "Forearm on the doorframe.",
+            "Step through until the chest opens.",
+            "Easy hold — no shrugging."
           ]
         }
       ]

@@ -1,9 +1,9 @@
 {
-  "version": 2,
+  "version": 4,
   "source": "ExerciseDB",
-  "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB \u2014 used with required attribution",
+  "attribution": "Exercise media © AscendAPI / ExerciseDB — used with required attribution",
   "attributionUrl": "https://exercisedb.dev",
-  "attributionMuted": "Media \u00a9 AscendAPI / ExerciseDB \u00b7 exercisedb.dev",
+  "attributionMuted": "Media © AscendAPI / ExerciseDB · exercisedb.dev",
   "licenseNote": "Free V1 OSS tier: non-commercial / personal / educational use; AscendAPI attribution required. See NOTICE.md.",
   "cdnBase": "https://static.exercisedb.dev/media",
   "letterboxDefaults": {
@@ -27,7 +27,7 @@
         "innerBg": "#16181F",
         "objectFit": "contain"
       },
-      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attribution": "Exercise media © AscendAPI / ExerciseDB",
       "attributionUrl": "https://exercisedb.dev"
     },
     "hip-abductor": {
@@ -44,7 +44,7 @@
         "innerBg": "#16181F",
         "objectFit": "contain"
       },
-      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attribution": "Exercise media © AscendAPI / ExerciseDB",
       "attributionUrl": "https://exercisedb.dev"
     },
     "hip-adductor": {
@@ -61,7 +61,7 @@
         "innerBg": "#16181F",
         "objectFit": "contain"
       },
-      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attribution": "Exercise media © AscendAPI / ExerciseDB",
       "attributionUrl": "https://exercisedb.dev"
     },
     "smith-sl-calf": {
@@ -78,7 +78,7 @@
         "innerBg": "#16181F",
         "objectFit": "contain"
       },
-      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attribution": "Exercise media © AscendAPI / ExerciseDB",
       "attributionUrl": "https://exercisedb.dev",
       "matchNote": "Smith single-leg floor calf raise; standing Smith single-leg variant not found in free catalog."
     },
@@ -96,7 +96,7 @@
         "innerBg": "#16181F",
         "objectFit": "contain"
       },
-      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attribution": "Exercise media © AscendAPI / ExerciseDB",
       "attributionUrl": "https://exercisedb.dev"
     },
     "pulldown": {
@@ -113,7 +113,7 @@
         "innerBg": "#16181F",
         "objectFit": "contain"
       },
-      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attribution": "Exercise media © AscendAPI / ExerciseDB",
       "attributionUrl": "https://exercisedb.dev"
     },
     "seal-row": {
@@ -130,7 +130,7 @@
         "innerBg": "#16181F",
         "objectFit": "contain"
       },
-      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attribution": "Exercise media © AscendAPI / ExerciseDB",
       "attributionUrl": "https://exercisedb.dev",
       "matchNote": "No seal/chest-supported machine row in free catalog; dumbbell incline (chest-on-bench) row is the closest."
     },
@@ -148,7 +148,7 @@
         "innerBg": "#16181F",
         "objectFit": "contain"
       },
-      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attribution": "Exercise media © AscendAPI / ExerciseDB",
       "attributionUrl": "https://exercisedb.dev"
     },
     "hip-thrust": {
@@ -165,7 +165,7 @@
         "innerBg": "#16181F",
         "objectFit": "contain"
       },
-      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attribution": "Exercise media © AscendAPI / ExerciseDB",
       "attributionUrl": "https://exercisedb.dev",
       "matchNote": "No exact 'barbell hip thrust' in free ExerciseDB; upper-back-on-bench barbell glute bridge is the closest hip-thrust pattern."
     },
@@ -183,7 +183,7 @@
         "innerBg": "#16181F",
         "objectFit": "contain"
       },
-      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attribution": "Exercise media © AscendAPI / ExerciseDB",
       "attributionUrl": "https://exercisedb.dev",
       "matchNote": "No exercise named 'face pull' in free ExerciseDB; standing cable rear-delt row with rope is the closest face-pull pattern."
     },
@@ -201,7 +201,7 @@
         "innerBg": "#16181F",
         "objectFit": "contain"
       },
-      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attribution": "Exercise media © AscendAPI / ExerciseDB",
       "attributionUrl": "https://exercisedb.dev"
     },
     "leg-press": {
@@ -209,7 +209,7 @@
       "name": "Leg press",
       "day": "wednesday",
       "exercisedbId": "10Z2DXU",
-      "exercisedbName": "sled 45\u00b0 leg press",
+      "exercisedbName": "sled 45° leg press",
       "gifUrl": "https://static.exercisedb.dev/media/10Z2DXU.gif",
       "gif": "real/leg-press.gif",
       "file": "real/leg-press.gif",
@@ -218,7 +218,7 @@
         "innerBg": "#16181F",
         "objectFit": "contain"
       },
-      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attribution": "Exercise media © AscendAPI / ExerciseDB",
       "attributionUrl": "https://exercisedb.dev"
     },
     "hack-squat": {
@@ -235,7 +235,7 @@
         "innerBg": "#16181F",
         "objectFit": "contain"
       },
-      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attribution": "Exercise media © AscendAPI / ExerciseDB",
       "attributionUrl": "https://exercisedb.dev"
     },
     "dumbbell-hip-thrust": {
@@ -252,7 +252,7 @@
         "innerBg": "#16181F",
         "objectFit": "contain"
       },
-      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attribution": "Exercise media © AscendAPI / ExerciseDB",
       "attributionUrl": "https://exercisedb.dev",
       "matchNote": "No dumbbell hip thrust in free catalog; floor barbell glute bridge is the closest weighted glute-bridge pattern."
     },
@@ -270,7 +270,7 @@
         "innerBg": "#16181F",
         "objectFit": "contain"
       },
-      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attribution": "Exercise media © AscendAPI / ExerciseDB",
       "attributionUrl": "https://exercisedb.dev"
     },
     "cable-pull-through": {
@@ -287,7 +287,7 @@
         "innerBg": "#16181F",
         "objectFit": "contain"
       },
-      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attribution": "Exercise media © AscendAPI / ExerciseDB",
       "attributionUrl": "https://exercisedb.dev"
     },
     "cable-hip-abduction": {
@@ -304,7 +304,7 @@
         "innerBg": "#16181F",
         "objectFit": "contain"
       },
-      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attribution": "Exercise media © AscendAPI / ExerciseDB",
       "attributionUrl": "https://exercisedb.dev",
       "matchNote": "No cable hip abduction in free catalog; band seated hip abduction is the closest."
     },
@@ -322,7 +322,7 @@
         "innerBg": "#16181F",
         "objectFit": "contain"
       },
-      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attribution": "Exercise media © AscendAPI / ExerciseDB",
       "attributionUrl": "https://exercisedb.dev",
       "matchNote": "Closest available band/side walk pattern (monster walk)."
     },
@@ -340,7 +340,7 @@
         "innerBg": "#16181F",
         "objectFit": "contain"
       },
-      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attribution": "Exercise media © AscendAPI / ExerciseDB",
       "attributionUrl": "https://exercisedb.dev"
     },
     "side-lying-adductor": {
@@ -357,7 +357,7 @@
         "innerBg": "#16181F",
         "objectFit": "contain"
       },
-      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attribution": "Exercise media © AscendAPI / ExerciseDB",
       "attributionUrl": "https://exercisedb.dev"
     },
     "standing-db-calf": {
@@ -374,7 +374,7 @@
         "innerBg": "#16181F",
         "objectFit": "contain"
       },
-      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attribution": "Exercise media © AscendAPI / ExerciseDB",
       "attributionUrl": "https://exercisedb.dev"
     },
     "seated-calf": {
@@ -391,7 +391,7 @@
         "innerBg": "#16181F",
         "objectFit": "contain"
       },
-      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attribution": "Exercise media © AscendAPI / ExerciseDB",
       "attributionUrl": "https://exercisedb.dev"
     },
     "leg-press-calf": {
@@ -408,7 +408,7 @@
         "innerBg": "#16181F",
         "objectFit": "contain"
       },
-      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attribution": "Exercise media © AscendAPI / ExerciseDB",
       "attributionUrl": "https://exercisedb.dev"
     },
     "barbell-row": {
@@ -425,7 +425,7 @@
         "innerBg": "#16181F",
         "objectFit": "contain"
       },
-      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attribution": "Exercise media © AscendAPI / ExerciseDB",
       "attributionUrl": "https://exercisedb.dev"
     },
     "rdl": {
@@ -442,7 +442,7 @@
         "innerBg": "#16181F",
         "objectFit": "contain"
       },
-      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attribution": "Exercise media © AscendAPI / ExerciseDB",
       "attributionUrl": "https://exercisedb.dev"
     },
     "rack-pull": {
@@ -459,7 +459,7 @@
         "innerBg": "#16181F",
         "objectFit": "contain"
       },
-      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attribution": "Exercise media © AscendAPI / ExerciseDB",
       "attributionUrl": "https://exercisedb.dev"
     },
     "assisted-pull-up": {
@@ -476,7 +476,7 @@
         "innerBg": "#16181F",
         "objectFit": "contain"
       },
-      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attribution": "Exercise media © AscendAPI / ExerciseDB",
       "attributionUrl": "https://exercisedb.dev"
     },
     "neutral-pulldown": {
@@ -493,7 +493,7 @@
         "innerBg": "#16181F",
         "objectFit": "contain"
       },
-      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attribution": "Exercise media © AscendAPI / ExerciseDB",
       "attributionUrl": "https://exercisedb.dev",
       "matchNote": "V-bar / neutral-grip style pulldown."
     },
@@ -511,7 +511,7 @@
         "innerBg": "#16181F",
         "objectFit": "contain"
       },
-      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attribution": "Exercise media © AscendAPI / ExerciseDB",
       "attributionUrl": "https://exercisedb.dev"
     },
     "seated-cable-row": {
@@ -528,7 +528,7 @@
         "innerBg": "#16181F",
         "objectFit": "contain"
       },
-      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attribution": "Exercise media © AscendAPI / ExerciseDB",
       "attributionUrl": "https://exercisedb.dev"
     },
     "db-pullover": {
@@ -545,7 +545,7 @@
         "innerBg": "#16181F",
         "objectFit": "contain"
       },
-      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attribution": "Exercise media © AscendAPI / ExerciseDB",
       "attributionUrl": "https://exercisedb.dev"
     },
     "single-arm-cable-row": {
@@ -562,7 +562,7 @@
         "innerBg": "#16181F",
         "objectFit": "contain"
       },
-      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attribution": "Exercise media © AscendAPI / ExerciseDB",
       "attributionUrl": "https://exercisedb.dev"
     },
     "band-reverse-fly": {
@@ -579,7 +579,7 @@
         "innerBg": "#16181F",
         "objectFit": "contain"
       },
-      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attribution": "Exercise media © AscendAPI / ExerciseDB",
       "attributionUrl": "https://exercisedb.dev",
       "matchNote": "No band pull-apart in free catalog; band reverse fly is the closest rear-delt pattern."
     },
@@ -597,8 +597,96 @@
         "innerBg": "#16181F",
         "objectFit": "contain"
       },
-      "attribution": "Exercise media \u00a9 AscendAPI / ExerciseDB",
+      "attribution": "Exercise media © AscendAPI / ExerciseDB",
       "attributionUrl": "https://exercisedb.dev"
+    },
+    "worlds-greatest-stretch": {
+      "id": "worlds-greatest-stretch",
+      "name": "world greatest stretch",
+      "exerciseId": "DFGXwZr",
+      "gifUrl": "https://static.exercisedb.dev/media/DFGXwZr.gif",
+      "file": "real/worlds-greatest-stretch.gif",
+      "gif": "real/worlds-greatest-stretch.gif",
+      "equipments": [
+        "body weight"
+      ],
+      "source": "exercisedb",
+      "kind": "mobility"
+    },
+    "hamstring-strap-stretch": {
+      "id": "hamstring-strap-stretch",
+      "name": "leg up hamstring stretch",
+      "exerciseId": "sU5BrfP",
+      "gifUrl": "https://static.exercisedb.dev/media/sU5BrfP.gif",
+      "file": "real/hamstring-strap-stretch.gif",
+      "gif": "real/hamstring-strap-stretch.gif",
+      "equipments": [
+        "body weight"
+      ],
+      "source": "exercisedb",
+      "kind": "mobility",
+      "note": "ExerciseDB supine leg-up hamstring (hands behind thigh). Same position as strap/towel version — use a strap if you have one.",
+      "matchNote": "Demo shows hands behind the thigh; use a strap or towel the same way."
+    },
+    "90-90-hip-switch": {
+      "id": "90-90-hip-switch",
+      "name": "90/90 hip switches",
+      "file": "real/90-90-hip-switch.gif",
+      "gif": "real/90-90-hip-switch.gif",
+      "equipments": [
+        "body weight"
+      ],
+      "source": "instructional",
+      "kind": "mobility",
+      "note": "Custom motion-graphic demo — no matching ExerciseDB GIF in free catalog."
+    },
+    "couch-stretch": {
+      "id": "couch-stretch",
+      "name": "Couch / hip-flexor stretch",
+      "file": "real/couch-stretch.gif",
+      "gif": "real/couch-stretch.gif",
+      "equipments": [
+        "body weight"
+      ],
+      "source": "instructional",
+      "kind": "mobility",
+      "note": "Custom motion-graphic demo — ExerciseDB hip-flexor GIFs used ball/partner setups that did not match couch/wall rear-foot elevation."
+    },
+    "open-book-tspine": {
+      "id": "open-book-tspine",
+      "name": "Open-book thoracic rotation",
+      "file": "real/open-book-tspine.gif",
+      "gif": "real/open-book-tspine.gif",
+      "equipments": [
+        "body weight"
+      ],
+      "source": "instructional",
+      "kind": "mobility",
+      "note": "Custom motion-graphic demo — no open-book / side-lying arm-open GIF in free ExerciseDB catalog."
+    },
+    "cat-cow": {
+      "id": "cat-cow",
+      "name": "Cat-cow",
+      "file": "real/cat-cow.gif",
+      "gif": "real/cat-cow.gif",
+      "equipments": [
+        "body weight"
+      ],
+      "source": "instructional",
+      "kind": "mobility",
+      "note": "Custom motion-graphic demo — no cat-cow in free ExerciseDB catalog."
+    },
+    "doorway-chest-stretch": {
+      "id": "doorway-chest-stretch",
+      "name": "Doorway chest / pec stretch",
+      "file": "real/doorway-chest-stretch.gif",
+      "gif": "real/doorway-chest-stretch.gif",
+      "equipments": [
+        "body weight"
+      ],
+      "source": "instructional",
+      "kind": "mobility",
+      "note": "Custom motion-graphic demo — ExerciseDB chest stretches were T-pose or bench/lat variants, not doorway."
     }
   }
 }
