@@ -146,6 +146,15 @@ export function mergePlanPreferNewer(local, seed) {
   const lv = Number(local.planVersion || 0)
   const sv = Number(seed.planVersion || 0)
   if (sv > lv) return seed
+  // Equal version but local lost mobility metadata → prefer seed (fixes kg×reps on Thu)
+  if (sv === lv) {
+    const thu = local.week?.thursday
+    const missing =
+      thu &&
+      /mobility|stretch|recovery/i.test(String(thu.focus || '')) &&
+      (thu.exercises || []).some((ex) => ex.kind !== 'mobility' && ex.durationSec == null)
+    if (missing) return seed
+  }
   return local
 }
 

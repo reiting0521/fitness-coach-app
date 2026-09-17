@@ -41,6 +41,20 @@ const FEELINGS = [
 
 let settings = loadSettings()
 let plan = mergePlanPreferNewer(loadPlanLocal(), seedPlan)
+// One-shot: stale Drive/local plans without mobility duration force kg×reps on Thu.
+try {
+  const thu = plan?.week?.thursday
+  const broken =
+    thu &&
+    /mobility|stretch|recovery/i.test(String(thu.focus || '')) &&
+    (thu.exercises || []).some((ex) => ex.kind !== 'mobility' && ex.durationSec == null)
+  if (broken || Number(plan?.planVersion || 0) < Number(seedPlan.planVersion || 0)) {
+    plan = seedPlan
+    savePlanLocal(plan)
+  }
+} catch (_) {
+  /* ignore */
+}
 let view = 'today' // today | settings
 let selectedDate = getZurichDateString()
 let session = null
@@ -712,6 +726,11 @@ function isMobilityExercise(ex) {
   if (focus.includes('mobility') || focus.includes('stretch') || focus.includes('recovery')) return true
   const reps = String(ex.planned?.reps || ex.reps || '')
   if (/\d+\s*s\b|\d+\s*-\s*\d+\s*s/i.test(reps)) return true
+  // 90/90 etc. use "6/side" reps — still duration-only logging
+  const name = String(ex.name || '').toLowerCase()
+  if (/stretch|90\s*\/?\s*90|hip switch|cat-?cow|open-?book|doorway|mobility|couch|world.?s greatest/.test(name)) {
+    return true
+  }
   return false
 }
 
@@ -1128,6 +1147,31 @@ async function finishDay(isRest = false) {
   }
 }
 
+/** Clear SW + Cache Storage, then reload so phone picks up latest Pages. Keeps logs/settings. */
+async function hardRefreshApp() {
+  const btn = document.getElementById('hard-refresh')
+  if (btn) {
+    btn.disabled = true
+    btn.textContent = 'Refreshing…'
+  }
+  toast('Loading latest…')
+  try {
+    if ('serviceWorker' in navigator) {
+      const regs = await navigator.serviceWorker.getRegistrations()
+      await Promise.all(regs.map((r) => r.unregister()))
+    }
+    if (typeof caches !== 'undefined' && caches?.keys) {
+      const keys = await caches.keys()
+      await Promise.all(keys.map((k) => caches.delete(k)))
+    }
+  } catch (err) {
+    console.warn('hard refresh cache clear', err)
+  }
+  const u = new URL(location.href)
+  u.searchParams.set('_hr', String(Date.now()))
+  location.replace(u.toString())
+}
+
 function renderSettings() {
   const ids = settings.folderIds
   const logs = listLockedLogs()
@@ -1193,6 +1237,12 @@ function renderSettings() {
     </div>
 
     <div class="card settings-block">
+      <h3>App update</h3>
+      <p class="meta">Fetch the latest build from the web. Clears offline cache only — workout logs and settings stay on this phone.</p>
+      <button type="button" class="btn btn-secondary" id="hard-refresh" style="margin-top:10px">Hard refresh</button>
+    </div>
+
+    <div class="card settings-block">
       <h3>About</h3>
       <p>Strength plan · intermediate · full gym · Europe/Zurich.</p>
       <p style="margin-top:6px">Plan version: ${plan.planVersion ?? 1}</p>
@@ -1202,6 +1252,11 @@ function renderSettings() {
 }
 
 function bindSettings(main) {
+
+  main.querySelector('#hard-refresh')?.addEventListener('click', () => {
+    hardRefreshApp()
+  })
+
   main.querySelectorAll('[data-unit]').forEach((btn) => {
     btn.addEventListener('click', () => {
       settings.unit = btn.dataset.unit
@@ -1272,7 +1327,16 @@ function bindSettings(main) {
 async function refreshPlanFromDrive(force) {
   if (!drive.isSignedIn()) return
   const { plan: remote, folderIds, planFile } = await drive.fetchPlanFromDrive(settings)
-  plan = remote
+  // Never let an older Drive plan erase mobility duration metadata (causes kg×reps UI).
+  plan = mergePlanPreferNewer(remote, seedPlan)
+  const thu = plan?.week?.thursday
+  const broken =
+    thu &&
+    /mobility|stretch|recovery/i.test(String(thu.focus || '')) &&
+    (thu.exercises || []).some((ex) => ex.kind !== 'mobility' && ex.durationSec == null)
+  if (broken || Number(plan?.planVersion || 0) < Number(seedPlan.planVersion || 0)) {
+    plan = seedPlan
+  }
   savePlanLocal(plan)
   settings.folderIds = { ...settings.folderIds, ...folderIds }
   if (remote.unit === 'kg' || remote.unit === 'lb') {
@@ -1288,6 +1352,16 @@ async function refreshPlanFromDrive(force) {
 async function boot() {
   ensureSeedLog(seedLog)
   plan = mergePlanPreferNewer(loadPlanLocal(), seedPlan)
+  {
+    const thu = plan?.week?.thursday
+    const broken =
+      thu &&
+      /mobility|stretch|recovery/i.test(String(thu.focus || '')) &&
+      (thu.exercises || []).some((ex) => ex.kind !== 'mobility' && ex.durationSec == null)
+    if (broken || Number(plan?.planVersion || 0) < Number(seedPlan.planVersion || 0)) {
+      plan = seedPlan
+    }
+  }
   savePlanLocal(plan)
   if (!settings.unit && plan.unit) settings.unit = plan.unit
   saveSettings(settings)

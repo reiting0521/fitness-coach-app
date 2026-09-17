@@ -1159,3 +1159,9 @@ main { padding: 16px 16px 28px; flex: 1; }
   border-color: color-mix(in srgb, var(--ok, #3DDC97) 35%, var(--border));
   color: var(--muted);
 }
+
+
+/* Hard refresh — Iron Quiet settings action */
+#hard-refresh:disabled {
+  opacity: 0.55;
+}
