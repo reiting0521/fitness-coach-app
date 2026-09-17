@@ -1,6 +1,6 @@
 {
-  "planVersion": 4,
-  "updatedAt": "2026-09-16T23:50:00+02:00",
+  "planVersion": 5,
+  "updatedAt": "2026-09-17T07:58:00+02:00",
   "timezone": "Europe/Zurich",
   "goal": "strength",
   "unit": "kg",
@@ -488,9 +488,194 @@
       ]
     },
     "thursday": {
-      "focus": "Rest",
-      "rest": true,
-      "exercises": []
+      "focus": "Mobility",
+      "rest": false,
+      "notes": "Easy active recovery. No heavy loading. Breathe; never force range.",
+      "exercises": [
+        {
+          "id": "worlds-greatest-stretch",
+          "name": "World’s greatest stretch (lunge + twist)",
+          "sets": 2,
+          "reps": "5/side",
+          "restSec": 30,
+          "cues": {
+            "setup": [
+              "Long lunge, back knee soft, front foot flat"
+            ],
+            "move": [
+              "Elbow toward instep, then twist open to sky",
+              "Flow slow — 5 each side"
+            ],
+            "avoid": [
+              "Don’t bounce; keep front knee over mid-foot"
+            ]
+          },
+          "alternatives": [
+            {
+              "id": "hip-flexor-lunge-stretch",
+              "name": "Kneeling hip-flexor stretch",
+              "sets": 2,
+              "reps": "30-45s/side"
+            }
+          ]
+        },
+        {
+          "id": "90-90-hip-switch",
+          "name": "90/90 hip switches",
+          "sets": 2,
+          "reps": "6/side",
+          "restSec": 30,
+          "cues": {
+            "setup": [
+              "Sit tall, both knees bent ~90°"
+            ],
+            "move": [
+              "Rotate both legs side to side with control"
+            ],
+            "avoid": [
+              "Don’t shrug; use hips, not lower back"
+            ]
+          },
+          "alternatives": [
+            {
+              "id": "seated-figure-four",
+              "name": "Seated figure-four stretch",
+              "sets": 2,
+              "reps": "30-45s/side"
+            }
+          ]
+        },
+        {
+          "id": "couch-stretch",
+          "name": "Couch / hip-flexor stretch",
+          "sets": 2,
+          "reps": "30-45s/side",
+          "restSec": 20,
+          "cues": {
+            "setup": [
+              "Rear foot elevated (couch/wall), front foot planted"
+            ],
+            "move": [
+              "Tuck pelvis gently, tall torso, breathe into front hip"
+            ],
+            "avoid": [
+              "Don’t arch lower back hard"
+            ]
+          },
+          "alternatives": [
+            {
+              "id": "kneeling-hip-flexor",
+              "name": "Kneeling hip-flexor stretch",
+              "sets": 2,
+              "reps": "30-45s/side"
+            }
+          ]
+        },
+        {
+          "id": "hamstring-strap-stretch",
+          "name": "Hamstring stretch (supine strap or towel)",
+          "sets": 2,
+          "reps": "30-45s/side",
+          "restSec": 20,
+          "cues": {
+            "setup": [
+              "Lie on back, strap around foot, other leg down"
+            ],
+            "move": [
+              "Gentle pull until mild stretch behind thigh; breathe"
+            ],
+            "avoid": [
+              "No sharp pain behind knee"
+            ]
+          },
+          "alternatives": [
+            {
+              "id": "standing-hamstring",
+              "name": "Standing hamstring stretch",
+              "sets": 2,
+              "reps": "30-45s/side"
+            }
+          ]
+        },
+        {
+          "id": "open-book-tspine",
+          "name": "Open-book thoracic rotation",
+          "sets": 2,
+          "reps": "8/side",
+          "restSec": 20,
+          "cues": {
+            "setup": [
+              "Side-lying, knees bent, arms stacked"
+            ],
+            "move": [
+              "Open top arm to floor behind you, follow with eyes"
+            ],
+            "avoid": [
+              "Keep knees stacked; don’t force shoulder"
+            ]
+          },
+          "alternatives": [
+            {
+              "id": "thread-the-needle",
+              "name": "Thread the needle",
+              "sets": 2,
+              "reps": "6/side"
+            }
+          ]
+        },
+        {
+          "id": "cat-cow",
+          "name": "Cat-cow",
+          "sets": 2,
+          "reps": "10",
+          "restSec": 15,
+          "cues": {
+            "setup": [
+              "Hands under shoulders, knees under hips"
+            ],
+            "move": [
+              "Alternate arch and round with breath"
+            ],
+            "avoid": [
+              "Don’t dump into neck"
+            ]
+          },
+          "alternatives": [
+            {
+              "id": "childs-pose",
+              "name": "Child’s pose",
+              "sets": 2,
+              "reps": "30-45s"
+            }
+          ]
+        },
+        {
+          "id": "doorway-chest-stretch",
+          "name": "Doorway chest / pec stretch",
+          "sets": 2,
+          "reps": "30s/side",
+          "restSec": 15,
+          "cues": {
+            "setup": [
+              "Forearm on doorframe, elbow ~90°"
+            ],
+            "move": [
+              "Step through gently until chest opens"
+            ],
+            "avoid": [
+              "Don’t shrug shoulder to ear"
+            ]
+          },
+          "alternatives": [
+            {
+              "id": "wall-angels",
+              "name": "Wall angels",
+              "sets": 2,
+              "reps": "8-10"
+            }
+          ]
+        }
+      ]
     },
     "friday": {
       "focus": "Back",

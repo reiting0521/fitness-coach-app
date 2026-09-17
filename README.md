@@ -102,8 +102,8 @@ Site URL: **https://reiting0521.github.io/fitness-coach-app/**
 | Mon | Shoulders — OHP 4×5, laterals, face pulls, rear-delt fly, optional shrug |
 | Tue | Chest — flat bench 4×5, incline DB, dips/CGBP, fly |
 | Wed | Legs — back squat 4×5–8, hip thrust 4×6–10, abductor, adductor, Smith SL calf |
-| Thu | Rest (preview: Friday Back) |
+| Thu | Mobility — active recovery stretches (WGS, 90/90, couch, hamstring, open-book, cat-cow, doorway chest) |
 | Fri | Back — DL/trap-bar 3×5, pull-up/pulldown, CS row, pulldown, face pull |
 | Sat/Sun | Rest |
 
-Bundled `src/plan.json` is plan version **2**.
+Bundled `src/plan.json` is plan version **5** (Thu Mobility).

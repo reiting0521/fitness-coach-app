@@ -496,14 +496,18 @@ function bindHistory(main) {
 }
 
 function renderWorkout() {
+  const day = planDayFor(selectedDate)
   const exercisesHtml = session.exercises.map((ex, i) => renderExercise(ex, i)).join('')
+  const meta = day.notes
+    ? escapeHtml(day.notes)
+    : `${session.exercises.length} exercises · leave 1–2 RIR on main lifts`
   return `
     <div class="card session-hero">
       <div class="card-head">
         <h2>${escapeHtml(session.dayFocus)}</h2>
         <span class="pill muted">${session.exercises.length} exercises</span>
       </div>
-      <p class="meta">${session.exercises.length} exercises · leave 1–2 RIR on main lifts</p>
+      <p class="meta">${meta}</p>
     </div>
     ${
       !drive.isSignedIn()
