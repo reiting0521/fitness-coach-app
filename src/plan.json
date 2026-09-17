@@ -1,6 +1,6 @@
 {
   "planVersion": 5,
-  "updatedAt": "2026-09-17T07:58:00+02:00",
+  "updatedAt": "2026-09-17",
   "timezone": "Europe/Zurich",
   "goal": "strength",
   "unit": "kg",
@@ -518,7 +518,10 @@
               "id": "hip-flexor-lunge-stretch",
               "name": "Kneeling hip-flexor stretch",
               "sets": 2,
-              "reps": "30-45s/side"
+              "reps": "30-45s/side",
+              "durationSec": 45,
+              "kind": "mobility",
+              "mode": "stretch"
             }
           ],
           "kind": "mobility",
@@ -527,7 +530,8 @@
             "Long lunge, hands on the floor.",
             "Elbow toward front foot, then twist open to the sky.",
             "Slow and easy — switch sides."
-          ]
+          ],
+          "durationSec": 45
         },
         {
           "id": "90-90-hip-switch",
@@ -554,7 +558,10 @@
               "id": "seated-figure-four",
               "name": "Seated figure-four stretch",
               "sets": 2,
-              "reps": "30-45s/side"
+              "reps": "30-45s/side",
+              "durationSec": 45,
+              "kind": "mobility",
+              "mode": "stretch"
             }
           ],
           "kind": "mobility",
@@ -563,7 +570,8 @@
             "Sit tall in 90/90.",
             "Flip both legs side to side.",
             "Hips do the work — stay tall."
-          ]
+          ],
+          "durationSec": 45
         },
         {
           "id": "couch-stretch",
@@ -590,7 +598,10 @@
               "id": "kneeling-hip-flexor",
               "name": "Kneeling hip-flexor stretch",
               "sets": 2,
-              "reps": "30-45s/side"
+              "reps": "30-45s/side",
+              "durationSec": 45,
+              "kind": "mobility",
+              "mode": "stretch"
             }
           ],
           "kind": "mobility",
@@ -599,7 +610,8 @@
             "Back foot up on couch/wall.",
             "Tuck hips, tall chest.",
             "Breathe into the front of the hip."
-          ]
+          ],
+          "durationSec": 45
         },
         {
           "id": "hamstring-strap-stretch",
@@ -626,7 +638,10 @@
               "id": "standing-hamstring",
               "name": "Standing hamstring stretch",
               "sets": 2,
-              "reps": "30-45s/side"
+              "reps": "30-45s/side",
+              "durationSec": 45,
+              "kind": "mobility",
+              "mode": "stretch"
             }
           ],
           "kind": "mobility",
@@ -635,7 +650,8 @@
             "Lie on your back with a strap on one foot.",
             "Gentle pull until the back of the thigh stretches.",
             "Breathe. Switch sides."
-          ]
+          ],
+          "durationSec": 45
         },
         {
           "id": "open-book-tspine",
@@ -662,7 +678,10 @@
               "id": "thread-the-needle",
               "name": "Thread the needle",
               "sets": 2,
-              "reps": "6/side"
+              "reps": "6/side",
+              "durationSec": 45,
+              "kind": "mobility",
+              "mode": "stretch"
             }
           ],
           "kind": "mobility",
@@ -671,7 +690,8 @@
             "Side-lying, knees stacked, arms together.",
             "Open top arm behind you like a book.",
             "Eyes follow. Knees stay put."
-          ]
+          ],
+          "durationSec": 45
         },
         {
           "id": "cat-cow",
@@ -698,7 +718,10 @@
               "id": "childs-pose",
               "name": "Child’s pose",
               "sets": 2,
-              "reps": "30-45s"
+              "reps": "30-45s",
+              "durationSec": 45,
+              "kind": "mobility",
+              "mode": "stretch"
             }
           ],
           "kind": "mobility",
@@ -707,7 +730,8 @@
             "Hands and knees.",
             "Arch (cow), then round (cat).",
             "Match the move to your breath."
-          ]
+          ],
+          "durationSec": 45
         },
         {
           "id": "doorway-chest-stretch",
@@ -734,7 +758,10 @@
               "id": "wall-angels",
               "name": "Wall angels",
               "sets": 2,
-              "reps": "8-10"
+              "reps": "8-10",
+              "durationSec": 45,
+              "kind": "mobility",
+              "mode": "stretch"
             }
           ],
           "kind": "mobility",
@@ -743,7 +770,8 @@
             "Forearm on the doorframe.",
             "Step through until the chest opens.",
             "Easy hold — no shrugging."
-          ]
+          ],
+          "durationSec": 30
         }
       ]
     },
