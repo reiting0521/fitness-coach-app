@@ -1,3 +1,18 @@
+
+/** Normalize performed set rows for lift + mobility shapes (backward compatible). */
+export function normalizePerformed(rows) {
+  if (!Array.isArray(rows)) return []
+  return rows.map((p) => {
+    const durationSec = p?.durationSec != null ? Number(p.durationSec) : null
+    const hasDuration = durationSec != null && !Number.isNaN(durationSec)
+    return {
+      weightKg: hasDuration ? null : (p?.weightKg != null ? Number(p.weightKg) : null),
+      reps: hasDuration ? null : (p?.reps != null ? Number(p.reps) : null),
+      durationSec: hasDuration ? durationSec : null,
+    }
+  })
+}
+
 const SETTINGS_KEY = 'fc_settings'
 const LOG_PREFIX = 'fc_log_'
 const PLAN_KEY = 'fc_plan'
@@ -49,7 +64,15 @@ export function savePlanLocal(plan) {
 export function loadLog(dateStr) {
   try {
     const raw = localStorage.getItem(LOG_PREFIX + dateStr)
-    return raw ? JSON.parse(raw) : null
+    const log = raw ? JSON.parse(raw) : null
+    if (!log) return null
+    if (Array.isArray(log.exercises)) {
+      log.exercises = log.exercises.map((ex) => ({
+        ...ex,
+        performed: normalizePerformed(ex.performed),
+      }))
+    }
+    return log
   } catch {
     return null
   }
@@ -79,7 +102,15 @@ export function listLockedLogs() {
 export function loadDraft(dateStr) {
   try {
     const raw = localStorage.getItem(DRAFT_PREFIX + dateStr)
-    return raw ? JSON.parse(raw) : null
+    const draft = raw ? JSON.parse(raw) : null
+    if (!draft) return null
+    if (Array.isArray(draft.exercises)) {
+      draft.exercises = draft.exercises.map((ex) => ({
+        ...ex,
+        performed: normalizePerformed(ex.performed),
+      }))
+    }
+    return draft
   } catch {
     return null
   }

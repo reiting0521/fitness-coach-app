@@ -85,23 +85,30 @@ function planDayFor(dateStr) {
   return plan.week?.[key] || { focus: 'Rest', rest: true, exercises: [] }
 }
 
-function emptyPerformed(sets) {
+function emptyPerformed(sets, ex) {
+  const mobility =
+    !!ex &&
+    (ex.kind === 'mobility' ||
+      ex.mode === 'stretch' ||
+      ex.durationSec != null ||
+      ex.planned?.durationSec != null)
+  const seed = mobility ? (ex.durationSec ?? ex.planned?.durationSec ?? null) : null
   return Array.from({ length: Math.max(1, sets || 1) }, () => ({
     weightKg: null,
     reps: null,
-    durationSec: null,
+    durationSec: seed,
   }))
 }
 
 /** Recommended duration string for mobility / no-load work (never weight). */
 function durationPrescription(ex) {
-  const raw = String(ex.planned?.reps || ex.reps || '')
-  if (/\d/i.test(raw) && /s\b|sec|min/i.test(raw)) return raw
   if (ex.planned?.durationSec) return `${ex.planned.durationSec}s`
   if (ex.durationSec) return `${ex.durationSec}s`
+  const raw = String(ex.planned?.reps || ex.reps || '')
+  if (/\d/i.test(raw) && /s\b|sec|min/i.test(raw)) return raw
   // Rep-based mobility still logs time — suggest a calm hold/work window
-  if (/\d/.test(raw)) return `~30–45s · ${raw}`
-  return '30–45s'
+  if (/\d/.test(raw)) return `~45s · ${raw}`
+  return '45s'
 }
 
 function parseDurationInput(value) {
@@ -221,7 +228,7 @@ function buildSessionFromPlan(day, dateStr) {
       },
       cues: ex.cues || [],
       alternatives: ex.alternatives || [],
-      performed: emptyPerformed(ex.sets),
+      performed: emptyPerformed(ex.sets, ex),
       feeling: null,
       exerciseNote: '',
       done: false,
@@ -944,6 +951,21 @@ function applySwap(index, alt) {
   }
   if (alt.mode) {
     ex.mode = alt.mode
+  }
+  if (alt.reps != null) {
+    ex.planned = { ...ex.planned, reps: alt.reps }
+  }
+  if (alt.durationSec != null) {
+    ex.planned = { ...ex.planned, durationSec: alt.durationSec }
+    ex.performed = (ex.performed || []).map((row) => ({
+      ...row,
+      weightKg: null,
+      reps: null,
+      durationSec: row.durationSec ?? alt.durationSec,
+    }))
+  } else if (alt.kind === 'mobility' || alt.mode === 'stretch') {
+    const d = ex.planned?.durationSec ?? 45
+    ex.planned = { ...ex.planned, durationSec: d }
   }
   if (alt.note) {
     ex.planned = { ...ex.planned, note: [ex.planned.note, alt.note].filter(Boolean).join(' · ') }
