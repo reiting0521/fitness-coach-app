@@ -182,14 +182,27 @@ function buildSessionFromPlan(day, dateStr) {
         const planEx =
           findPlanExercise(day, ex.originalName || ex.name) ||
           findPlanExercise(day, ex.name)
+        const dayIsMobility = /mobility|stretch|recovery/i.test(String(day.focus || ''))
+        const kind = ex.kind || planEx?.kind || (dayIsMobility ? 'mobility' : null)
+        const mode = ex.mode || planEx?.mode || (dayIsMobility ? 'stretch' : null)
+        const planned = {
+          ...(ex.planned || {}),
+          sets: ex.planned?.sets ?? planEx?.sets ?? ex.sets ?? 1,
+          reps: ex.planned?.reps ?? planEx?.reps ?? ex.reps ?? '',
+          note: ex.planned?.note || planEx?.note || '',
+          restSec: ex.planned?.restSec ?? planEx?.restSec ?? null,
+          durationSec: ex.planned?.durationSec ?? planEx?.durationSec ?? ex.durationSec ?? null,
+          optional: !!ex.planned?.optional || !!ex.optional || !!planEx?.optional,
+        }
         return {
           ...ex,
           id: ex.id || planEx?.id || null,
           originalId: ex.originalId || planEx?.id || ex.id || null,
           demoId: ex.demoId || ex.id || planEx?.id || null,
           equipment: ex.equipment || planEx?.equipment || null,
-          kind: ex.kind || planEx?.kind || null,
-          mode: ex.mode || planEx?.mode || null,
+          kind,
+          mode,
+          planned,
           howtoPlain: ex.howtoPlain || planEx?.howtoPlain || null,
           cues: ex.cues || planEx?.cues || [],
           alternatives: ex.alternatives || planEx?.alternatives || [],
@@ -694,8 +707,9 @@ function bindWorkout(main) {
 function isMobilityExercise(ex) {
   if (!ex) return false
   if (ex.kind === 'mobility' || ex.mode === 'stretch') return true
+  if (ex.planned?.durationSec != null || ex.durationSec != null) return true
   const focus = String(ex.dayFocus || session?.dayFocus || '').toLowerCase()
-  if (focus.includes('mobility')) return true
+  if (focus.includes('mobility') || focus.includes('stretch') || focus.includes('recovery')) return true
   const reps = String(ex.planned?.reps || ex.reps || '')
   if (/\d+\s*s\b|\d+\s*-\s*\d+\s*s/i.test(reps)) return true
   return false
