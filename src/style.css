@@ -1098,3 +1098,64 @@ main { padding: 16px 16px 28px; flex: 1; }
 .cue-block-mobility.cue-avoid .cue-lines-lg li {
   color: color-mix(in srgb, var(--text) 92%, var(--danger));
 }
+
+
+/* Redesign 2026-09-17 — Avoid in first fold + quieter chrome */
+.howto-demo {
+  min-height: 160px;
+  margin-bottom: 8px;
+}
+.howto-demo img,
+.howto-demo video {
+  min-height: 160px;
+  max-height: 200px;
+}
+.cue-blocks-fold {
+  gap: 6px;
+  margin-bottom: 8px;
+}
+.cue-blocks-fold .cue-block {
+  padding: 8px 10px;
+}
+.cue-blocks-fold .cue-lines li {
+  font-size: 0.84rem;
+  line-height: 1.3;
+}
+.cue-blocks-fold .cue-avoid {
+  order: 0;
+}
+.sheet .drive-banner,
+.drive-banner {
+  color: var(--muted);
+}
+.drive-banner a {
+  color: var(--muted);
+  text-decoration: underline;
+}
+.set-row input,
+.set-row .kg,
+.set-row .reps {
+  font-size: 1.05rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+
+/* Mobility / stretch — duration logging (no weight) */
+.ex-card-mobility .set-cols {
+  grid-template-columns: 28px 1fr;
+}
+.set-row-duration {
+  grid-template-columns: 28px 1fr;
+}
+.set-row-duration input {
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+.mobility-tag {
+  margin-left: 6px;
+  border-color: color-mix(in srgb, var(--ok, #3DDC97) 35%, var(--border));
+  color: var(--muted);
+}

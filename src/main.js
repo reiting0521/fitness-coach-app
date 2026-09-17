@@ -89,7 +89,25 @@ function emptyPerformed(sets) {
   return Array.from({ length: Math.max(1, sets || 1) }, () => ({
     weightKg: null,
     reps: null,
+    durationSec: null,
   }))
+}
+
+/** Recommended duration string for mobility / no-load work (never weight). */
+function durationPrescription(ex) {
+  const raw = String(ex.planned?.reps || ex.reps || '')
+  if (/\d/i.test(raw) && /s\b|sec|min/i.test(raw)) return raw
+  if (ex.planned?.durationSec) return `${ex.planned.durationSec}s`
+  if (ex.durationSec) return `${ex.durationSec}s`
+  // Rep-based mobility still logs time — suggest a calm hold/work window
+  if (/\d/.test(raw)) return `~30–45s · ${raw}`
+  return '30–45s'
+}
+
+function parseDurationInput(value) {
+  if (value === '' || value == null) return null
+  const n = Number(value)
+  return Number.isNaN(n) ? null : n
 }
 
 function findPlanExercise(day, name) {
@@ -132,6 +150,7 @@ function buildSessionFromPlan(day, dateStr) {
           performed: (ex.performed || []).map((p) => ({
             weightKg: p.weightKg ?? null,
             reps: p.reps ?? null,
+            durationSec: p.durationSec ?? null,
           })),
           feeling: ex.feeling || null,
           exerciseNote: ex.exerciseNote || '',
@@ -439,8 +458,13 @@ function renderLockedHistory() {
   const unit = unitLabel()
   const exercisesHtml = session.exercises
     .map((ex, i) => {
+      const mobility = isMobilityExercise(ex)
       const sets = (ex.performed || [])
         .map((s, si) => {
+          if (mobility || s.durationSec != null) {
+            const d = s.durationSec != null ? `${s.durationSec}s` : '—'
+            return `<div class="hist-set"><span class="n">${si + 1}</span><span class="val">${d}</span><span class="reps">hold</span></div>`
+          }
           const w = s.weightKg != null ? displayWeight(s.weightKg, settings.unit) : '—'
           const r = s.reps != null ? s.reps : '—'
           return `<div class="hist-set"><span class="n">${si + 1}</span><span class="val">${w} ${unit}</span><span class="reps">× ${r}</span></div>`
@@ -535,9 +559,19 @@ function renderWorkout() {
 function renderExercise(ex, index) {
   const unit = unitLabel()
   const rest = formatRest(ex.planned.restSec)
+  const mobility = isMobilityExercise(ex)
+  const durHint = durationPrescription(ex)
   const sets = ex.performed
-    .map(
-      (s, si) => `
+    .map((s, si) =>
+      mobility
+        ? `
+      <div class="set-row set-row-duration" data-ex="${index}" data-set="${si}">
+        <div class="n">${si + 1}</div>
+        <input inputmode="numeric" type="number" step="5" min="0"
+          placeholder="sec" data-field="duration"
+          value="${s.durationSec != null ? s.durationSec : ''}" />
+      </div>`
+        : `
       <div class="set-row" data-ex="${index}" data-set="${si}">
         <div class="n">${si + 1}</div>
         <input inputmode="decimal" type="number" step="0.5" min="0"
@@ -555,13 +589,17 @@ function renderExercise(ex, index) {
       `<button type="button" class="chip ${f.id} ${ex.feeling === f.id ? 'active' : ''}" data-feeling="${f.id}" data-ex="${index}">${f.label}</button>`,
   ).join('')
 
+  const meta = mobility
+    ? `${escapeHtml(ex.planned.sets)} rounds · ${escapeHtml(durHint)}${ex.planned.note ? ` · ${escapeHtml(ex.planned.note)}` : ''}${rest ? ` · ${escapeHtml(rest)}` : ''}`
+    : `${escapeHtml(ex.planned.sets)}×${escapeHtml(ex.planned.reps)}${ex.planned.note ? ` · ${escapeHtml(ex.planned.note)}` : ''}${rest ? ` · ${escapeHtml(rest)}` : ''}`
+
   return `
-    <article class="card ex-card ${ex.done ? 'is-done' : ''}" data-exercise="${index}">
+    <article class="card ex-card ${ex.done ? 'is-done' : ''}${mobility ? ' ex-card-mobility' : ''}" data-exercise="${index}">
       <div class="ex-top">
         <div class="ex-diagram">${diagramFor(ex.name)}</div>
         <div class="ex-title">
-          <h2>${escapeHtml(ex.name)}${ex.optional ? '<span class="optional-tag">Optional</span>' : ''}</h2>
-          <div class="meta">${escapeHtml(ex.planned.sets)}×${escapeHtml(ex.planned.reps)}${ex.planned.note ? ` · ${escapeHtml(ex.planned.note)}` : ''}${rest ? ` · ${escapeHtml(rest)}` : ''}</div>
+          <h2>${escapeHtml(ex.name)}${ex.optional ? '<span class="optional-tag">Optional</span>' : ''}${mobility ? '<span class="optional-tag mobility-tag">Mobility</span>' : ''}</h2>
+          <div class="meta">${meta}</div>
           ${ex.swapped ? `<div class="swap-ref">Was: ${escapeHtml(ex.originalName)}</div>` : ''}
         </div>
       </div>
@@ -569,7 +607,7 @@ function renderExercise(ex, index) {
         <button type="button" class="btn btn-ghost sm" data-open-detail="${index}">${icon('cues', 'ico')} How-to</button>
         <button type="button" class="btn btn-ghost sm" data-open-swap="${index}">${icon('swap', 'ico')} Swap</button>
       </div>
-      <div class="set-cols" aria-hidden="true"><span>#</span><span>${unit.toUpperCase()}</span><span>REPS</span></div>
+      <div class="set-cols" aria-hidden="true">${mobility ? '<span>#</span><span>SEC</span>' : `<span>#</span><span>${unit.toUpperCase()}</span><span>REPS</span>`}</div>
       <div class="sets">${sets}</div>
       <div class="chips">${chips}</div>
       <textarea placeholder="Exercise note" data-ex-note="${index}">${escapeHtml(ex.exerciseNote || '')}</textarea>
@@ -597,6 +635,9 @@ function bindWorkout(main) {
       const field = input.dataset.field
       if (field === 'weight') {
         session.exercises[ei].performed[si].weightKg = inputWeightToKg(input.value, settings.unit)
+      } else if (field === 'duration') {
+        session.exercises[ei].performed[si].durationSec = parseDurationInput(input.value)
+        session.exercises[ei].performed[si].weightKg = null
       } else {
         const v = input.value === '' ? null : Number(input.value)
         session.exercises[ei].performed[si].reps = Number.isNaN(v) ? null : v
@@ -736,11 +777,15 @@ function renderCueBlocks(ex) {
   const moveFallback = mobility
     ? (Array.isArray(ex.howtoPlain) && ex.howtoPlain.length ? ex.howtoPlain : ['Move slowly. Breathe. Stop before sharp pain.'])
     : (Array.isArray(ex.cues) ? ex.cues : ['Move with control; stop 1–2 reps shy of failure on compounds.'])
+  // Keep Avoid in first sheet fold: max 2 setup / 3 move lines
+  const setupLines = (cues.setup?.length ? cues.setup : setupFallback).slice(0, mobility ? 3 : 2)
+  const moveLines = (cues.move?.length ? cues.move : moveFallback).slice(0, mobility ? 4 : 3)
+  const avoidLines = avoid.slice(0, 3)
   const html =
-    `<div class="cue-blocks${mobility ? ' cue-blocks-mobility' : ''}">` +
-    block(labels.setup, cues.setup?.length ? cues.setup : setupFallback) +
-    block(labels.move, cues.move?.length ? cues.move : moveFallback) +
-    block(labels.avoid, avoid, 'cue-avoid') +
+    `<div class="cue-blocks cue-blocks-fold${mobility ? ' cue-blocks-mobility' : ''}">` +
+    block(labels.setup, setupLines) +
+    block(labels.move, moveLines) +
+    block(labels.avoid, avoidLines, 'cue-avoid') +
     `</div>`
   return html
 }
@@ -802,6 +847,8 @@ function openExerciseSheet(index, readOnly) {
           closeSheet()
           render()
           toast(`Swapped → ${session.exercises[index].name}`)
+          // Reopen How-to so demo GIF + cues bind to the new exercise
+          openExerciseSheet(index, readOnly)
         })
       })
       sheet.querySelector('[data-restore-original]')?.addEventListener('click', () => {
@@ -857,6 +904,7 @@ function openSwapSheet(index) {
           closeSheet()
           render()
           toast(`Swapped → ${session.exercises[index].name}`)
+          openExerciseSheet(index, false)
         })
       })
       sheet.querySelector('[data-restore-original]')?.addEventListener('click', () => {
@@ -882,6 +930,18 @@ function applySwap(index, alt) {
   ex.swapped = true
   if (alt.cues) {
     ex.cues = alt.cues
+  }
+  if (alt.howtoPlain) {
+    ex.howtoPlain = alt.howtoPlain
+  }
+  if (alt.equipment) {
+    ex.equipment = alt.equipment
+  }
+  if (alt.kind) {
+    ex.kind = alt.kind
+  }
+  if (alt.mode) {
+    ex.mode = alt.mode
   }
   if (alt.note) {
     ex.planned = { ...ex.planned, note: [ex.planned.note, alt.note].filter(Boolean).join(' · ') }
@@ -998,10 +1058,11 @@ function buildLogPayload(isRest) {
         ...(ex.optional ? { optional: true } : {}),
       },
       performed: ex.performed
-        .filter((p) => p.weightKg != null || p.reps != null)
+        .filter((p) => p.weightKg != null || p.reps != null || p.durationSec != null)
         .map((p) => ({
-          weightKg: p.weightKg,
-          reps: p.reps,
+          weightKg: p.durationSec != null ? null : p.weightKg,
+          reps: p.durationSec != null ? null : p.reps,
+          ...(p.durationSec != null ? { durationSec: p.durationSec } : {}),
         })),
       feeling: ex.feeling,
       exerciseNote: ex.exerciseNote || '',
