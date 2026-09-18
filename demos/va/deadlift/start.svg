@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="360" viewBox="0 0 480 360" fill="none" role="img" aria-label="START: Bar mid-foot; lats tight">
+  <rect width="480" height="360" rx="12" fill="#16181F"/>
+  <rect x="0.5" y="0.5" width="479" height="359" rx="11.5" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <path d="M50.0 300.0 L430.0 300.0" stroke="#6E7485" stroke-width="1.5"/>
+    <circle cx="290" cy="130" r="13" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M280.0 143.0 L200.0 210.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M245.0 170.0 L175.0 275.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M245.0 170.0 L190.0 278.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M200.0 210.0 L230.0 255.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M230.0 255.0 L235.0 300.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M215.0 300.0 L255.0 300.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M100.0 285.0 L260.0 285.0" stroke="#9AA0AE" stroke-width="3.2"/>
+    <ellipse cx="115" cy="285" rx="18" ry="22" stroke="#9AA0AE" stroke-width="2" fill="none"/>
+    <ellipse cx="245" cy="285" rx="18" ry="22" stroke="#9AA0AE" stroke-width="2" fill="none"/>
+
+  </g>
+  <text x="240.0" y="332" text-anchor="middle" font-family="DM Sans, SF Pro Text, system-ui, sans-serif" font-size="13" font-weight="700" letter-spacing="0.12em" fill="#F3F4F6">START</text>
+  <text x="240.0" y="348" text-anchor="middle" font-family="DM Sans, SF Pro Text, system-ui, sans-serif" font-size="11" font-weight="450" fill="#6E7485">Bar mid-foot; lats tight</text>
+</svg>

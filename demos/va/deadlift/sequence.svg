@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="360" viewBox="0 0 1440 360" fill="none" role="img" aria-label="deadlift form sequence">
+  <rect width="1440" height="360" rx="12" fill="#16181F"/>
+
+  <g transform="translate(0,0)">
+    <rect x="0.5" y="0.5" width="479" height="359" rx="11.5" stroke="rgba(255,255,255,0.08)" stroke-width="1" fill="none"/>
+    <g stroke-linecap="round" stroke-linejoin="round">
+        <path d="M50.0 300.0 L430.0 300.0" stroke="#6E7485" stroke-width="1.5"/>
+        <circle cx="290" cy="130" r="13" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M280.0 143.0 L200.0 210.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M245.0 170.0 L175.0 275.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M245.0 170.0 L190.0 278.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M200.0 210.0 L230.0 255.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M230.0 255.0 L235.0 300.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M215.0 300.0 L255.0 300.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M100.0 285.0 L260.0 285.0" stroke="#9AA0AE" stroke-width="3.2"/>
+        <ellipse cx="115" cy="285" rx="18" ry="22" stroke="#9AA0AE" stroke-width="2" fill="none"/>
+        <ellipse cx="245" cy="285" rx="18" ry="22" stroke="#9AA0AE" stroke-width="2" fill="none"/>
+    </g>
+    <text x="240" y="332" text-anchor="middle" font-family="DM Sans, SF Pro Text, system-ui, sans-serif" font-size="13" font-weight="700" letter-spacing="0.12em" fill="#F3F4F6">START</text>
+    <text x="240" y="348" text-anchor="middle" font-family="DM Sans, SF Pro Text, system-ui, sans-serif" font-size="11" font-weight="450" fill="#6E7485">Bar mid-foot; lats tight</text>
+  </g>
+  <line x1="480" y1="16" x2="480" y2="344" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+  <g transform="translate(480,0)">
+    <rect x="0.5" y="0.5" width="479" height="359" rx="11.5" stroke="rgba(255,255,255,0.08)" stroke-width="1" fill="none"/>
+    <g stroke-linecap="round" stroke-linejoin="round">
+        <path d="M50.0 300.0 L430.0 300.0" stroke="#6E7485" stroke-width="1.5"/>
+        <circle cx="275" cy="105" r="13" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M268.0 118.0 L215.0 185.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M240.0 145.0 L170.0 235.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M240.0 145.0 L185.0 240.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M215.0 185.0 L235.0 245.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M235.0 245.0 L238.0 300.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M220.0 300.0 L258.0 300.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M100.0 245.0 L260.0 245.0" stroke="#9AA0AE" stroke-width="3.2"/>
+        <ellipse cx="115" cy="245" rx="18" ry="22" stroke="#9AA0AE" stroke-width="2" fill="none"/>
+        <ellipse cx="245" cy="245" rx="18" ry="22" stroke="#9AA0AE" stroke-width="2" fill="none"/>
+        <path d="M350.0 260.0 L350.0 195.0" stroke="#FF5A1F" stroke-width="2.2"/>
+        <path d="M344.0 190.0 L350.0 195.0 L344.0 200.0" stroke="#FF5A1F" stroke-width="2.2" fill="none"/>
+    </g>
+    <text x="240" y="332" text-anchor="middle" font-family="DM Sans, SF Pro Text, system-ui, sans-serif" font-size="13" font-weight="700" letter-spacing="0.12em" fill="#F3F4F6">MID</text>
+    <text x="240" y="348" text-anchor="middle" font-family="DM Sans, SF Pro Text, system-ui, sans-serif" font-size="11" font-weight="450" fill="#6E7485">Hips &amp;amp; shoulders rise</text>
+  </g>
+  <line x1="960" y1="16" x2="960" y2="344" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+  <g transform="translate(960,0)">
+    <rect x="0.5" y="0.5" width="479" height="359" rx="11.5" stroke="rgba(255,255,255,0.08)" stroke-width="1" fill="none"/>
+    <g stroke-linecap="round" stroke-linejoin="round">
+        <path d="M50.0 300.0 L430.0 300.0" stroke="#6E7485" stroke-width="1.5"/>
+        <circle cx="250" cy="85" r="13" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M250.0 98.0 L250.0 175.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M250.0 135.0 L185.0 175.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M250.0 135.0 L315.0 175.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M250.0 175.0 L225.0 240.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M250.0 175.0 L275.0 240.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M225.0 240.0 L222.0 300.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M275.0 240.0 L278.0 300.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M205.0 300.0 L235.0 300.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M265.0 300.0 L295.0 300.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M170.0 175.0 L330.0 175.0" stroke="#9AA0AE" stroke-width="3.2"/>
+        <ellipse cx="175" cy="175" rx="18" ry="22" stroke="#9AA0AE" stroke-width="2" fill="none"/>
+        <ellipse cx="325" cy="175" rx="18" ry="22" stroke="#9AA0AE" stroke-width="2" fill="none"/>
+        <path d="M370.0 230.0 L370.0 155.0" stroke="#FF5A1F" stroke-width="2.2"/>
+        <path d="M364.0 150.0 L370.0 155.0 L364.0 160.0" stroke="#FF5A1F" stroke-width="2.2" fill="none"/>
+        <circle cx="250" cy="175" r="5" fill="#3DDC97" stroke="none"/>
+    </g>
+    <text x="240" y="332" text-anchor="middle" font-family="DM Sans, SF Pro Text, system-ui, sans-serif" font-size="13" font-weight="700" letter-spacing="0.12em" fill="#F3F4F6">END</text>
+    <text x="240" y="348" text-anchor="middle" font-family="DM Sans, SF Pro Text, system-ui, sans-serif" font-size="11" font-weight="450" fill="#6E7485">Stand tall — don&amp;#x27;t lean</text>
+  </g>
+</svg>

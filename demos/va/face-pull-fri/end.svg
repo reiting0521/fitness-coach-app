@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="360" viewBox="0 0 480 360" fill="none" role="img" aria-label="END: External rotation finish">
+  <rect width="480" height="360" rx="12" fill="#16181F"/>
+  <rect x="0.5" y="0.5" width="479" height="359" rx="11.5" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <path d="M50.0 300.0 L430.0 300.0" stroke="#6E7485" stroke-width="1.5"/>
+    <path d="M400.0 50.0 L400.0 300.0" stroke="#9AA0AE" stroke-width="1.5"/>
+    <path d="M320.0 100.0 L400.0 100.0" stroke="#9AA0AE" stroke-width="1.6"/>
+    <circle cx="195" cy="120" r="13" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M195.0 133.0 L195.0 200.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M195.0 150.0 L230.0 145.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M230.0 145.0 L220.0 100.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M195.0 150.0 L235.0 155.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M235.0 155.0 L225.0 110.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M195.0 200.0 L170.0 270.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M195.0 200.0 L225.0 270.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M170.0 270.0 L167.0 300.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M225.0 270.0 L227.0 300.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M155.0 300.0 L179.0 300.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M215.0 300.0 L240.0 300.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M220.0 100.0 L320.0 100.0" stroke="#9AA0AE" stroke-width="1.5"/>
+    <path d="M225.0 110.0 L320.0 100.0" stroke="#9AA0AE" stroke-width="1.5"/>
+    <ellipse cx="220" cy="100" rx="6" ry="6" stroke="#9AA0AE" stroke-width="1.5" fill="none"/>
+    <ellipse cx="225" cy="110" rx="6" ry="6" stroke="#9AA0AE" stroke-width="1.5" fill="none"/>
+    <circle cx="225" cy="105" r="4" fill="#3DDC97" stroke="none"/>
+    <circle cx="230" cy="115" r="4" fill="#3DDC97" stroke="none"/>
+    <path d="M205 140 Q240 120 220 100" stroke="#FF5A1F" stroke-width="2" fill="none" opacity="0.85"/>
+  </g>
+  <text x="240.0" y="332" text-anchor="middle" font-family="DM Sans, SF Pro Text, system-ui, sans-serif" font-size="13" font-weight="700" letter-spacing="0.12em" fill="#F3F4F6">END</text>
+  <text x="240.0" y="348" text-anchor="middle" font-family="DM Sans, SF Pro Text, system-ui, sans-serif" font-size="11" font-weight="450" fill="#6E7485">External rotation finish</text>
+</svg>

@@ -1,0 +1,25 @@
+{
+  "name": "Fitness Coach",
+  "short_name": "Coach",
+  "description": "Strength workout coach — today view, set logging, Drive sync",
+  "start_url": "/fitness-coach-app/",
+  "scope": "/fitness-coach-app/",
+  "display": "standalone",
+  "background_color": "#0b0d10",
+  "theme_color": "#0b0d10",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/fitness-coach-app/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/fitness-coach-app/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

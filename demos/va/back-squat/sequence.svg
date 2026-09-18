@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="360" viewBox="0 0 1440 360" fill="none" role="img" aria-label="back-squat form sequence">
+  <rect width="1440" height="360" rx="12" fill="#16181F"/>
+
+  <g transform="translate(0,0)">
+    <rect x="0.5" y="0.5" width="479" height="359" rx="11.5" stroke="rgba(255,255,255,0.08)" stroke-width="1" fill="none"/>
+    <g stroke-linecap="round" stroke-linejoin="round">
+        <path d="M60.0 290.0 L420.0 290.0" stroke="#6E7485" stroke-width="1.5"/>
+        <path d="M70.0 70.0 L70.0 290.0" stroke="#9AA0AE" stroke-width="1.6"/>
+        <path d="M95.0 70.0 L95.0 290.0" stroke="#9AA0AE" stroke-width="1.6"/>
+        <path d="M70.0 95.0 L95.0 95.0" stroke="#9AA0AE" stroke-width="1.6"/>
+        <path d="M70.0 160.0 L95.0 160.0" stroke="#9AA0AE" stroke-width="1.6"/>
+        <circle cx="250" cy="95" r="13" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M250.0 108.0 L242.0 175.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M248.0 135.0 L195.0 138.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M248.0 135.0 L290.0 142.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M242.0 175.0 L215.0 235.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M242.0 175.0 L275.0 240.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M215.0 235.0 L212.0 290.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M275.0 240.0 L278.0 290.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M198.0 290.0 L226.0 290.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M266.0 290.0 L292.0 290.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M175.0 138.0 L305.0 140.0" stroke="#9AA0AE" stroke-width="3.2"/>
+        <ellipse cx="175" cy="138" rx="12" ry="18" stroke="#9AA0AE" stroke-width="2" fill="none"/>
+        <ellipse cx="305" cy="140" rx="12" ry="18" stroke="#9AA0AE" stroke-width="2" fill="none"/>
+    </g>
+    <text x="240" y="332" text-anchor="middle" font-family="DM Sans, SF Pro Text, system-ui, sans-serif" font-size="13" font-weight="700" letter-spacing="0.12em" fill="#F3F4F6">START</text>
+    <text x="240" y="348" text-anchor="middle" font-family="DM Sans, SF Pro Text, system-ui, sans-serif" font-size="11" font-weight="450" fill="#6E7485">Brace hard; bar on traps</text>
+  </g>
+  <line x1="480" y1="16" x2="480" y2="344" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+  <g transform="translate(480,0)">
+    <rect x="0.5" y="0.5" width="479" height="359" rx="11.5" stroke="rgba(255,255,255,0.08)" stroke-width="1" fill="none"/>
+    <g stroke-linecap="round" stroke-linejoin="round">
+        <path d="M60.0 290.0 L420.0 290.0" stroke="#6E7485" stroke-width="1.5"/>
+        <path d="M70.0 70.0 L70.0 290.0" stroke="#9AA0AE" stroke-width="1.6"/>
+        <path d="M95.0 70.0 L95.0 290.0" stroke="#9AA0AE" stroke-width="1.6"/>
+        <path d="M70.0 95.0 L95.0 95.0" stroke="#9AA0AE" stroke-width="1.6"/>
+        <path d="M70.0 160.0 L95.0 160.0" stroke="#9AA0AE" stroke-width="1.6"/>
+        <circle cx="265" cy="145" r="13" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M260.0 158.0 L220.0 210.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M245.0 175.0 L185.0 168.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M245.0 175.0 L285.0 178.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M220.0 210.0 L170.0 225.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M220.0 210.0 L270.0 230.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M170.0 225.0 L195.0 290.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M270.0 230.0 L285.0 290.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M177.0 290.0 L210.0 290.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M273.0 290.0 L303.0 290.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M170.0 170.0 L300.0 175.0" stroke="#9AA0AE" stroke-width="3.2"/>
+        <ellipse cx="170" cy="170" rx="12" ry="18" stroke="#9AA0AE" stroke-width="2" fill="none"/>
+        <ellipse cx="300" cy="175" rx="12" ry="18" stroke="#9AA0AE" stroke-width="2" fill="none"/>
+        <path d="M360.0 120.0 L360.0 200.0" stroke="#FF5A1F" stroke-width="2.2"/>
+        <path d="M354.0 195.0 L360.0 200.0 L354.0 205.0" stroke="#FF5A1F" stroke-width="2.2" fill="none"/>
+        <path d="M220 210 L220 230" stroke="#FF5A1F" stroke-width="1.8" opacity="0.7"/>
+    </g>
+    <text x="240" y="332" text-anchor="middle" font-family="DM Sans, SF Pro Text, system-ui, sans-serif" font-size="13" font-weight="700" letter-spacing="0.12em" fill="#F3F4F6">MID</text>
+    <text x="240" y="348" text-anchor="middle" font-family="DM Sans, SF Pro Text, system-ui, sans-serif" font-size="11" font-weight="450" fill="#6E7485">Hip crease below knee</text>
+  </g>
+  <line x1="960" y1="16" x2="960" y2="344" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+  <g transform="translate(960,0)">
+    <rect x="0.5" y="0.5" width="479" height="359" rx="11.5" stroke="rgba(255,255,255,0.08)" stroke-width="1" fill="none"/>
+    <g stroke-linecap="round" stroke-linejoin="round">
+        <path d="M60.0 290.0 L420.0 290.0" stroke="#6E7485" stroke-width="1.5"/>
+        <path d="M70.0 70.0 L70.0 290.0" stroke="#9AA0AE" stroke-width="1.6"/>
+        <path d="M95.0 70.0 L95.0 290.0" stroke="#9AA0AE" stroke-width="1.6"/>
+        <path d="M70.0 95.0 L95.0 95.0" stroke="#9AA0AE" stroke-width="1.6"/>
+        <path d="M70.0 160.0 L95.0 160.0" stroke="#9AA0AE" stroke-width="1.6"/>
+        <circle cx="250" cy="95" r="13" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M250.0 108.0 L242.0 175.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M248.0 135.0 L195.0 138.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M248.0 135.0 L290.0 142.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M242.0 175.0 L215.0 235.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M242.0 175.0 L275.0 240.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M215.0 235.0 L212.0 290.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M275.0 240.0 L278.0 290.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M198.0 290.0 L226.0 290.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M266.0 290.0 L292.0 290.0" stroke="#F3F4F6" stroke-width="2.5"/>
+        <path d="M175.0 138.0 L305.0 140.0" stroke="#9AA0AE" stroke-width="3.2"/>
+        <ellipse cx="175" cy="138" rx="12" ry="18" stroke="#9AA0AE" stroke-width="2" fill="none"/>
+        <ellipse cx="305" cy="140" rx="12" ry="18" stroke="#9AA0AE" stroke-width="2" fill="none"/>
+        <path d="M360.0 220.0 L360.0 145.0" stroke="#FF5A1F" stroke-width="2.2"/>
+        <path d="M354.0 140.0 L360.0 145.0 L354.0 150.0" stroke="#FF5A1F" stroke-width="2.2" fill="none"/>
+        <circle cx="242" cy="175" r="5" fill="#3DDC97" stroke="none"/>
+    </g>
+    <text x="240" y="332" text-anchor="middle" font-family="DM Sans, SF Pro Text, system-ui, sans-serif" font-size="13" font-weight="700" letter-spacing="0.12em" fill="#F3F4F6">END</text>
+    <text x="240" y="348" text-anchor="middle" font-family="DM Sans, SF Pro Text, system-ui, sans-serif" font-size="11" font-weight="450" fill="#6E7485">Drive mid-foot; lockout</text>
+  </g>
+</svg>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="360" viewBox="0 0 480 360" fill="none" role="img" aria-label="END: Chest up; elbows to ribs">
+  <rect width="480" height="360" rx="12" fill="#16181F"/>
+  <rect x="0.5" y="0.5" width="479" height="359" rx="11.5" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <path d="M120.0 50.0 L360.0 50.0" stroke="#9AA0AE" stroke-width="2"/>
+    <path d="M240.0 50.0 L240.0 70.0" stroke="#9AA0AE" stroke-width="1.6"/>
+    <path d="M100.0 50.0 L100.0 300.0" stroke="#9AA0AE" stroke-width="1.5"/>
+    <path d="M380.0 50.0 L380.0 300.0" stroke="#9AA0AE" stroke-width="1.5"/>
+    <path d="M100.0 300.0 L380.0 300.0" stroke="#6E7485" stroke-width="1.5"/>
+    <path d="M150.0 85.0 L330.0 85.0" stroke="#9AA0AE" stroke-width="3.0"/>
+    <circle cx="240" cy="115" r="13" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M240.0 128.0 L240.0 195.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M240.0 160.0 L195.0 145.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M195.0 145.0 L165.0 90.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M240.0 160.0 L285.0 145.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M285.0 145.0 L315.0 90.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M240.0 195.0 L215.0 270.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M240.0 195.0 L265.0 270.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M200.0 270.0 L225.0 270.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <path d="M255.0 270.0 L280.0 270.0" stroke="#F3F4F6" stroke-width="2.5"/>
+    <circle cx="195" cy="150" r="4" fill="#3DDC97" stroke="none"/>
+    <circle cx="285" cy="150" r="4" fill="#3DDC97" stroke="none"/>
+  </g>
+  <text x="240.0" y="332" text-anchor="middle" font-family="DM Sans, SF Pro Text, system-ui, sans-serif" font-size="13" font-weight="700" letter-spacing="0.12em" fill="#F3F4F6">END</text>
+  <text x="240.0" y="348" text-anchor="middle" font-family="DM Sans, SF Pro Text, system-ui, sans-serif" font-size="11" font-weight="450" fill="#6E7485">Chest up; elbows to ribs</text>
+</svg>
