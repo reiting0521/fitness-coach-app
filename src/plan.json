@@ -1,6 +1,6 @@
 {
-  "planVersion": 6,
-  "updatedAt": "2026-09-17T09:30:00+02:00",
+  "planVersion": 7,
+  "updatedAt": "2026-09-18T08:58+02:00",
   "timezone": "Europe/Zurich",
   "goal": "strength",
   "unit": "kg",
@@ -490,7 +490,7 @@
     "thursday": {
       "focus": "Mobility",
       "rest": false,
-      "notes": "Easy active recovery. No heavy loading. Breathe; never force range.",
+      "notes": "Easy active recovery. No heavy loading. Breathe; never force range. If skipped one week, do as Fri Back cool-down instead.",
       "exercises": [
         {
           "id": "worlds-greatest-stretch",
@@ -984,8 +984,297 @@
             }
           ],
           "equipment": "Cable"
+        },
+        {
+          "id": "worlds-greatest-stretch",
+          "name": "World’s greatest stretch (lunge + twist)",
+          "sets": 2,
+          "reps": "5/side",
+          "restSec": 30,
+          "cues": {
+            "setup": [
+              "Step 1: Step into a long lunge. Front foot flat. Back leg long.",
+              "Step 2: Put both hands on the floor next to your front foot."
+            ],
+            "move": [
+              "Step 3: Drop your elbow toward your front instep. Feel the hip open.",
+              "Step 4: Twist and reach that same arm up to the sky. Look at your hand.",
+              "Hold and breathe. Then switch sides."
+            ],
+            "avoid": [
+              "Stop if you feel sharp pain.",
+              "Don’t bounce. Keep the front knee over your mid-foot."
+            ]
+          },
+          "alternatives": [
+            {
+              "id": "hip-flexor-lunge-stretch",
+              "name": "Kneeling hip-flexor stretch",
+              "sets": 2,
+              "reps": "30-45s/side",
+              "durationSec": 45,
+              "kind": "mobility",
+              "mode": "stretch"
+            }
+          ],
+          "kind": "mobility",
+          "mode": "stretch",
+          "howtoPlain": [
+            "Long lunge, hands on the floor.",
+            "Elbow toward front foot, then twist open to the sky.",
+            "Slow and easy — switch sides."
+          ],
+          "durationSec": 45,
+          "note": "Cool-down (moved from Thu)"
+        },
+        {
+          "id": "90-90-hip-switch",
+          "name": "90/90 hip switches",
+          "sets": 2,
+          "reps": "6/side",
+          "restSec": 30,
+          "cues": {
+            "setup": [
+              "Step 1: Sit on the floor. Bend both knees about 90°.",
+              "Step 2: One shin in front of you, the other shin to the side."
+            ],
+            "move": [
+              "Step 3: Sit tall. Slowly flip both legs to the other side.",
+              "Step 4: Feel the hips turn. Keep switching with control."
+            ],
+            "avoid": [
+              "Don’t shrug your shoulders.",
+              "Don’t twist from the low back — move from the hips."
+            ]
+          },
+          "alternatives": [
+            {
+              "id": "seated-figure-four",
+              "name": "Seated figure-four stretch",
+              "sets": 2,
+              "reps": "30-45s/side",
+              "durationSec": 45,
+              "kind": "mobility",
+              "mode": "stretch"
+            }
+          ],
+          "kind": "mobility",
+          "mode": "stretch",
+          "howtoPlain": [
+            "Sit tall in 90/90.",
+            "Flip both legs side to side.",
+            "Hips do the work — stay tall."
+          ],
+          "durationSec": 45,
+          "note": "Cool-down (moved from Thu)"
+        },
+        {
+          "id": "couch-stretch",
+          "name": "Couch / hip-flexor stretch",
+          "sets": 2,
+          "reps": "30-45s/side",
+          "restSec": 20,
+          "cues": {
+            "setup": [
+              "Step 1: Kneel. Put your back foot up on a couch or wall.",
+              "Step 2: Front foot flat on the floor, knee bent."
+            ],
+            "move": [
+              "Step 3: Tuck your hips under a little. Stand your chest tall.",
+              "Step 4: Feel a stretch in the front of the back hip. Hold and breathe."
+            ],
+            "avoid": [
+              "Don’t arch your lower back hard.",
+              "Stop if the front of the knee hurts."
+            ]
+          },
+          "alternatives": [
+            {
+              "id": "kneeling-hip-flexor",
+              "name": "Kneeling hip-flexor stretch",
+              "sets": 2,
+              "reps": "30-45s/side",
+              "durationSec": 45,
+              "kind": "mobility",
+              "mode": "stretch"
+            }
+          ],
+          "kind": "mobility",
+          "mode": "stretch",
+          "howtoPlain": [
+            "Back foot up on couch/wall.",
+            "Tuck hips, tall chest.",
+            "Breathe into the front of the hip."
+          ],
+          "durationSec": 45,
+          "note": "Cool-down (moved from Thu)"
+        },
+        {
+          "id": "hamstring-strap-stretch",
+          "name": "Hamstring stretch (supine strap or towel)",
+          "sets": 2,
+          "reps": "30-45s/side",
+          "restSec": 20,
+          "cues": {
+            "setup": [
+              "Step 1: Lie on your back. Loop a strap or towel around one foot.",
+              "Step 2: Keep the other leg flat on the floor."
+            ],
+            "move": [
+              "Step 3: Gently pull the strap until you feel a mild stretch behind the thigh.",
+              "Step 4: Hold and breathe. Then switch legs."
+            ],
+            "avoid": [
+              "No sharp pain behind the knee.",
+              "Don’t yank — easy pull only."
+            ]
+          },
+          "alternatives": [
+            {
+              "id": "standing-hamstring",
+              "name": "Standing hamstring stretch",
+              "sets": 2,
+              "reps": "30-45s/side",
+              "durationSec": 45,
+              "kind": "mobility",
+              "mode": "stretch"
+            }
+          ],
+          "kind": "mobility",
+          "mode": "stretch",
+          "howtoPlain": [
+            "Lie on your back with a strap on one foot.",
+            "Gentle pull until the back of the thigh stretches.",
+            "Breathe. Switch sides."
+          ],
+          "durationSec": 45,
+          "note": "Cool-down (moved from Thu)"
+        },
+        {
+          "id": "open-book-tspine",
+          "name": "Open-book thoracic rotation",
+          "sets": 2,
+          "reps": "8/side",
+          "restSec": 20,
+          "cues": {
+            "setup": [
+              "Step 1: Lie on your side. Knees bent and stacked.",
+              "Step 2: Arms straight out in front, palms together."
+            ],
+            "move": [
+              "Step 3: Open your top arm like a book toward the floor behind you.",
+              "Step 4: Follow with your eyes. Feel the mid-back twist. Hold and breathe."
+            ],
+            "avoid": [
+              "Keep knees stacked — don’t let them flop open.",
+              "Don’t force the shoulder to the floor."
+            ]
+          },
+          "alternatives": [
+            {
+              "id": "thread-the-needle",
+              "name": "Thread the needle",
+              "sets": 2,
+              "reps": "6/side",
+              "durationSec": 45,
+              "kind": "mobility",
+              "mode": "stretch"
+            }
+          ],
+          "kind": "mobility",
+          "mode": "stretch",
+          "howtoPlain": [
+            "Side-lying, knees stacked, arms together.",
+            "Open top arm behind you like a book.",
+            "Eyes follow. Knees stay put."
+          ],
+          "durationSec": 45,
+          "note": "Cool-down (moved from Thu)"
+        },
+        {
+          "id": "cat-cow",
+          "name": "Cat-cow",
+          "sets": 2,
+          "reps": "10",
+          "restSec": 15,
+          "cues": {
+            "setup": [
+              "Step 1: Get on hands and knees.",
+              "Step 2: Hands under shoulders. Knees under hips."
+            ],
+            "move": [
+              "Step 3: Cow — drop your belly, lift your chest and look forward.",
+              "Step 4: Cat — round your back up, tuck your chin. Switch with your breath."
+            ],
+            "avoid": [
+              "Don’t dump into your neck.",
+              "Don’t rush — move slow with each breath."
+            ]
+          },
+          "alternatives": [
+            {
+              "id": "childs-pose",
+              "name": "Child’s pose",
+              "sets": 2,
+              "reps": "30-45s",
+              "durationSec": 45,
+              "kind": "mobility",
+              "mode": "stretch"
+            }
+          ],
+          "kind": "mobility",
+          "mode": "stretch",
+          "howtoPlain": [
+            "Hands and knees.",
+            "Arch (cow), then round (cat).",
+            "Match the move to your breath."
+          ],
+          "durationSec": 45,
+          "note": "Cool-down (moved from Thu)"
+        },
+        {
+          "id": "doorway-chest-stretch",
+          "name": "Doorway chest / pec stretch",
+          "sets": 2,
+          "reps": "30s/side",
+          "restSec": 15,
+          "cues": {
+            "setup": [
+              "Step 1: Stand in a doorway. Put one forearm on the frame.",
+              "Step 2: Elbow about height with your shoulder (~90°)."
+            ],
+            "move": [
+              "Step 3: Gently step through until you feel the chest open.",
+              "Step 4: Hold and breathe. Then switch sides."
+            ],
+            "avoid": [
+              "Don’t shrug your shoulder up to your ear.",
+              "Stop if you feel pinching in the front of the shoulder."
+            ]
+          },
+          "alternatives": [
+            {
+              "id": "wall-angels",
+              "name": "Wall angels",
+              "sets": 2,
+              "reps": "8-10",
+              "durationSec": 45,
+              "kind": "mobility",
+              "mode": "stretch"
+            }
+          ],
+          "kind": "mobility",
+          "mode": "stretch",
+          "howtoPlain": [
+            "Forearm on the doorframe.",
+            "Step through until the chest opens.",
+            "Easy hold — no shrugging."
+          ],
+          "durationSec": 30,
+          "note": "Cool-down (moved from Thu)"
         }
-      ]
+      ],
+      "notes": "After Back lifts: Thu mobility as cool-down (duration/holds, not weight)."
     },
     "saturday": {
       "focus": "Rest",
