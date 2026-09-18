@@ -582,7 +582,9 @@ function renderWorkout() {
       !drive.isSignedIn()
         ? `<div class="banner banner-drive">${
             drive.isConfigured()
-              ? 'Logs save locally. <button type="button" data-goto-settings>Connect Drive</button>'
+              ? settings.driveConnected
+                ? 'Drive session ended. Logs still save here. <button type="button" data-goto-settings>Reconnect</button>'
+                : 'Logs save locally. <button type="button" data-goto-settings>Connect Drive</button>'
               : 'Offline mode — localStorage only.'
           }</div>`
         : ''
@@ -1189,8 +1191,10 @@ function renderSettings() {
       <p>${
         drive.isConfigured()
           ? drive.isSignedIn()
-            ? `${icon('cloud-sync', 'ico')} <span class="pill feeling-easy" style="margin-left:6px">Connected</span><br/>Prefers plan-v2.json, else plan.json. Logs upload on Finish day.`
-            : `${icon('cloud-off', 'ico')} <span class="pill muted" style="margin-left:6px">Not connected</span><br/>Client ID found. Sign in to sync plan + workout logs.`
+            ? `${icon('cloud-sync', 'ico')} <span class="pill feeling-easy" style="margin-left:6px">Connected</span><br/>Prefers plan-v2.json, else plan.json. Logs upload on Finish day. Stays signed in when Google still has your grant — no Connect each visit.`
+            : settings.driveConnected
+              ? `${icon('cloud-off', 'ico')} <span class="pill muted" style="margin-left:6px">Session expired</span><br/>Tap once to reconnect (we don’t store tokens on this phone). After that, reopen usually restores silently.`
+              : `${icon('cloud-off', 'ico')} <span class="pill muted" style="margin-left:6px">Not connected</span><br/>One-time Connect enables silent restore on later visits when possible.`
           : 'No VITE_GOOGLE_CLIENT_ID — offline localStorage mode.'
       }</p>
       ${
@@ -1198,7 +1202,7 @@ function renderSettings() {
           ? drive.isSignedIn()
             ? `<button type="button" class="btn btn-secondary" id="drive-disconnect" style="margin-top:10px">Disconnect</button>
                <button type="button" class="btn btn-primary" id="drive-refresh-plan" style="margin-top:8px">Refresh plan from Drive</button>`
-            : `<button type="button" class="btn btn-primary" id="drive-connect" style="margin-top:10px">Connect Google Drive</button>`
+            : `<button type="button" class="btn btn-primary" id="drive-connect" style="margin-top:10px">${settings.driveConnected ? 'Reconnect Drive' : 'Connect Google Drive'}</button>`
           : `<p style="margin-top:8px">See README for OAuth setup.</p>`
       }
     </div>
@@ -1372,18 +1376,23 @@ async function boot() {
   if (drive.isConfigured()) {
     try {
       await drive.initGoogle()
-      if (settings.driveConnected || drive.isSignedIn()) {
-        try {
-          await drive.ensureSignedIn({ allowConsent: false })
-          settings.driveConnected = true
-          saveSettings(settings)
+      // Silent restore: tokens stay in memory only; Google’s prior grant enables
+      // requestAccessToken({ prompt: '' }) without clicking Connect each visit.
+      if (settings.driveConnected) {
+        const silent = await drive.trySilentReconnect()
+        if (silent.signedIn) {
           await refreshPlanFromDrive(false)
-          render()
-        } catch {
-          /* silent refresh failed — keep UI; user can Connect manually */
-          render()
         }
+        render()
       }
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState !== 'visible') return
+        if (!drive.isConfigured() || !settings.driveConnected || drive.isSignedIn()) return
+        drive.trySilentReconnect().then((r) => {
+          if (!r.signedIn) return
+          refreshPlanFromDrive(false).finally(() => render())
+        })
+      })
     } catch (err) {
       console.warn('Google init failed', safeErrMsg(err))
     }

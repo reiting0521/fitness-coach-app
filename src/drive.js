@@ -148,9 +148,11 @@ export function signIn() {
 
 /**
  * Keep / refresh token in memory without forcing consent on every open.
+ * Access tokens stay in memory only (never localStorage) — security constraint.
+ * Persistence across visits relies on Google’s prior grant + silent GIS refresh.
  * 1) valid in-memory token → return
  * 2) silent requestAccessToken({ prompt: '' })
- * 3) only if that fails and allowConsent → prompt:'consent' once
+ * 3) only if that fails and allowConsent → prompt:'consent' once (needs a tap)
  */
 export async function ensureSignedIn({ allowConsent = true } = {}) {
   if (isSignedIn()) return { accessToken }
@@ -160,6 +162,18 @@ export async function ensureSignedIn({ allowConsent = true } = {}) {
   } catch (silentErr) {
     if (!allowConsent) throw silentErr
     return requestToken('consent')
+  }
+}
+
+/** Boot / visibility helper: never opens a consent popup. */
+export async function trySilentReconnect() {
+  if (!isConfigured()) return { ok: false, reason: 'no_client_id' }
+  if (isSignedIn()) return { ok: true, signedIn: true }
+  try {
+    await ensureSignedIn({ allowConsent: false })
+    return { ok: true, signedIn: true }
+  } catch {
+    return { ok: false, signedIn: false, reason: 'silent_failed' }
   }
 }
 
